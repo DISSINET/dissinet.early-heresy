@@ -1,3 +1,7 @@
 .leaflet-tile-container {
   filter: sepia(0.2) grayscale(0.3);
 }
+
+.hero {
+  font-family: Muni;
+}
