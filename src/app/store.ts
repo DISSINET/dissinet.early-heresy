@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import layoutReducer from "../components/LayoutSlice";
+import layoutReducer from "../components/layout/LayoutSlice";
+import mapReducer from "../components/map/MapSlice";
 
 export const store = configureStore({
   reducer: {
     layout: layoutReducer,
+    map: mapReducer,
   },
 });
 

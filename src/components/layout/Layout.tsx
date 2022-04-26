@@ -1,7 +1,7 @@
 import * as React from "react";
-import MapComponent from "./Map";
+import MapComponent from "./../map/Map";
 //import PanelComponent from "./Panel";
-import { useAppSelector } from "./../app/hooks";
+import { useAppSelector } from "./../../app/hooks";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
