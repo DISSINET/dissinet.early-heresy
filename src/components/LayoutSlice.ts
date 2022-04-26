@@ -5,17 +5,11 @@ import cases from "./../enums/cases";
 export interface LayoutState {
   cases: Object;
   selectedCaseIds: Array<string>;
-  panel: boolean;
-  center: Array<number>;
-  zoom: number;
 }
 
 const initialState: LayoutState = {
   cases: cases,
   selectedCaseIds: [],
-  panel: true,
-  center: [52, -1],
-  zoom: 7,
 };
 
 export const layoutSlice = createSlice({

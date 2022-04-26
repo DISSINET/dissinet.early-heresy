@@ -2,40 +2,36 @@ import * as React from "react";
 import MapComponent from "./Map";
 //import PanelComponent from "./Panel";
 import { useAppSelector } from "./../app/hooks";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Layout: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
-  const panel = useAppSelector((state) => state.layout.panel);
-  const center = useAppSelector((state) => state.layout.center);
-  const zoom = useAppSelector((state) => state.layout.zoom);
 
   return (
-    <div className={panel ? "panel-on" : "panel-off"}>
-      {panel ? (
-        <button
-          className="m-0 panel-hider on text-base muni bg-black"
-          //onClick={this.handleTogglePanel.bind(this)}
-          title="toggle panel"
+    <Container fluid>
+      <Row>
+        <Col
+          sm="3"
+          xs="12"
+          style={{
+            height: "100%",
+            background: "#fff",
+          }}
         >
-          <i className="text-bold icon icon-arrow-alt-from-left" />
-        </button>
-      ) : (
-        <button
-          className=" m-0 panel-hider off text-base muni bg-black"
-          //onClick={this.handleTogglePanel.bind(this)}
-          title="toggle panel"
-        >
-          <i className="text-bold icon icon-arrow-alt-from-right" />
-        </button>
-      )}
-      <MapComponent
-        //handleMapMoved={store.mapMoved.bind(store)}
-        center={center}
-        zoom={zoom}
-      />
-      {
-        //panel && (
-        /*
+          <div>test</div>
+        </Col>
+        <Col xs="12" sm="9" style={{ padding: 0, height: "100%" }}>
+          <MapComponent
+          //handleMapMoved={store.mapMoved.bind(store)}
+          />
+        </Col>
+      </Row>
+    </Container>
+
+    //panel && (
+    /*
         <div>
           <PanelComponent
           //filters={store.filters}
@@ -65,8 +61,6 @@ const Layout: React.FC = ({}) => {
           </div>
         </div>
       ) */
-      }
-    </div>
   );
 };
 
