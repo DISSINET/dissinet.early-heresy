@@ -1,11 +1,37 @@
 import React from "react";
 import Hero from "./../Hero";
+import { useAppSelector } from "./../../app/hooks";
+import { ListGroup, Badge } from "react-bootstrap";
 
 const PanelComponent: React.FC = ({}) => {
+  const cases = useAppSelector((state) => state.layout.cases);
+
+  function caseList() {
+    return (
+      <ListGroup>
+        {Object.values(cases).map((val: any, i) => {
+          return (
+            <ListGroup.Item>
+              <Badge bg="light" text="dark" pill>
+                {val["case_id"]}
+              </Badge>
+              {val["case_label"]}
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
+    );
+  }
+
   return (
     <div className="panel" data-testid="panel-wrapper">
       <Hero />
-      <div style={{ padding: "2em" }}>tada</div>
+
+      <div style={{ padding: "1em" }}>
+        <b>Cases</b>
+        <br />
+        {caseList()}
+      </div>
       <div
         className="pt-12"
         style={{

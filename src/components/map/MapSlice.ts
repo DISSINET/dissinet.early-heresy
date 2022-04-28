@@ -9,7 +9,7 @@ export interface MapState {
 }
 
 const initialState: MapState = {
-  center: [46, 8],
+  center: [46, 7],
   zoom: 6,
   maxZoom: 15,
   minZoom: 4,
