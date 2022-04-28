@@ -1,5 +1,5 @@
 .leaflet-tile-container {
-  filter: sepia(0.2) grayscale(0.3);
+  filter: sepia(0.2) grayscale(0.5) opacity(0.8);
 }
 
 .hero {

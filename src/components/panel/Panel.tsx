@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "./../Hero"
+import Hero from "./../Hero";
 
 const PanelComponent: React.FC = ({}) => {
   return (
@@ -7,11 +7,10 @@ const PanelComponent: React.FC = ({}) => {
       <Hero />
       <div style={{ padding: "2em" }}>tada</div>
       <div
+        className="pt-12"
         style={{
           background: "lightgray",
-          position: "absolute",
           bottom: 0,
-          width: "100%",
         }}
       >
         <a target="_blank" href="https://dissinet.cz">

@@ -47,8 +47,7 @@ const MapComponent: React.FC = ({}) => {
     return {
       color: color,
       weight: 10,
-      opacity: 0.7,
-      dashArray: "20,15",
+      opacity: 1,
     };
   }
 
@@ -84,23 +83,21 @@ const MapComponent: React.FC = ({}) => {
         preferCanvas={true}
       >
         <ScaleControl imperial={false} position={"bottomright"} />
-        <FeatureGroup>
-          <TileLayer
-            maxNativeZoom={15}
-            attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.png"
-            subdomains="abcd"
-          />
-          <GeoJSON
-            data={trails as GeoJSON.FeatureCollection}
-            style={styleLines}
-          />
-          <GeoJSON
-            data={locations as GeoJSON.FeatureCollection}
-            pointToLayer={setCircles as any}
-            style={styleCircles}
-          />
-        </FeatureGroup>
+        <GeoJSON
+          data={trails as GeoJSON.FeatureCollection}
+          style={styleLines}
+        />
+        <GeoJSON
+          data={locations as GeoJSON.FeatureCollection}
+          pointToLayer={setCircles as any}
+          style={styleCircles}
+        />
+        <TileLayer
+          maxNativeZoom={15}
+          attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.png"
+          subdomains="abcd"
+        />
       </MapContainer>
     </div>
   );
