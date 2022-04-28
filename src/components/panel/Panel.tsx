@@ -54,7 +54,7 @@ const PanelComponent: React.FC = ({}) => {
       <div style={{ padding: "1em" }}>
         <b>Cases</b>
         <br />
-        {caseList()}
+        <div style={{ height: "500px", overflowY: "scroll" }}>{caseList()}</div>
       </div>
       <div
         className="pt-12"
