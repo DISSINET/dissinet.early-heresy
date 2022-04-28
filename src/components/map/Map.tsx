@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  MapContainer,
-  TileLayer,
-  ScaleControl,
-  FeatureGroup,
-  GeoJSON,
-} from "react-leaflet";
+import ReactDOMServer from "react-dom/server";
+import { MapContainer, TileLayer, ScaleControl, GeoJSON } from "react-leaflet";
 import { useAppSelector } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -19,10 +14,25 @@ const MapComponent: React.FC = ({}) => {
   const center = useAppSelector((state) => state.map.center);
 
   function setCircles(feature: any, latlng: any) {
-    if (latlng) {
-      var marker = L.circleMarker(latlng);
-      return marker;
-    }
+    const Popup = () => {
+      return (
+        <div style={{ fontFamily: "Roboto" }}>
+          <p>
+            <b>{feature.properties.label}</b>{" "}
+            <i>{feature.properties.name_modern}</i>
+          </p>
+        </div>
+      );
+    };
+    const popupOptions = {
+      minWidth: 150,
+      maxWidth: 200,
+      className: "popup-classname",
+    };
+    const popupContent = ReactDOMServer.renderToString(<Popup />);
+    var marker = L.circleMarker(latlng);
+    marker.bindPopup(popupContent, popupOptions);
+    return marker;
   }
 
   function getColor(feature: any) {
@@ -74,7 +84,7 @@ const MapComponent: React.FC = ({}) => {
         zoomSnap={0}
         className="map"
         id="map"
-        doubleClickZoom={true}
+        doubleClickZoom={false}
         touchZoom={false}
         scrollWheelZoom={true}
         dragging={true}
