@@ -6,16 +6,40 @@ import { ListGroup, Badge } from "react-bootstrap";
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
 
+  function calculateDatation(
+    yspq: number,
+    ysaq: number,
+    yepq: number,
+    yeaq: number
+  ) {
+    if ((yspq === ysaq) === (yepq === yeaq)) {
+      return `${yspq}`;
+    } else {
+      let ys = yspq === ysaq ? `${yspq}` : `${yspq}–${ysaq}`;
+      let ye = yepq === yeaq ? `${yepq}` : `${yepq}–${yeaq}`;
+      return `${ys}/${ye}`;
+    }
+  }
+
   function caseList() {
     return (
       <ListGroup>
         {Object.values(cases).map((val: any, i) => {
+          let date = calculateDatation(
+            val["year_start_post_quem"],
+            val["year_start_ante_quem"],
+            val["year_end_post_quem"],
+            val["year_end_ante_quem"]
+          );
           return (
             <ListGroup.Item>
               <Badge bg="light" text="dark" pill>
                 {val["case_id"]}
-              </Badge>
+              </Badge>{" "}
               {val["case_label"]}
+              <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
+                ({date})
+              </span>
             </ListGroup.Item>
           );
         })}
