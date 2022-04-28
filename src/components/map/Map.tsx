@@ -19,13 +19,18 @@ const MapComponent: React.FC = ({}) => {
   const center = useAppSelector((state) => state.map.center);
 
   function setCircles(feature: any, latlng: any) {
-    var marker = L.circleMarker(latlng);
-    return marker;
+    if (latlng) {
+      var marker = L.circleMarker(latlng);
+      return marker;
+    }
+  }
+
+  function getColor(feature: any) {
+    return "#0000dc";
   }
 
   function styleCircles(feature: any) {
-    let color = "#0000dc";
-    console.log(feature);
+    let color = getColor(feature);
     let halo = feature.properties.halo == "1" ? [10, 0.3] : [0, 1];
     return {
       fillColor: color,
@@ -34,6 +39,16 @@ const MapComponent: React.FC = ({}) => {
       opacity: halo[1],
       color: color,
       fillOpacity: 1,
+    };
+  }
+
+  function styleLines(feature: any) {
+    let color = getColor(feature);
+    return {
+      color: color,
+      weight: 10,
+      opacity: 0.7,
+      dashArray: "20,15",
     };
   }
 
@@ -77,8 +92,12 @@ const MapComponent: React.FC = ({}) => {
             subdomains="abcd"
           />
           <GeoJSON
-            data={locations}
-            pointToLayer={setCircles}
+            data={trails as GeoJSON.FeatureCollection}
+            style={styleLines}
+          />
+          <GeoJSON
+            data={locations as GeoJSON.FeatureCollection}
+            pointToLayer={setCircles as any}
             style={styleCircles}
           />
         </FeatureGroup>
