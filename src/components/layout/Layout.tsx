@@ -16,7 +16,7 @@ const Layout: React.FC = ({}) => {
         </Col>
         <Col
           sm="3"
-          xs="12"
+          s="12"
           style={{
             height: "100%",
             background: "#fff",

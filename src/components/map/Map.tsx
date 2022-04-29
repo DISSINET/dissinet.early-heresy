@@ -41,10 +41,10 @@ const MapComponent: React.FC = ({}) => {
 
   function styleCircles(feature: any) {
     let color = getColor(feature);
-    let halo = feature.properties.halo == "1" ? [10, 0.3] : [0, 1];
+    let halo = feature.properties.halo == "1" ? [12, 0.3] : [0, 1];
     return {
       fillColor: color,
-      radius: 4,
+      radius: 6,
       weight: halo[0],
       opacity: halo[1],
       color: color,

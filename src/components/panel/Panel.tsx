@@ -1,10 +1,20 @@
 import React from "react";
 import Hero from "./../Hero";
-import { useAppSelector } from "./../../app/hooks";
+import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge } from "react-bootstrap";
+import { selectCase } from "./../layout/LayoutSlice";
+import { useEffect } from "react";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
+  const selectedCaseIds = useAppSelector(
+    (state) => state.layout.selectedCaseIds
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log(selectedCaseIds);
+  });
 
   function calculateDatation(
     yspq: number,
@@ -31,17 +41,43 @@ const PanelComponent: React.FC = ({}) => {
             val["year_end_post_quem"],
             val["year_end_ante_quem"]
           );
-          return (
-            <ListGroup.Item>
-              <Badge bg="light" text="dark" pill>
-                {val["case_id"]}
-              </Badge>{" "}
-              {val["case_label"]}
-              <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
-                ({date})
-              </span>
-            </ListGroup.Item>
-          );
+          if (selectedCaseIds.includes(val["case_id"])) {
+            return (
+              <ListGroup.Item
+                key={i}
+                className="caseListItem"
+                style={{ cursor: "pointer" }}
+                onClick={() => dispatch(selectCase(val["case_id"]))}
+              >
+                <Badge bg="primary" pill>
+                  {val["case_id"]}
+                </Badge>
+                &nbsp;&nbsp;&nbsp;
+                <b>{val["case_label"]}</b>
+                <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
+                  ({date})
+                </span>
+              </ListGroup.Item>
+            );
+          } else {
+            return (
+              <ListGroup.Item
+                key={i}
+                className="caseListItem"
+                style={{ cursor: "pointer" }}
+                onClick={() => dispatch(selectCase(val["case_id"]))}
+              >
+                <Badge bg="light" text="dark" pill>
+                  {val["case_id"]}
+                </Badge>
+                &nbsp;&nbsp;&nbsp;
+                {val["case_label"]}
+                <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
+                  ({date})
+                </span>
+              </ListGroup.Item>
+            );
+          }
         })}
       </ListGroup>
     );
@@ -55,6 +91,11 @@ const PanelComponent: React.FC = ({}) => {
         <b>Cases</b>
         <br />
         <div style={{ height: "500px", overflowY: "scroll" }}>{caseList()}</div>
+        <br />
+        <b>Filter</b>
+        <br />
+        <b>Legend</b>
+        <br />
       </div>
       <div
         className="pt-12"
