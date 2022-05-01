@@ -5,7 +5,7 @@ import {
   current,
 } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
-import cases from "./../../enums/cases";
+import cases from "./../../data/cases";
 
 export interface LayoutState {
   cases: Object;
@@ -26,7 +26,7 @@ export const layoutSlice = createSlice({
   initialState,
   reducers: {
     selectCase: (state, action: PayloadAction<string>) => {
-      let newSelectedCaseIds = [action.payload]
+      let newSelectedCaseIds = [action.payload];
       state.selectedCaseIds = newSelectedCaseIds;
       console.log(current(state));
     },
