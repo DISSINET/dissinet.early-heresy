@@ -8,6 +8,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { useAppSelector } from "./../app/hooks";
+import calculateDatation from "./../utils/calculateDatation";
 
 const MentionBox: React.FC = ({}) => {
   const mentions = useAppSelector((state) => state.layout.mentions);
@@ -16,6 +17,12 @@ const MentionBox: React.FC = ({}) => {
   );
   const id = "E0002";
   const mention = mentions[id];
+  let date = calculateDatation(
+    mention.year_start_post_quem,
+    mention.year_start_ante_quem,
+    mention.year_end_post_quem,
+    mention.year_end_ante_quem
+  );
   return (
     <Col
       sm="2"
@@ -26,9 +33,15 @@ const MentionBox: React.FC = ({}) => {
         zIndex: 1000,
         padding: "1em",
         right: "25%",
+        maxHeight: "100%",
+        overflowY: "scroll",
       }}
     >
-      <div style={{ marginBottom: "0.5em" }}>
+      <div
+        style={{
+          marginBottom: "0.5em",
+        }}
+      >
         <b>Mentions</b>
         &nbsp; &nbsp; &nbsp; &nbsp;
         <Button size="sm" variant="outline-primary">
@@ -48,7 +61,7 @@ const MentionBox: React.FC = ({}) => {
             <small className="text-muted">{mention.detail_case_summary}</small>
             <Dropdown.Divider style={{ opacity: 0.1 }} />
             <div>
-              <small className="text-muted">Year:</small> <small>1000</small>
+              <small className="text-muted">Year:</small> <small>{date}</small>
             </div>
             <div>
               <small className="text-muted">Locations:</small>{" "}

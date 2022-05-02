@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge, ToastContainer, Toast } from "react-bootstrap";
 import { selectCase } from "./../layout/LayoutSlice";
 import { useEffect } from "react";
+import calculateDatation  from "./../../utils/calculateDatation";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -18,21 +19,6 @@ const PanelComponent: React.FC = ({}) => {
     //console.log(selectedCaseIds);
   });
 
-  function calculateDatation(
-    yspq: number,
-    ysaq: number,
-    yepq: number,
-    yeaq: number
-  ) {
-    if ((yspq === ysaq) === (yepq === yeaq)) {
-      return `${yspq}`;
-    } else {
-      let ys = yspq === ysaq ? `${yspq}` : `${yspq}–${ysaq}`;
-      let ye = yepq === yeaq ? `${yepq}` : `${yepq}–${yeaq}`;
-      return `${ys}/${ye}`;
-    }
-  }
-
   function getMentions(case_id: string) {
     let matchingMentions: any = [];
     Object.values(mentions).map((val: any) => {
@@ -41,20 +27,6 @@ const PanelComponent: React.FC = ({}) => {
       }
     });
     return matchingMentions;
-  }
-
-  function showMentions(mentions: Array<string>) {
-    return (
-      <ToastContainer className="mentionColumn">
-        <Toast>
-          <Toast.Header>
-            <strong className="me-auto">Bootstrap</strong>
-            <small className="text-muted">just now</small>
-          </Toast.Header>
-          <Toast.Body>See? Just like this.</Toast.Body>
-        </Toast>
-      </ToastContainer>
-    );
   }
 
   function caseList() {
@@ -76,7 +48,7 @@ const PanelComponent: React.FC = ({}) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   dispatch(selectCase(val["case_id"]));
-                  showMentions(mentions);
+                  /*showMentions(mentions)*/
                 }}
               >
                 <Badge bg="primary" pill>
@@ -104,9 +76,9 @@ const PanelComponent: React.FC = ({}) => {
                   showMentions(mentions);
                 }}
               >
-                  <Badge bg="clean" text="dark" pill>
-                    {val["case_id"]}
-                  </Badge>
+                <Badge bg="clean" text="dark" pill>
+                  {val["case_id"]}
+                </Badge>
                 &nbsp;&nbsp;&nbsp;
                 {val["case_label"]}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
