@@ -1,19 +1,21 @@
 import React from "react";
 import Hero from "./../Hero";
+//import MentionBox from "./../MentionBox";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge } from "react-bootstrap";
+import { ListGroup, Badge, ToastContainer, Toast } from "react-bootstrap";
 import { selectCase } from "./../layout/LayoutSlice";
 import { useEffect } from "react";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
+  const mentions = useAppSelector((state) => state.layout.mentions);
   const selectedCaseIds = useAppSelector(
     (state) => state.layout.selectedCaseIds
   );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(selectedCaseIds);
+    //console.log(selectedCaseIds);
   });
 
   function calculateDatation(
@@ -31,6 +33,30 @@ const PanelComponent: React.FC = ({}) => {
     }
   }
 
+  function getMentions(case_id: string) {
+    let matchingMentions: any = [];
+    Object.values(mentions).map((val: any) => {
+      if (val.case_id === case_id) {
+        matchingMentions.push(val.id);
+      }
+    });
+    return matchingMentions;
+  }
+
+  function showMentions(mentions: Array<string>) {
+    return (
+      <ToastContainer className="mentionColumn">
+        <Toast>
+          <Toast.Header>
+            <strong className="me-auto">Bootstrap</strong>
+            <small className="text-muted">just now</small>
+          </Toast.Header>
+          <Toast.Body>See? Just like this.</Toast.Body>
+        </Toast>
+      </ToastContainer>
+    );
+  }
+
   function caseList() {
     return (
       <ListGroup>
@@ -41,13 +67,17 @@ const PanelComponent: React.FC = ({}) => {
             val["year_end_post_quem"],
             val["year_end_ante_quem"]
           );
+          let mentions = getMentions(val["case_id"]);
           if (selectedCaseIds.includes(val["case_id"])) {
             return (
               <ListGroup.Item
                 key={i}
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
-                onClick={() => dispatch(selectCase(val["case_id"]))}
+                onClick={() => {
+                  dispatch(selectCase(val["case_id"]));
+                  showMentions(mentions);
+                }}
               >
                 <Badge bg="primary" pill>
                   {val["case_id"]}
@@ -55,7 +85,11 @@ const PanelComponent: React.FC = ({}) => {
                 &nbsp;&nbsp;&nbsp;
                 <b>{val["case_label"]}</b>
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
-                  ({date})
+                  ({date}){" "}
+                  <i>
+                    {mentions.length} mention
+                    {mentions.length > 1 ? "s" : ""}
+                  </i>
                 </span>
               </ListGroup.Item>
             );
@@ -65,15 +99,22 @@ const PanelComponent: React.FC = ({}) => {
                 key={i}
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
-                onClick={() => dispatch(selectCase(val["case_id"]))}
+                onClick={() => {
+                  dispatch(selectCase(val["case_id"]));
+                  showMentions(mentions);
+                }}
               >
-                <Badge bg="light" text="dark" pill>
-                  {val["case_id"]}
-                </Badge>
+                  <Badge bg="clean" text="dark" pill>
+                    {val["case_id"]}
+                  </Badge>
                 &nbsp;&nbsp;&nbsp;
                 {val["case_label"]}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
-                  ({date})
+                  ({date}){" "}
+                  <i>
+                    {mentions.length} mention
+                    {mentions.length > 1 ? "s" : ""}
+                  </i>
                 </span>
               </ListGroup.Item>
             );

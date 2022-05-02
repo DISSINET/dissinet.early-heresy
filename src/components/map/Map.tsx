@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { MapContainer, TileLayer, ScaleControl, GeoJSON } from "react-leaflet";
-import { useAppSelector } from "./../../app/hooks";
+import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import locations from "../../data/locations.json";
 import trails from "../../data/trails.json";
+import { selectLocation } from "../layout/LayoutSlice";
 
 const MapComponent: React.FC = ({}) => {
   const zoom = useAppSelector((state) => state.map.zoom);
   const minZoom = useAppSelector((state) => state.map.minZoom);
   const maxZoom = useAppSelector((state) => state.map.maxZoom);
   const center = useAppSelector((state) => state.map.center);
+  const selectedLocation = useAppSelector(
+    (state) => state.layout.selectedLocation
+  );
+
+  const dispatch = useAppDispatch();
+  console.log(selectedLocation);
 
   function setCircles(feature: any, latlng: any) {
     const Popup = () => {
@@ -32,11 +39,18 @@ const MapComponent: React.FC = ({}) => {
     const popupContent = ReactDOMServer.renderToString(<Popup />);
     var marker = L.circleMarker(latlng);
     marker.bindPopup(popupContent, popupOptions);
+    marker.on({
+      click: () => dispatch(selectLocation(feature.properties.id)),
+    });
     return marker;
   }
 
   function getColor(feature: any) {
-    return "#0000dc";
+    if (!selectedLocation || selectedLocation === feature.properties.id) {
+      return "#0000dc";
+    } else {
+      return "gray";
+    }
   }
 
   function styleCircles(feature: any) {

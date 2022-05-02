@@ -9,3 +9,8 @@
 .caseListItem:hover {
   background-color: #f0f4f8;
 }
+
+.bg-clean {
+  background-color: #f0f4f8;
+  border: 1px solid lightgray;
+}

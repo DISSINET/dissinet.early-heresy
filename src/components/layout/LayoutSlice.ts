@@ -6,9 +6,11 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../../app/store";
 import cases from "./../../data/cases";
+import mentions from "./../../data/mentions";
 
 export interface LayoutState {
   cases: Object;
+  mentions: Object;
   selectedCaseIds: Array<string>;
   selectedLocation: String;
   caseLocations: Array<string>;
@@ -16,6 +18,7 @@ export interface LayoutState {
 
 const initialState: LayoutState = {
   cases: cases,
+  mentions: mentions,
   selectedCaseIds: [],
   selectedLocation: "",
   caseLocations: [],
@@ -26,11 +29,16 @@ export const layoutSlice = createSlice({
   initialState,
   reducers: {
     selectCase: (state, action: PayloadAction<string>) => {
+      console.log(action);
       let newSelectedCaseIds = [action.payload];
       state.selectedCaseIds = newSelectedCaseIds;
-      console.log(current(state));
+    },
+    selectLocation: (state, action: PayloadAction<string>) => {
+      let newSelectedLocation = action.payload;
+      state.selectedLocation = newSelectedLocation;
+      //console.log(current(state));
     },
   },
 });
-export const { selectCase } = layoutSlice.actions;
+export const { selectCase, selectLocation } = layoutSlice.actions;
 export default layoutSlice.reducer;

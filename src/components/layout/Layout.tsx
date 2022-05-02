@@ -1,6 +1,7 @@
 import * as React from "react";
 import MapComponent from "./../map/Map";
 import PanelComponent from "./../panel/Panel";
+import MentionBox from "./../MentionBox";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,9 +11,8 @@ const Layout: React.FC = ({}) => {
     <Container fluid style={{ padding: 0 }}>
       <Row>
         <Col xs="12" sm="9" style={{ padding: 0, height: "100%" }}>
-          <MapComponent
-          //handleMapMoved={store.mapMoved.bind(store)}
-          />
+          <MentionBox />
+          <MapComponent />
         </Col>
         <Col
           sm="3"
