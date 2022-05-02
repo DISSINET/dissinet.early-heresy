@@ -106,7 +106,7 @@ const MapComponent: React.FC = ({}) => {
         keyboard={false}
         preferCanvas={true}
       >
-        <ScaleControl imperial={false} position={"bottomright"} />
+        <ScaleControl imperial={false} position={"bottomleft"} />
         <GeoJSON
           data={trails as GeoJSON.FeatureCollection}
           style={styleLines}
