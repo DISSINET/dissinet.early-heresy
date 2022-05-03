@@ -1,9 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-  current,
-} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import cases from "./../../data/cases";
 import mentions from "./../../data/mentions";
 
@@ -28,14 +23,12 @@ export const layoutSlice = createSlice({
   initialState,
   reducers: {
     selectCase: (state, action: PayloadAction<string>) => {
-      console.log(action);
       let newSelectedCaseIds = [action.payload];
       state.selectedCaseIds = newSelectedCaseIds;
     },
     selectLocation: (state, action: PayloadAction<string>) => {
       let newSelectedLocation = action.payload;
       state.selectedLocation = newSelectedLocation;
-      //console.log(current(state));
     },
   },
 });
