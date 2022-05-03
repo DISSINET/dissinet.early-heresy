@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Accordion,
   Col,
   ToastContainer,
   Toast,
@@ -69,69 +70,87 @@ const MentionBox: React.FC = ({}) => {
               <small>{mention.location_primary_label}</small>
             </div>
             <Dropdown.Divider style={{ opacity: 0.1 }} />
-            <div>
-              <small className="text-muted">Name(s) of the heretics:</small>{" "}
-              <small>{mention.heretic_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Number/Amount of heretics:</small>{" "}
-              <small>{mention.heretics_amount_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">
-                Social characterization of heretics:
-              </small>{" "}
-              <small>{mention.heretics_social_characterization_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Instigator to the heresy:</small>{" "}
-              <small>{mention.instigator_to_heresy_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Repressor:</small>{" "}
-              <small>{mention.repressor_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Other persons:</small>{" "}
-              <small>{mention.persons_or_groups_other_label}</small>
-            </div>
-            <Dropdown.Divider style={{ opacity: 0.1 }} />
-            <div>
-              <small className="text-muted">Name of the heresy:</small>{" "}
-              <small>{mention.name_of_heresy_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Name of the heretics:</small>{" "}
-              <small>{mention.name_of_heretics_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Connotations:</small>{" "}
-              <small>{mention.connotations_heresy_label}</small>
-            </div>
-            <Dropdown.Divider style={{ opacity: 0.1 }} />
+            <Accordion flush>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <small className="text-muted">more</small>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <br />
+                  <div>
+                    <small className="text-muted">
+                      Name(s) of the heretics:
+                    </small>{" "}
+                    <small>{mention.heretic_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">
+                      Number/Amount of heretics:
+                    </small>{" "}
+                    <small>{mention.heretics_amount_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">
+                      Social characterization of heretics:
+                    </small>{" "}
+                    <small>
+                      {mention.heretics_social_characterization_label}
+                    </small>
+                  </div>
+                  <div>
+                    <small className="text-muted">
+                      Instigator to the heresy:
+                    </small>{" "}
+                    <small>{mention.instigator_to_heresy_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Repressor:</small>{" "}
+                    <small>{mention.repressor_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Other persons:</small>{" "}
+                    <small>{mention.persons_or_groups_other_label}</small>
+                  </div>
+                  <Dropdown.Divider style={{ opacity: 0.1 }} />
+                  <div>
+                    <small className="text-muted">Name of the heresy:</small>{" "}
+                    <small>{mention.name_of_heresy_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Name of the heretics:</small>{" "}
+                    <small>{mention.name_of_heretics_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Connotations:</small>{" "}
+                    <small>{mention.connotations_heresy_label}</small>
+                  </div>
+                  <Dropdown.Divider style={{ opacity: 0.1 }} />
 
-            <div>
-              <small className="text-muted">Beliefs:</small>{" "}
-              <small>{mention.beliefs_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Practice:</small>{" "}
-              <small>{mention.practice_label}</small>
-            </div>
-            <Dropdown.Divider style={{ opacity: 0.1 }} />
-            <div>
-              <small className="text-muted">Dealing with heresy:</small>{" "}
-              <small>{mention.dealing_with_them_label}</small>
-            </div>
-            <div>
-              <small className="text-muted">Outcome:</small>{" "}
-              <small>{mention.outcome_label}</small>
-            </div>
-            <Dropdown.Divider style={{ opacity: 0.1 }} />
-            <div>
-              <small className="text-muted">Note:</small>{" "}
-              <small>{mention.note}</small>
-            </div>
+                  <div>
+                    <small className="text-muted">Beliefs:</small>{" "}
+                    <small>{mention.beliefs_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Practice:</small>{" "}
+                    <small>{mention.practice_label}</small>
+                  </div>
+                  <Dropdown.Divider style={{ opacity: 0.1 }} />
+                  <div>
+                    <small className="text-muted">Dealing with heresy:</small>{" "}
+                    <small>{mention.dealing_with_them_label}</small>
+                  </div>
+                  <div>
+                    <small className="text-muted">Outcome:</small>{" "}
+                    <small>{mention.outcome_label}</small>
+                  </div>
+                  <Dropdown.Divider style={{ opacity: 0.1 }} />
+                  <div>
+                    <small className="text-muted">Note:</small>{" "}
+                    <small>{mention.note}</small>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </Toast.Body>
         </Toast>
       </ToastContainer>
