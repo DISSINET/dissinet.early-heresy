@@ -68,7 +68,6 @@ const MapComponent: React.FC = ({}) => {
 
   function styleLines(feature: any) {
     let color = getColor(feature);
-    console.log(feature);
     return {
       color: color,
       weight: 1,

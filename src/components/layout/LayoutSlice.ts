@@ -6,6 +6,7 @@ export interface LayoutState {
   cases: Object;
   mentions: Object;
   selectedCaseIds: Array<string>;
+  selectedMentionIds: Array<string>;
   selectedLocation: String;
   caseLocations: Array<string>;
 }
@@ -14,6 +15,7 @@ const initialState: LayoutState = {
   cases: cases,
   mentions: mentions,
   selectedCaseIds: [],
+  selectedMentionIds: [],
   selectedLocation: "",
   caseLocations: [],
 };
@@ -30,7 +32,12 @@ export const layoutSlice = createSlice({
       let newSelectedLocation = action.payload;
       state.selectedLocation = newSelectedLocation;
     },
+    selectMentions: (state, action: PayloadAction<string>) => {
+      let newSelectedMentionIds = [action.payload];
+      state.selectedMentionIds = newSelectedMentionIds;
+    },
   },
 });
-export const { selectCase, selectLocation } = layoutSlice.actions;
+export const { selectCase, selectLocation, selectMentions } =
+  layoutSlice.actions;
 export default layoutSlice.reducer;

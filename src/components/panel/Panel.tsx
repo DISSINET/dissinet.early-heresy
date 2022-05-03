@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge } from "react-bootstrap";
-import { selectCase } from "./../layout/LayoutSlice";
+import { selectCase, selectMentions } from "./../layout/LayoutSlice";
 import calculateDatation from "./../../utils/calculateDatation";
 
 const PanelComponent: React.FC = ({}) => {
@@ -42,7 +42,7 @@ const PanelComponent: React.FC = ({}) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   dispatch(selectCase(val["case_id"]));
-                  /*showMentions(mentions)*/
+                  dispatch(selectMentions(mentions));
                 }}
               >
                 <Badge bg="primary" pill>
@@ -67,7 +67,7 @@ const PanelComponent: React.FC = ({}) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   dispatch(selectCase(val["case_id"]));
-                  /*showMentions(mentions)*/
+                  dispatch(selectMentions(mentions));
                 }}
               >
                 <Badge bg="clean" text="dark" pill>
