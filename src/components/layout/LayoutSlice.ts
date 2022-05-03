@@ -4,7 +4,6 @@ import {
   PayloadAction,
   current,
 } from "@reduxjs/toolkit";
-import { RootState, AppThunk } from "../../app/store";
 import cases from "./../../data/cases";
 import mentions from "./../../data/mentions";
 

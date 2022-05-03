@@ -1,10 +1,8 @@
 import React from "react";
 import Hero from "./../Hero";
-//import MentionBox from "./../MentionBox";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge, ToastContainer, Toast } from "react-bootstrap";
+import { ListGroup, Badge } from "react-bootstrap";
 import { selectCase } from "./../layout/LayoutSlice";
-import { useEffect } from "react";
 import calculateDatation from "./../../utils/calculateDatation";
 
 const PanelComponent: React.FC = ({}) => {
@@ -14,10 +12,6 @@ const PanelComponent: React.FC = ({}) => {
     (state) => state.layout.selectedCaseIds
   );
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    //console.log(selectedCaseIds);
-  });
 
   function getMentions(case_id: string) {
     let matchingMentions: any = [];

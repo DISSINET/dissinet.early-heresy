@@ -17,7 +17,7 @@ const MentionBox: React.FC = ({}) => {
   const selectedCaseIds = useAppSelector(
     (state) => state.layout.selectedCaseIds
   );
-  const id = "E0002";
+  const id = "E0004";
   const mention = (mentions as IIndexable)[id];
   let date = calculateDatation(
     mention.year_start_post_quem,

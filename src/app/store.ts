@@ -1,4 +1,8 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+} from "@reduxjs/toolkit";
 import layoutReducer from "../components/layout/LayoutSlice";
 import mapReducer from "../components/map/MapSlice";
 
@@ -8,6 +12,7 @@ export const store = configureStore({
     map: mapReducer,
   },
 });
+
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
