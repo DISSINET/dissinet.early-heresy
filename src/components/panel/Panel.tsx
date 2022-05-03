@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge, ToastContainer, Toast } from "react-bootstrap";
 import { selectCase } from "./../layout/LayoutSlice";
 import { useEffect } from "react";
-import calculateDatation  from "./../../utils/calculateDatation";
+import calculateDatation from "./../../utils/calculateDatation";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -73,7 +73,7 @@ const PanelComponent: React.FC = ({}) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   dispatch(selectCase(val["case_id"]));
-                  showMentions(mentions);
+                  /*showMentions(mentions)*/
                 }}
               >
                 <Badge bg="clean" text="dark" pill>

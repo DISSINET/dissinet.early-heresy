@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import { useAppSelector } from "./../app/hooks";
 import calculateDatation from "./../utils/calculateDatation";
+import { IIndexable } from "../types";
 
 const MentionBox: React.FC = ({}) => {
   const mentions = useAppSelector((state) => state.layout.mentions);
@@ -16,7 +17,7 @@ const MentionBox: React.FC = ({}) => {
     (state) => state.layout.selectedCaseIds
   );
   const id = "E0002";
-  const mention = mentions[id];
+  const mention = (mentions as IIndexable)[id];
   let date = calculateDatation(
     mention.year_start_post_quem,
     mention.year_start_ante_quem,
