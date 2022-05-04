@@ -20,7 +20,33 @@ const MentionBox: React.FC = ({}) => {
   );
   const dispatch = useAppDispatch();
 
-  console.log(selectedMentionIds);
+  function buildHeader() {
+    let header =
+      selectedMentionIds.length > 0 ? (
+        <div
+          style={{
+            marginBottom: "0.5em",
+          }}
+        >
+          <b>Mentions</b>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          <Button
+            size="sm"
+            variant="outline-primary"
+            onClick={() => {
+              dispatch(selectCase(""));
+              dispatch(selectMentions(""));
+            }}
+          >
+            clear selection
+          </Button>
+        </div>
+      ) : (
+        ""
+      );
+    return header;
+  }
+
   function buildMentionCards() {
     let cards = selectedMentionIds.map((mentionId: string, i) => {
       const mention = (mentions as IIndexable)[mentionId];
@@ -159,24 +185,7 @@ const MentionBox: React.FC = ({}) => {
         overflowY: "scroll",
       }}
     >
-      <div
-        style={{
-          marginBottom: "0.5em",
-        }}
-      >
-        <b>Mentions</b>
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <Button
-          size="sm"
-          variant="outline-primary"
-          onClick={() => {
-            dispatch(selectCase(""));
-            dispatch(selectMentions(""));
-          }}
-        >
-          clear selection
-        </Button>
-      </div>
+      {buildHeader()}
       {buildMentionCards()}
     </Col>
   );
