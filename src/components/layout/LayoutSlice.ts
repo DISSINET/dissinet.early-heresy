@@ -24,16 +24,16 @@ export const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    selectCase: (state, action: PayloadAction<string>) => {
-      let newSelectedCaseIds = [action.payload];
+    selectCase: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedCaseIds = action.payload;
       state.selectedCaseIds = newSelectedCaseIds;
     },
-    selectLocation: (state, action: PayloadAction<string>) => {
-      let newSelectedLocations = [action.payload];
+    selectLocation: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedLocations = action.payload;
       state.selectedLocations = newSelectedLocations;
     },
-    selectMentions: (state, action: PayloadAction<string>) => {
-      let newSelectedMentionIds = [action.payload];
+    selectMentions: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedMentionIds = action.payload;
       state.selectedMentionIds = newSelectedMentionIds;
     },
     clearAllSelections: (state) => {

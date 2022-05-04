@@ -9,12 +9,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { useAppSelector, useAppDispatch } from "./../app/hooks";
-import {
-  selectCase,
-  selectMentions,
-  selectLocation,
-  clearAllSelections,
-} from "./layout/LayoutSlice";
+import { clearAllSelections } from "./layout/LayoutSlice";
 import calculateDatation from "./../utils/calculateDatation";
 import { IIndexable } from "../types";
 

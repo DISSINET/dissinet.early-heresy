@@ -2,7 +2,11 @@ import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge } from "react-bootstrap";
-import { selectCase, selectMentions } from "./../layout/LayoutSlice";
+import {
+  selectCase,
+  selectMentions,
+  selectLocation,
+} from "./../layout/LayoutSlice";
 import calculateDatation from "./../../utils/calculateDatation";
 
 const PanelComponent: React.FC = ({}) => {
@@ -13,14 +17,16 @@ const PanelComponent: React.FC = ({}) => {
   );
   const dispatch = useAppDispatch();
 
-  function getMentions(case_id: string) {
+  function getMentionsAndLocations(case_id: string) {
     let matchingMentions: any = [];
+    let matchingLocations: any = [];
     Object.values(mentions).map((val: any) => {
       if (val.case_id === case_id) {
         matchingMentions.push(val.id);
+        matchingLocations.push(val.location_primary_id);
       }
     });
-    return matchingMentions;
+    return [matchingMentions, matchingLocations];
   }
 
   function caseList() {
@@ -33,7 +39,7 @@ const PanelComponent: React.FC = ({}) => {
             val["year_end_post_quem"],
             val["year_end_ante_quem"]
           );
-          let mentions = getMentions(val["case_id"]);
+          let mentionsLocations = getMentionsAndLocations(val["case_id"]);
           if (selectedCaseIds.includes(val["case_id"])) {
             return (
               <ListGroup.Item
@@ -42,7 +48,8 @@ const PanelComponent: React.FC = ({}) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   dispatch(selectCase(val["case_id"]));
-                  dispatch(selectMentions(mentions));
+                  dispatch(selectMentions(mentionsLocations[0]));
+                  dispatch(selectLocation(mentionsLocations[1]));
                 }}
               >
                 <Badge bg="primary" pill>
@@ -53,8 +60,8 @@ const PanelComponent: React.FC = ({}) => {
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
                   ({date}){" "}
                   <i>
-                    {mentions.length} mention
-                    {mentions.length > 1 ? "s" : ""}
+                    {mentionsLocations[0].length} mention
+                    {mentionsLocations[0].length > 1 ? "s" : ""}
                   </i>
                 </span>
               </ListGroup.Item>
@@ -66,8 +73,9 @@ const PanelComponent: React.FC = ({}) => {
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  dispatch(selectCase(val["case_id"]));
-                  dispatch(selectMentions(mentions));
+                  dispatch(selectCase([val["case_id"]]));
+                  dispatch(selectMentions(mentionsLocations[0]));
+                  dispatch(selectLocation(mentionsLocations[1]));
                 }}
               >
                 <Badge bg="clean" text="dark" pill>
@@ -78,8 +86,8 @@ const PanelComponent: React.FC = ({}) => {
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
                   ({date}){" "}
                   <i>
-                    {mentions.length} mention
-                    {mentions.length > 1 ? "s" : ""}
+                    {mentionsLocations[0].length} mention
+                    {mentionsLocations[0].length > 1 ? "s" : ""}
                   </i>
                 </span>
               </ListGroup.Item>
