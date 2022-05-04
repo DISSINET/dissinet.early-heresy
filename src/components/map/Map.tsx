@@ -13,12 +13,12 @@ const MapComponent: React.FC = ({}) => {
   const minZoom = useAppSelector((state) => state.map.minZoom);
   const maxZoom = useAppSelector((state) => state.map.maxZoom);
   const center = useAppSelector((state) => state.map.center);
-  const selectedLocation = useAppSelector(
-    (state) => state.layout.selectedLocation
+  const selectedLocations = useAppSelector(
+    (state) => state.layout.selectedLocations
   );
 
   const dispatch = useAppDispatch();
-  console.log(selectedLocation);
+  console.log(selectedLocations);
 
   function setCircles(feature: any, latlng: any) {
     const Popup = () => {
@@ -46,7 +46,10 @@ const MapComponent: React.FC = ({}) => {
   }
 
   function getColor(feature: any) {
-    if (!selectedLocation || selectedLocation === feature.properties.id) {
+    if (
+      selectedLocations.length < 1 ||
+      selectedLocations.includes(feature.properties.id)
+    ) {
       return "#0000dc";
     } else {
       return "gray";

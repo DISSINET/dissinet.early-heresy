@@ -9,7 +9,12 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { useAppSelector, useAppDispatch } from "./../app/hooks";
-import { selectCase, selectMentions } from "./layout/LayoutSlice";
+import {
+  selectCase,
+  selectMentions,
+  selectLocation,
+  clearAllSelections,
+} from "./layout/LayoutSlice";
 import calculateDatation from "./../utils/calculateDatation";
 import { IIndexable } from "../types";
 
@@ -34,8 +39,7 @@ const MentionBox: React.FC = ({}) => {
             size="sm"
             variant="outline-primary"
             onClick={() => {
-              dispatch(selectCase(""));
-              dispatch(selectMentions(""));
+              dispatch(clearAllSelections());
             }}
           >
             clear selection
