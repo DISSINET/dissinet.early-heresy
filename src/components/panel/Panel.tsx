@@ -1,13 +1,14 @@
 import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge } from "react-bootstrap";
+import { ListGroup, Badge, Image } from "react-bootstrap";
 import {
   selectCase,
   selectMentions,
   selectLocation,
 } from "./../layout/LayoutSlice";
 import calculateDatation from "./../../utils/calculateDatation";
+import legend from "./../../assets/legend.png";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -109,8 +110,11 @@ const PanelComponent: React.FC = ({}) => {
         <br />
         <b>Filter</b>
         <br />
+        <span>TODO</span>
+        <br />
         <b>Legend</b>
         <br />
+        <Image src={legend} alt="map legend" style={{ maxHeight: "100px" }} />
       </div>
       <div
         className="pt-12"
