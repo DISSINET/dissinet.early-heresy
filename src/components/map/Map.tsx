@@ -5,7 +5,6 @@ import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import locations from "../../data/locations.json";
-import trails from "../../data/trails.json";
 import { selectLocation, selectMentions } from "../layout/LayoutSlice";
 
 const MapComponent: React.FC = ({}) => {
@@ -123,10 +122,6 @@ const MapComponent: React.FC = ({}) => {
         preferCanvas={true}
       >
         <ScaleControl imperial={false} position={"bottomleft"} />
-        <GeoJSON
-          data={trails as GeoJSON.FeatureCollection}
-          style={styleLines}
-        />
         <GeoJSON
           data={locations as GeoJSON.FeatureCollection}
           pointToLayer={setCircles as any}
