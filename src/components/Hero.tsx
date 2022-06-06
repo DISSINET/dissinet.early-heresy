@@ -1,4 +1,5 @@
 import React from "react";
+import packageJson from "../../package.json";
 
 const Hero: React.FC = ({}) => {
   return (
@@ -13,7 +14,10 @@ const Hero: React.FC = ({}) => {
           )`,
       }}
     >
-      <h4>Early Heresy</h4>
+      <h4>
+        Early Heresy{" "}
+        <span style={{ fontSize: "13px" }}> v. {packageJson.version}</span>
+      </h4>
       <span>Early heresy in the west </span>
     </div>
   );
