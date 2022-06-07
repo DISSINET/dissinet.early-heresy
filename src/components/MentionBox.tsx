@@ -172,7 +172,7 @@ const MentionBox: React.FC = ({}) => {
 
   return (
     <Col
-      sm="2"
+      sm="3"
       s="12"
       style={{
         height: "100%",
