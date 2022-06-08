@@ -10,17 +10,29 @@ const Layout: React.FC = ({}) => {
   return (
     <Container fluid style={{ padding: 0 }}>
       <Row>
-        <Col xs="12" sm="9" style={{ padding: 0, height: "100%" }}>
+        <Col
+          xs="12"
+          sm="9"
+          style={{
+            padding: 0,
+            height: "100%",
+            bottom: 0,
+            left: 0,
+            right: 0,
+          }}
+        >
           <MentionBox />
           <MapComponent />
         </Col>
         <Col
           sm="3"
-          s="12"
+          xs="12"
           style={{
-            height: "100%",
             background: "#fff",
             padding: 0,
+            height: "100%",
+            position: "absolute",
+            right: 0,
           }}
         >
           <PanelComponent />

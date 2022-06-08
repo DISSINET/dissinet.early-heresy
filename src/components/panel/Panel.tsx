@@ -100,13 +100,25 @@ const PanelComponent: React.FC = ({}) => {
   }
 
   return (
-    <div className="panel" data-testid="panel-wrapper">
+    <div
+      className="panel"
+      data-testid="panel-wrapper"
+      style={{ maxHeight: "100%", position: "fixed" }}
+    >
       <Hero />
 
       <div style={{ padding: "1em" }}>
         <b>Cases</b>
         <br />
-        <div style={{ height: "500px", overflowY: "scroll" }}>{caseList()}</div>
+        <div
+          style={{
+            maxHeight: "500px",
+            overflowY: "scroll",
+            border: "1px solid lightgray",
+          }}
+        >
+          {caseList()}
+        </div>
         <br />
         <b>Filter</b>
         <br />
@@ -119,8 +131,10 @@ const PanelComponent: React.FC = ({}) => {
       <div
         className="pt-12"
         style={{
-          background: "lightgray",
+          background: "#b8c2cc",
+          position: "fixed",
           bottom: 0,
+          width: "100%",
         }}
       >
         <a target="_blank" href="https://dissinet.cz">
