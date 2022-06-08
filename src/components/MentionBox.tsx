@@ -26,6 +26,7 @@ const MentionBox: React.FC = ({}) => {
         <div
           style={{
             marginBottom: "0.5em",
+            float: "right",
           }}
         >
           <b>Mentions</b>
@@ -167,7 +168,11 @@ const MentionBox: React.FC = ({}) => {
         );
       }
     });
-    return <ToastContainer className="mentionColumn">{cards}</ToastContainer>;
+    return (
+      <ToastContainer className="mentionColumn" style={{ float: "right" }}>
+        {cards}
+      </ToastContainer>
+    );
   }
 
   return (

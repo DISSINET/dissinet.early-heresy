@@ -11,8 +11,8 @@ const Layout: React.FC = ({}) => {
     <Container fluid style={{ padding: 0 }}>
       <Row>
         <Col
-          xs="12"
-          sm="9"
+          sm="12"
+          md="9"
           style={{
             padding: 0,
             height: "100%",
@@ -25,8 +25,8 @@ const Layout: React.FC = ({}) => {
           <MapComponent />
         </Col>
         <Col
-          sm="3"
-          xs="12"
+          md="3"
+          sm="12"
           style={{
             background: "#fff",
             padding: 0,
