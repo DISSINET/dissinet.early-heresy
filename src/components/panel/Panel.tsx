@@ -115,6 +115,7 @@ const PanelComponent: React.FC = ({}) => {
             maxHeight: "500px",
             overflowY: "scroll",
             border: "1px solid lightgray",
+            borderRadius: "5px",
           }}
         >
           {caseList()}
