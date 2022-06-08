@@ -57,11 +57,11 @@ const PanelComponent: React.FC = ({}) => {
                   {val["case_id"]}
                 </Badge>
                 &nbsp;&nbsp;&nbsp;
-                <b>{val["case_label"]}</b>
+                <b>{val["case_label"]}</b>{" "}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
-                  ({date}){" "}
+                  ({date})&nbsp;
                   <i>
-                    {mentionsLocations[0].length} mention
+                    {mentionsLocations[0].length}&nbsp;mention
                     {mentionsLocations[0].length > 1 ? "s" : ""}
                   </i>
                 </span>
@@ -83,11 +83,11 @@ const PanelComponent: React.FC = ({}) => {
                   {val["case_id"]}
                 </Badge>
                 &nbsp;&nbsp;&nbsp;
-                {val["case_label"]}
+                {val["case_label"]}{" "}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
-                  ({date}){" "}
+                  ({date})&nbsp;
                   <i>
-                    {mentionsLocations[0].length} mention
+                    {mentionsLocations[0].length}&nbsp;mention
                     {mentionsLocations[0].length > 1 ? "s" : ""}
                   </i>
                 </span>
