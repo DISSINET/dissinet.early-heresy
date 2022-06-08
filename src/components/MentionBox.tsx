@@ -180,7 +180,6 @@ const MentionBox: React.FC = ({}) => {
       sm="3"
       s="12"
       style={{
-        height: "100%",
         position: "absolute",
         zIndex: 1000,
         padding: "1em",
