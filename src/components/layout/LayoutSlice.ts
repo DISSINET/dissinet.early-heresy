@@ -24,7 +24,7 @@ export const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    selectCase: (state, action: PayloadAction<Array<string>>) => {
+    selectCases: (state, action: PayloadAction<Array<string>>) => {
       let newSelectedCaseIds = action.payload;
       state.selectedCaseIds = newSelectedCaseIds;
     },
@@ -44,7 +44,7 @@ export const layoutSlice = createSlice({
   },
 });
 export const {
-  selectCase,
+  selectCases,
   selectLocation,
   selectMentions,
   clearAllSelections,

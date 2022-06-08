@@ -5,7 +5,11 @@ import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import locations from "../../data/locations.json";
-import { selectLocation, selectMentions } from "../layout/LayoutSlice";
+import {
+  selectCases,
+  selectLocation,
+  selectMentions,
+} from "../layout/LayoutSlice";
 
 const MapComponent: React.FC = ({}) => {
   const zoom = useAppSelector((state) => state.map.zoom);
@@ -20,12 +24,14 @@ const MapComponent: React.FC = ({}) => {
 
   function getMentions(location_id: string) {
     let matchingMentions: any = [];
+    let matchingCases: any = new Set();
     Object.values(mentions).map((val: any) => {
       if (val.location_primary_id === location_id) {
         matchingMentions.push(val.id);
+        matchingCases.add(val.case_id);
       }
     });
-    return matchingMentions;
+    return [matchingMentions, matchingCases];
   }
 
   function setCircles(feature: any, latlng: any) {
@@ -44,7 +50,7 @@ const MapComponent: React.FC = ({}) => {
       maxWidth: 200,
       className: "popup-classname",
     };
-    let locationMentions = getMentions(feature.properties.id);
+    let [locationMentions, locationCases] = getMentions(feature.properties.id);
     const popupContent = ReactDOMServer.renderToString(<Popup />);
     var marker = L.circleMarker(latlng);
     marker.bindPopup(popupContent, popupOptions);
@@ -52,6 +58,7 @@ const MapComponent: React.FC = ({}) => {
       click: () => {
         dispatch(selectLocation(feature.properties.id));
         dispatch(selectMentions(locationMentions));
+        dispatch(selectCases(Array.from(locationCases)));
       },
     });
     return marker;

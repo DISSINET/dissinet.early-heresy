@@ -3,7 +3,7 @@ import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge, Image } from "react-bootstrap";
 import {
-  selectCase,
+  selectCases,
   selectMentions,
   selectLocation,
 } from "./../layout/LayoutSlice";
@@ -47,11 +47,6 @@ const PanelComponent: React.FC = ({}) => {
                 key={i}
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  dispatch(selectCase(val["case_id"]));
-                  dispatch(selectMentions(mentionsLocations[0]));
-                  dispatch(selectLocation(mentionsLocations[1]));
-                }}
               >
                 <Badge bg="primary" pill>
                   {val["case_id"]}
@@ -74,7 +69,7 @@ const PanelComponent: React.FC = ({}) => {
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  dispatch(selectCase([val["case_id"]]));
+                  dispatch(selectCases([val["case_id"]]));
                   dispatch(selectMentions(mentionsLocations[0]));
                   dispatch(selectLocation(mentionsLocations[1]));
                 }}
