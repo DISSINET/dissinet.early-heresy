@@ -103,7 +103,12 @@ const PanelComponent: React.FC = ({}) => {
       <Hero />
 
       <div style={{ padding: "1em" }}>
-        <b>Cases</b>
+        <b>Cases</b>&nbsp;&nbsp;
+        {selectedCaseIds.length ? (
+          <span className="infoText">{selectedCaseIds.length} selected</span>
+        ) : (
+          ""
+        )}
         <br />
         <div
           style={{
