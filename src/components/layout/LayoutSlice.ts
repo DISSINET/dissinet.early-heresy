@@ -28,13 +28,25 @@ export const layoutSlice = createSlice({
       let newSelectedCaseIds = action.payload;
       state.selectedCaseIds = newSelectedCaseIds;
     },
+    addCase: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedCaseIds = action.payload;
+      state.selectedCaseIds.push(...newSelectedCaseIds);
+    },
     selectLocation: (state, action: PayloadAction<Array<string>>) => {
       let newSelectedLocations = action.payload;
       state.selectedLocations = newSelectedLocations;
     },
+    addLocation: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedLocations = action.payload;
+      state.selectedLocations.push(...newSelectedLocations);
+    },
     selectMentions: (state, action: PayloadAction<Array<string>>) => {
       let newSelectedMentionIds = action.payload;
       state.selectedMentionIds = newSelectedMentionIds;
+    },
+    addMentions: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedMentionIds = action.payload;
+      state.selectedMentionIds.push(...newSelectedMentionIds);
     },
     clearAllSelections: (state) => {
       state.selectedMentionIds = initialState.selectedMentionIds;
@@ -44,6 +56,9 @@ export const layoutSlice = createSlice({
   },
 });
 export const {
+  addCase,
+  addMentions,
+  addLocation,
   selectCases,
   selectLocation,
   selectMentions,

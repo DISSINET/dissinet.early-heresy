@@ -3,7 +3,11 @@ import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge, Image } from "react-bootstrap";
 import {
+  addCase,
   selectCases,
+  addLocation,
+  addMentions,
+  clearAllSelections,
   selectMentions,
   selectLocation,
 } from "./../layout/LayoutSlice";
@@ -15,6 +19,12 @@ const PanelComponent: React.FC = ({}) => {
   const mentions = useAppSelector((state) => state.layout.mentions);
   const selectedCaseIds = useAppSelector(
     (state) => state.layout.selectedCaseIds
+  );
+  const selectedMentionIds = useAppSelector(
+    (state) => state.layout.selectedMentionIds
+  );
+  const selectedLocations = useAppSelector(
+    (state) => state.layout.selectedLocations
   );
   const dispatch = useAppDispatch();
 
@@ -28,6 +38,23 @@ const PanelComponent: React.FC = ({}) => {
       }
     });
     return [matchingMentions, matchingLocations];
+  }
+
+  function handleCaseDeselect(val: string, mentionsLocations: Array<any>) {
+    let filteredCaseIds = selectedCaseIds.filter((e) => e != val);
+    let filteredMentions = selectedMentionIds.filter(
+      (e) => !mentionsLocations[0].includes(e)
+    );
+    let filteredLocations = selectedLocations.filter(
+      (e) => !mentionsLocations[1].includes(e)
+    );
+    if (filteredCaseIds.length) {
+      dispatch(selectCases(filteredCaseIds));
+      dispatch(selectMentions(filteredMentions));
+      dispatch(selectLocation(filteredLocations));
+    } else {
+      dispatch(clearAllSelections());
+    }
   }
 
   function caseList() {
@@ -47,6 +74,9 @@ const PanelComponent: React.FC = ({}) => {
                 key={i}
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
+                onClick={() => {
+                  handleCaseDeselect(val["case_id"], mentionsLocations);
+                }}
               >
                 <Badge bg="primary" pill>
                   {val["case_id"]}
@@ -69,9 +99,9 @@ const PanelComponent: React.FC = ({}) => {
                 className="caseListItem"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  dispatch(selectCases([val["case_id"]]));
-                  dispatch(selectMentions(mentionsLocations[0]));
-                  dispatch(selectLocation(mentionsLocations[1]));
+                  dispatch(addCase([val["case_id"]]));
+                  dispatch(addMentions(mentionsLocations[0]));
+                  dispatch(addLocation(mentionsLocations[1]));
                 }}
               >
                 <Badge bg="clean" text="dark" pill>

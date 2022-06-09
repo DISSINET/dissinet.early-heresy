@@ -56,7 +56,7 @@ const MapComponent: React.FC = ({}) => {
     marker.bindPopup(popupContent, popupOptions);
     marker.on({
       click: () => {
-        dispatch(selectLocation(feature.properties.id));
+        dispatch(selectLocation([feature.properties.id]));
         dispatch(selectMentions(locationMentions));
         dispatch(selectCases(Array.from(locationCases)));
       },
