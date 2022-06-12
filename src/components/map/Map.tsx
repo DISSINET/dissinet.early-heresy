@@ -60,6 +60,12 @@ const MapComponent: React.FC = ({}) => {
         dispatch(selectMentions(locationMentions));
         dispatch(selectCases(Array.from(locationCases)));
       },
+      mouseover: () => {
+        marker.openPopup();
+      },
+      mouseout: () => {
+        marker.closePopup();
+      },
     });
     return marker;
   }
