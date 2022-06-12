@@ -26,7 +26,10 @@ const MapComponent: React.FC = ({}) => {
     let matchingMentions: any = [];
     let matchingCases: any = new Set();
     Object.values(mentions).map((val: any) => {
-      if (val.location_primary_id === location_id) {
+      if (
+        val.location_primary_id &&
+        val.location_primary_id.includes(location_id)
+      ) {
         matchingMentions.push(val.id);
         matchingCases.add(val.case_id);
       }
@@ -83,9 +86,7 @@ const MapComponent: React.FC = ({}) => {
 
   function getHalo(feature: any) {
     let halo = [0, 1];
-    if (
-      selectedLocations.includes(feature.properties.id)
-    ) {
+    if (selectedLocations.includes(feature.properties.id)) {
       halo = feature.properties.halo == "1" ? [12, 0.3] : [0, 1];
     }
     return halo;

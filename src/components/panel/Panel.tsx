@@ -34,7 +34,10 @@ const PanelComponent: React.FC = ({}) => {
     Object.values(mentions).map((val: any) => {
       if (val.case_id === case_id) {
         matchingMentions.push(val.id);
-        matchingLocations.push(val.location_primary_id);
+        let locationsArray = val.location_primary_id
+          ? val.location_primary_id.split(", ")
+          : [];
+        matchingLocations.push(...locationsArray);
       }
     });
     return [matchingMentions, matchingLocations];
