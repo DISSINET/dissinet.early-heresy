@@ -81,9 +81,19 @@ const MapComponent: React.FC = ({}) => {
     }
   }
 
+  function getHalo(feature: any) {
+    let halo = [0, 1];
+    if (
+      selectedLocations.includes(feature.properties.id)
+    ) {
+      halo = feature.properties.halo == "1" ? [12, 0.3] : [0, 1];
+    }
+    return halo;
+  }
+
   function styleCircles(feature: any) {
     let color = getColor(feature);
-    let halo = feature.properties.halo == "1" ? [12, 0.3] : [0, 1];
+    let halo = getHalo(feature);
     return {
       fillColor: color,
       radius: 6,
@@ -91,15 +101,6 @@ const MapComponent: React.FC = ({}) => {
       opacity: halo[1],
       color: color,
       fillOpacity: 1,
-    };
-  }
-
-  function styleLines(feature: any) {
-    let color = getColor(feature);
-    return {
-      color: color,
-      weight: 1,
-      opacity: 0.3,
     };
   }
 
