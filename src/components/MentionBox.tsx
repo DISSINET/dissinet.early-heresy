@@ -49,7 +49,10 @@ const MentionBox: React.FC = ({}) => {
 
   function replaceHashes(val: string) {
     if (val) {
-      return val.replace(/ #/gi, "; ").replace(/^#/gi, '').replace(/\n#/gi, '; ')
+      return val
+        .replace(/ #/gi, "; ")
+        .replace(/^#/gi, "")
+        .replace(/\n#/gi, "; ");
     }
   }
 

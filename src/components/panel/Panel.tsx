@@ -48,9 +48,13 @@ const PanelComponent: React.FC = ({}) => {
     let filteredMentions = selectedMentionIds.filter(
       (e) => !mentionsLocations[0].includes(e)
     );
-    let filteredLocations = selectedLocations.filter(
-      (e) => !mentionsLocations[1].includes(e)
-    );
+    let filteredLocations = [...selectedLocations];
+    mentionsLocations[1].forEach((loc: any) => {
+      let index = filteredLocations.indexOf(loc);
+      if (index > -1) {
+        filteredLocations.splice(index, 1);
+      }
+    });
     if (filteredCaseIds.length) {
       dispatch(selectCases(filteredCaseIds));
       dispatch(selectMentions(filteredMentions));
