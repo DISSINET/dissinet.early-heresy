@@ -47,6 +47,12 @@ const MentionBox: React.FC = ({}) => {
     return header;
   }
 
+  function replaceHashes(val: string) {
+    if (val) {
+      return val.replace(/ #/gi, "; ").replace(/^#/gi, '').replace(/\n#/gi, '; ')
+    }
+  }
+
   function buildMentionCards() {
     let cards = selectedMentionIds.map((mentionId: string, i) => {
       const mention = (mentions as IIndexable)[mentionId];
@@ -77,7 +83,7 @@ const MentionBox: React.FC = ({}) => {
               </div>
               <div>
                 <small className="text-muted">Locations:</small>{" "}
-                <small>{mention.location_primary_label}</small>
+                <small>{replaceHashes(mention.location_primary_label)}</small>
               </div>
               <Dropdown.Divider style={{ opacity: 0.1 }} />
               <Accordion flush>
@@ -91,7 +97,7 @@ const MentionBox: React.FC = ({}) => {
                       <small className="text-muted">
                         Name(s) of the heretics:
                       </small>{" "}
-                      <small>{mention.heretic_label}</small>
+                      <small>{replaceHashes(mention.heretic_label)}</small>
                     </div>
                     <div>
                       <small className="text-muted">
@@ -104,61 +110,75 @@ const MentionBox: React.FC = ({}) => {
                         Social characterization of heretics:
                       </small>{" "}
                       <small>
-                        {mention.heretics_social_characterization_label}
+                        {replaceHashes(
+                          mention.heretics_social_characterization_label
+                        )}
                       </small>
                     </div>
                     <div>
                       <small className="text-muted">
                         Instigator to the heresy:
                       </small>{" "}
-                      <small>{mention.instigator_to_heresy_label}</small>
+                      <small>
+                        {replaceHashes(mention.instigator_to_heresy_label)}
+                      </small>
                     </div>
                     <div>
                       <small className="text-muted">Repressor:</small>{" "}
-                      <small>{mention.repressor_label}</small>
+                      <small>{replaceHashes(mention.repressor_label)}</small>
                     </div>
                     <div>
                       <small className="text-muted">Other persons:</small>{" "}
-                      <small>{mention.persons_or_groups_other_label}</small>
+                      <small>
+                        {replaceHashes(mention.persons_or_groups_other_label)}
+                      </small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
                     <div>
                       <small className="text-muted">Name of the heresy:</small>{" "}
-                      <small>{mention.name_of_heresy_label}</small>
+                      <small>
+                        {replaceHashes(mention.name_of_heresy_label)}
+                      </small>
                     </div>
                     <div>
                       <small className="text-muted">
                         Name of the heretics:
                       </small>{" "}
-                      <small>{mention.name_of_heretics_label}</small>
+                      <small>
+                        {replaceHashes(mention.name_of_heretics_label)}
+                      </small>
                     </div>
                     <div>
                       <small className="text-muted">Connotations:</small>{" "}
-                      <small>{mention.connotations_heresy_label}</small>
+                      <small>
+                        {replaceHashes(mention.connotations_heresy_label)}
+                      </small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
 
                     <div>
                       <small className="text-muted">Beliefs:</small>{" "}
-                      <small>{mention.beliefs_label}</small>
+                      <small>{replaceHashes(mention.beliefs_label)}</small>
                     </div>
                     <div>
                       <small className="text-muted">Practice:</small>{" "}
-                      <small>{mention.practice_label}</small>
+                      <small>{replaceHashes(mention.practice_label)}</small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
                     <div>
                       <small className="text-muted">Dealing with heresy:</small>{" "}
-                      <small>{mention.dealing_with_them_label}</small>
+                      <small>
+                        {replaceHashes(mention.dealing_with_them_label)}
+                      </small>
                     </div>
                     <div>
                       <small className="text-muted">Outcome:</small>{" "}
-                      <small>{mention.outcome_label}</small>
+                      <small>{replaceHashes(mention.outcome_label)}</small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
                     <div>
                       <small className="text-muted">Note:</small>{" "}
-                      <small>{mention.note}</small>
+                      <small>{replaceHashes(mention.note)}</small>
                     </div>
                   </Accordion.Body>
                 </Accordion.Item>
