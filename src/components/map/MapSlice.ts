@@ -18,7 +18,13 @@ const initialState: MapState = {
 export const mapSlice = createSlice({
   name: "map",
   initialState,
-  reducers: {},
+  reducers: {
+    restoreDefaultMapPosition: (state) => {
+      state.center = initialState.center;
+      state.zoom = initialState.zoom;
+    },
+  },
 });
 
+export const { restoreDefaultMapPosition } = mapSlice.actions;
 export default mapSlice.reducer;

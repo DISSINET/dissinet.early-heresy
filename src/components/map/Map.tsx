@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { MapContainer, TileLayer, ScaleControl, GeoJSON } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  ScaleControl,
+  GeoJSON,
+  useMap,
+} from "react-leaflet";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -10,6 +16,8 @@ import {
   selectLocation,
   selectMentions,
 } from "../layout/LayoutSlice";
+import { restoreDefaultMapPosition } from "./MapSlice";
+import { Button } from "react-bootstrap";
 
 const MapComponent: React.FC = ({}) => {
   const zoom = useAppSelector((state) => state.map.zoom);
@@ -105,6 +113,30 @@ const MapComponent: React.FC = ({}) => {
     };
   }
 
+  function ZoomToLayer() {
+    const map = useMap();
+    return (
+      <Button
+        size="sm"
+        style={{
+          position: "fixed",
+          top: "80px",
+          left: "11px",
+          zIndex: 1000,
+          borderColor: "rgba(0,0,0,0.2)",
+          borderWidth: "2px",
+        }}
+        variant="light"
+        title="Reset map position"
+        onClick={() => {
+          map.setView(center, zoom);
+        }}
+      >
+        [ ]
+      </Button>
+    );
+  }
+
   return (
     <div
       className="map-wrapper"
@@ -126,7 +158,6 @@ const MapComponent: React.FC = ({}) => {
         maxZoom={maxZoom}
         minZoom={minZoom}
         zoomSnap={0}
-        className="map"
         id="map"
         doubleClickZoom={false}
         touchZoom={false}
@@ -136,6 +167,7 @@ const MapComponent: React.FC = ({}) => {
         keyboard={false}
         preferCanvas={true}
       >
+        <ZoomToLayer />
         <ScaleControl imperial={false} position={"bottomleft"} />
         <GeoJSON
           data={locations as GeoJSON.FeatureCollection}
