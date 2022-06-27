@@ -64,6 +64,10 @@ const PanelComponent: React.FC = ({}) => {
     }
   }
 
+  function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   function caseList() {
     return (
       <ListGroup>
@@ -89,7 +93,7 @@ const PanelComponent: React.FC = ({}) => {
                   {val["case_id"]}
                 </Badge>
                 &nbsp;&nbsp;&nbsp;
-                <b>{val["case_label"]}</b>{" "}
+                <b>{capitalizeFirstLetter(val["case_label"])}</b>{" "}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
                   ({date})&nbsp;
                   <i>
@@ -115,7 +119,7 @@ const PanelComponent: React.FC = ({}) => {
                   {val["case_id"]}
                 </Badge>
                 &nbsp;&nbsp;&nbsp;
-                {val["case_label"]}{" "}
+                {capitalizeFirstLetter(val["case_label"])}{" "}
                 <span style={{ fontSize: "12px", marginLeft: "0.5em" }}>
                   ({date})&nbsp;
                   <i>

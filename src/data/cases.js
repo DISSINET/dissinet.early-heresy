@@ -136,7 +136,7 @@ const cases = {
   },
   E1016: {
     case_id: "E1016",
-    case_label: null,
+    case_label: "heretics in Italy and Greece",
     year_start_post_quem: 1030,
     year_start_ante_quem: 1047,
     year_end_post_quem: 1030,
@@ -154,7 +154,7 @@ const cases = {
   },
   E1018: {
     case_id: "E1018",
-    case_label: null,
+    case_label: "anti-eucharistic heretics at Ivois",
     year_start_post_quem: 1101,
     year_start_ante_quem: 1124,
     year_end_post_quem: 1101,
@@ -235,7 +235,7 @@ const cases = {
   },
   E1027: {
     case_id: "E1027",
-    case_label: null,
+    case_label: "donatist heretics at Cologne",
     year_start_post_quem: 1143,
     year_start_ante_quem: 1144,
     year_end_post_quem: 1143,
@@ -244,7 +244,7 @@ const cases = {
   },
   E1028: {
     case_id: "E1028",
-    case_label: null,
+    case_label: "heretics at Liège",
     year_start_post_quem: 1135,
     year_start_ante_quem: 1145,
     year_end_post_quem: 1135,
