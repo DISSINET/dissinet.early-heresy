@@ -18,7 +18,6 @@ const MentionBox: React.FC = ({}) => {
   const selectedMentionIds = useAppSelector(
     (state) => state.layout.selectedMentionIds
   );
-  const dispatch = useAppDispatch();
 
   function buildHeader() {
     let header =

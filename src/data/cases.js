@@ -7,6 +7,8 @@ const cases = {
     year_end_post_quem: 1000,
     year_end_ante_quem: 1000,
     year_approximate: "y",
+    dealing_with_them_id: "C1265",
+    outcome_id: "C1051, C1052",
   },
   E1002: {
     case_id: "E1002",
@@ -16,6 +18,8 @@ const cases = {
     year_end_post_quem: 1000,
     year_end_ante_quem: 1000,
     year_approximate: "y",
+    dealing_with_them_id: "",
+    outcome_id: "C1106, C1147, C1148",
   },
   E1003: {
     case_id: "E1003",
@@ -25,6 +29,8 @@ const cases = {
     year_end_post_quem: 1000,
     year_end_ante_quem: 1000,
     year_approximate: "y",
+    dealing_with_them_id: "",
+    outcome_id: "C1058",
   },
   E1004: {
     case_id: "E1004",
@@ -34,6 +40,8 @@ const cases = {
     year_end_post_quem: 1000,
     year_end_ante_quem: 1000,
     year_approximate: "y",
+    dealing_with_them_id: "",
+    outcome_id: "C1058",
   },
   E1005: {
     case_id: "E1005",
@@ -43,6 +51,8 @@ const cases = {
     year_end_post_quem: 1018,
     year_end_ante_quem: 1018,
     year_approximate: "n",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1006: {
     case_id: "E1006",
@@ -52,6 +62,8 @@ const cases = {
     year_end_post_quem: 1022,
     year_end_ante_quem: 1022,
     year_approximate: "y",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1058",
   },
   E1007: {
     case_id: "E1007",
@@ -61,6 +73,8 @@ const cases = {
     year_end_post_quem: 1022,
     year_end_ante_quem: 1022,
     year_approximate: "n",
+    dealing_with_them_id: "C1067, C1048, C1265",
+    outcome_id: "C1097, C1106, C1063, C1228",
   },
   E1008: {
     case_id: "E1008",
@@ -70,6 +84,8 @@ const cases = {
     year_end_post_quem: 1028,
     year_end_ante_quem: 1028,
     year_approximate: "y",
+    dealing_with_them_id: "C1265, C1266, C1990",
+    outcome_id: "C1051, C2297, C1063",
   },
   E1009: {
     case_id: "E1009",
@@ -79,6 +95,8 @@ const cases = {
     year_end_post_quem: 1025,
     year_end_ante_quem: 1025,
     year_approximate: "n",
+    dealing_with_them_id: "C1265, C1266, C3241, C1048",
+    outcome_id: "C1067, C3237, C1106, C1051, C1323",
   },
   E1010: {
     case_id: "E1010",
@@ -88,6 +106,8 @@ const cases = {
     year_end_post_quem: 1051,
     year_end_ante_quem: 1053,
     year_approximate: "y",
+    dealing_with_them_id: "C1266",
+    outcome_id: "C1282, C1106",
   },
   E1011: {
     case_id: "E1011",
@@ -97,6 +117,8 @@ const cases = {
     year_end_post_quem: 1043,
     year_end_ante_quem: 1048,
     year_approximate: "y",
+    dealing_with_them_id: "",
+    outcome_id: "C1106",
   },
   E1012: {
     case_id: "E1012",
@@ -106,6 +128,8 @@ const cases = {
     year_end_post_quem: 1049,
     year_end_ante_quem: 1049,
     year_approximate: "n",
+    dealing_with_them_id: "",
+    outcome_id: "C1106",
   },
   E1013: {
     case_id: "E1013",
@@ -115,6 +139,8 @@ const cases = {
     year_end_post_quem: 1025,
     year_end_ante_quem: 1050,
     year_approximate: "y",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1014: {
     case_id: "E1014",
@@ -124,6 +150,8 @@ const cases = {
     year_end_post_quem: 1016,
     year_end_ante_quem: 1016,
     year_approximate: "n",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1015: {
     case_id: "E1015",
@@ -133,6 +161,8 @@ const cases = {
     year_end_post_quem: 1028,
     year_end_ante_quem: 1028,
     year_approximate: "n",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1016: {
     case_id: "E1016",
@@ -142,6 +172,8 @@ const cases = {
     year_end_post_quem: 1030,
     year_end_ante_quem: 1047,
     year_approximate: "y",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1017: {
     case_id: "E1017",
@@ -151,6 +183,8 @@ const cases = {
     year_end_post_quem: 1013,
     year_end_ante_quem: 1020,
     year_approximate: "y",
+    dealing_with_them_id: "C1367",
+    outcome_id: "C1051",
   },
   E1018: {
     case_id: "E1018",
@@ -160,6 +194,8 @@ const cases = {
     year_end_post_quem: 1101,
     year_end_ante_quem: 1124,
     year_approximate: "y",
+    dealing_with_them_id: "C1266, C1265, C2296",
+    outcome_id: "C2272, C1323, C1097, C1106, C1569",
   },
   E1019: {
     case_id: "E1019",
@@ -169,6 +205,8 @@ const cases = {
     year_end_post_quem: 1124,
     year_end_ante_quem: 1124,
     year_approximate: "y",
+    dealing_with_them_id: "C1266, C1638, C1067",
+    outcome_id: "1067, C1051, C1737, C1740",
   },
   E1020: {
     case_id: "E1020",
@@ -178,6 +216,8 @@ const cases = {
     year_end_post_quem: 1114,
     year_end_ante_quem: 1114,
     year_approximate: "y",
+    dealing_with_them_id: "C1266",
+    outcome_id: "1067",
   },
   E1021: {
     case_id: "E1021",
@@ -187,6 +227,8 @@ const cases = {
     year_end_post_quem: 1114,
     year_end_ante_quem: 1114,
     year_approximate: "y",
+    dealing_with_them_id: "C1266, C1265, C1813",
+    outcome_id: "C2297, C1063",
   },
   E1022: {
     case_id: "E1022",
@@ -196,6 +238,8 @@ const cases = {
     year_end_post_quem: 1145,
     year_end_ante_quem: 1148,
     year_approximate: "y",
+    dealing_with_them_id: "C1266, C1048, C1067, C1852",
+    outcome_id: "C1852, C1862, C1106, C1323, C1067, C1740, C1106",
   },
   E1023: {
     case_id: "E1023",
@@ -205,6 +249,8 @@ const cases = {
     year_end_post_quem: 1148,
     year_end_ante_quem: 1148,
     year_approximate: "y",
+    dealing_with_them_id: "C1990, C1265, C1266, C1048, C1638, C1067",
+    outcome_id: "C1067, C1051, C1106",
   },
   E1024: {
     case_id: "E1024",
@@ -214,6 +260,8 @@ const cases = {
     year_end_post_quem: 1132,
     year_end_ante_quem: 1133,
     year_approximate: "y",
+    dealing_with_them_id: "C1862",
+    outcome_id: "C1067, C2297, C1063",
   },
   E1025: {
     case_id: "E1025",
@@ -223,6 +271,8 @@ const cases = {
     year_end_post_quem: 1155,
     year_end_ante_quem: 1155,
     year_approximate: "y",
+    dealing_with_them_id: "C1106, C1097, C1862, C1048, C1266",
+    outcome_id: "C1569, C1063",
   },
   E1026: {
     case_id: "E1026",
@@ -232,6 +282,8 @@ const cases = {
     year_end_post_quem: 1143,
     year_end_ante_quem: 1144,
     year_approximate: "y",
+    dealing_with_them_id: "C1048",
+    outcome_id: "C1051, C2297, C1063",
   },
   E1027: {
     case_id: "E1027",
@@ -241,6 +293,8 @@ const cases = {
     year_end_post_quem: 1143,
     year_end_ante_quem: 1144,
     year_approximate: "y",
+    dealing_with_them_id: "C1048",
+    outcome_id: "C1051, C1063",
   },
   E1028: {
     case_id: "E1028",
@@ -250,6 +304,8 @@ const cases = {
     year_end_post_quem: 1135,
     year_end_ante_quem: 1145,
     year_approximate: "y",
+    dealing_with_them_id: "C1266, C1265",
+    outcome_id: "C2297, C1063, C1852, C2298, C2272, C1051",
   },
   E1029: {
     case_id: "E1029",
@@ -259,6 +315,8 @@ const cases = {
     year_end_post_quem: 1135,
     year_end_ante_quem: 1135,
     year_approximate: "n",
+    dealing_with_them_id: "",
+    outcome_id: "",
   },
   E1030: {
     case_id: "E1030",
@@ -268,6 +326,8 @@ const cases = {
     year_end_post_quem: 1180,
     year_end_ante_quem: 1180,
     year_approximate: "n",
+    dealing_with_them_id: "",
+    outcome_id: "",
   },
 };
 

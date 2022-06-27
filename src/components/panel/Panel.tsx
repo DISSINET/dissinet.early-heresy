@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge, Button, Image } from "react-bootstrap";
+import { ListGroup, Badge, Button, Image, InputGroup, Form } from "react-bootstrap";
 import {
   addCase,
   selectCases,
@@ -176,9 +176,28 @@ const PanelComponent: React.FC = ({}) => {
         </div>
         <br />
         <b>Filter</b>
-        <br />
-        <span>TODO</span>
-        <br />
+        <InputGroup size="sm" style={{ marginBottom: "-5px" }}>
+          <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+          <InputGroup.Text>by beliefs</InputGroup.Text>
+          <Form.Select aria-label="select by beliefs" disabled>
+            <option></option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </Form.Select>
+        </InputGroup>
+        <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
+          <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+          <InputGroup.Text>by outcome</InputGroup.Text>
+          <Form.Select aria-label="select by outcome">
+            <option></option>
+            <option value="1">exclusion/shaming</option>
+            <option value="2">ordeal</option>
+            <option value="3">violence</option>
+            <option value="4">persuation</option>
+            <option value="5">other</option>
+          </Form.Select>
+        </InputGroup>
         <b>Legend</b>
         <br />
         <Image src={legend} alt="map legend" style={{ maxHeight: "100px" }} />
