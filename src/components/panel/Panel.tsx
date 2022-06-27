@@ -1,7 +1,14 @@
 import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge, Button, Image, InputGroup, Form } from "react-bootstrap";
+import {
+  ListGroup,
+  Badge,
+  Button,
+  Image,
+  InputGroup,
+  Form,
+} from "react-bootstrap";
 import {
   addCase,
   selectCases,
@@ -177,19 +184,27 @@ const PanelComponent: React.FC = ({}) => {
         <br />
         <b>Filter</b>
         <InputGroup size="sm" style={{ marginBottom: "-5px" }}>
-          <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+          <InputGroup.Checkbox aria-label="Checkbox for selecting beliefs filter" />
           <InputGroup.Text>by beliefs</InputGroup.Text>
           <Form.Select aria-label="select by beliefs" disabled>
             <option></option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="1">against Church/society</option>
+            <option value="2">asceticism/strictness</option>
+            <option value="3">malpractices</option>
+            <option value="4">deception</option>
+            <option value="5">heterodox eschatology</option>
+            <option value="6">heterodox opinion of God</option>
+            <option value="7">alternative social structure</option>
+            <option value="8">heretical practices described</option>
+            <option value="9">heresiarch's self-deification</option>
+            <option value="1O">against Church's tradition</option>
+            <option value="11">martyrdom</option>
           </Form.Select>
         </InputGroup>
         <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
-          <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+          <InputGroup.Checkbox aria-label="Checkbox for selecting outcome filter" />
           <InputGroup.Text>by outcome</InputGroup.Text>
-          <Form.Select aria-label="select by outcome">
+          <Form.Select aria-label="select by outcome" disabled >
             <option></option>
             <option value="1">exclusion/shaming</option>
             <option value="2">ordeal</option>
