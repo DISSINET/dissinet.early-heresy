@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge, Image } from "react-bootstrap";
+import { ListGroup, Badge, Button, Image } from "react-bootstrap";
 import {
   addCase,
   selectCases,
@@ -146,7 +146,20 @@ const PanelComponent: React.FC = ({}) => {
       <div style={{ padding: "1em" }}>
         <b>Cases</b>&nbsp;&nbsp;
         {selectedCaseIds.length ? (
-          <span className="infoText">{selectedCaseIds.length} selected</span>
+          <>
+            <span className="infoText">{selectedCaseIds.length} selected</span>
+            &nbsp; &nbsp;
+            <Button
+              size="sm"
+              variant="outline-primary"
+              style={{ marginBottom: "2px" }}
+              onClick={() => {
+                dispatch(clearAllSelections());
+              }}
+            >
+              clear selection
+            </Button>
+          </>
         ) : (
           ""
         )}

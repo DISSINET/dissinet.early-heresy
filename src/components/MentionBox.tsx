@@ -23,24 +23,7 @@ const MentionBox: React.FC = ({}) => {
   function buildHeader() {
     let header =
       selectedMentionIds.length > 0 ? (
-        <div
-          style={{
-            marginBottom: "0.5em",
-            float: "right",
-          }}
-        >
           <b>Mentions</b>
-          &nbsp; &nbsp; &nbsp; &nbsp;
-          <Button
-            size="sm"
-            variant="outline-primary"
-            onClick={() => {
-              dispatch(clearAllSelections());
-            }}
-          >
-            clear selection
-          </Button>
-        </div>
       ) : (
         ""
       );
