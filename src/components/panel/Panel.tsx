@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero from "./../Hero";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import {
@@ -34,6 +34,12 @@ const PanelComponent: React.FC = ({}) => {
     (state) => state.layout.selectedLocations
   );
   const dispatch = useAppDispatch();
+
+  //filter controls
+  const [beliefsFilter, toggleBeliefsFilter] = useState(false);
+  const [beliefsValue, setBeliefsValue] = useState("0");
+  const [outcomeFilter, toggleOutcomeFilter] = useState(false);
+  const [outcomeValue, setOutcomeValue] = useState("0");
 
   function getMentionsAndLocations(case_id: string) {
     let matchingMentions: any = [];
@@ -184,28 +190,54 @@ const PanelComponent: React.FC = ({}) => {
         <br />
         <b>Filter</b>
         <InputGroup size="sm" style={{ marginBottom: "-5px" }}>
-          <InputGroup.Checkbox aria-label="Checkbox for selecting beliefs filter" />
+          <InputGroup.Checkbox
+            aria-label="Checkbox for selecting beliefs filter"
+            onClick={() => {
+              if (!beliefsFilter === false) {
+                setBeliefsValue("0");
+              }
+              toggleBeliefsFilter(!beliefsFilter);
+            }}
+          />
           <InputGroup.Text>by beliefs</InputGroup.Text>
-          <Form.Select aria-label="select by beliefs" disabled>
-            <option></option>
-            <option value="1">against Church/society</option>
-            <option value="2">asceticism/strictness</option>
-            <option value="3">malpractices</option>
-            <option value="4">deception</option>
-            <option value="5">heterodox eschatology</option>
-            <option value="6">heterodox opinion of God</option>
-            <option value="7">alternative social structure</option>
-            <option value="8">heretical practices described</option>
-            <option value="9">heresiarch's self-deification</option>
-            <option value="1O">against Church's tradition</option>
-            <option value="11">martyrdom</option>
+          <Form.Select
+            aria-label="select by beliefs"
+            disabled={!beliefsFilter}
+            value={beliefsValue}
+            onChange={(e) => setBeliefsValue(e.target.value)}
+          >
+            <option value={0}></option>
+            <option value={1}>against Church/society</option>
+            <option value={2}>asceticism/strictness</option>
+            <option value={3}>malpractices</option>
+            <option value={4}>deception</option>
+            <option value={5}>heterodox eschatology</option>
+            <option value={6}>heterodox opinion of God</option>
+            <option value={7}>alternative social structure</option>
+            <option value={8}>heretical practices described</option>
+            <option value={9}>heresiarch's self-deification</option>
+            <option value={10}>against Church's tradition</option>
+            <option value={11}>martyrdom</option>
           </Form.Select>
         </InputGroup>
         <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
-          <InputGroup.Checkbox aria-label="Checkbox for selecting outcome filter" />
+          <InputGroup.Checkbox
+            aria-label="Checkbox for selecting outcome filter"
+            onClick={() => {
+              if (!outcomeFilter === false) {
+                setOutcomeValue("0");
+              }
+              toggleOutcomeFilter(!outcomeFilter);
+            }}
+          />
           <InputGroup.Text>by outcome</InputGroup.Text>
-          <Form.Select aria-label="select by outcome" disabled >
-            <option></option>
+          <Form.Select
+            aria-label="select by outcome"
+            disabled={!outcomeFilter}
+            value={outcomeValue}
+            onChange={(e) => setOutcomeValue(e.target.value)}
+          >
+            <option value="0"></option>
             <option value="1">exclusion/shaming</option>
             <option value="2">ordeal</option>
             <option value="3">violence</option>
