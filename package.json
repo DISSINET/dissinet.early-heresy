@@ -1,5 +1,6 @@
 {
   "name": "early-heresy-map",
+  "homepage": "/early-heresy",
   "version": "0.2.0",
   "private": true,
   "dependencies": {

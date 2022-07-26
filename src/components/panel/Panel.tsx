@@ -8,6 +8,8 @@ import {
   Image,
   InputGroup,
   Form,
+  Dropdown,
+  DropdownButton,
 } from "react-bootstrap";
 import {
   addCase,
@@ -207,19 +209,9 @@ const PanelComponent: React.FC = ({}) => {
         <div id="filters">
           <b>Filter</b>
           <InputGroup size="sm" style={{ marginBottom: "-5px" }}>
-            <InputGroup.Checkbox
-              aria-label="Checkbox for selecting beliefs filter"
-              onClick={() => {
-                if (!beliefsFilter === false) {
-                  setBeliefsValue("0");
-                }
-                toggleBeliefsFilter(!beliefsFilter);
-              }}
-            />
-            <InputGroup.Text>by beliefs</InputGroup.Text>
+            <InputGroup.Text>by beliefs and practices</InputGroup.Text>
             <Form.Select
               aria-label="select by beliefs"
-              disabled={!beliefsFilter}
               value={beliefsValue}
               onChange={(e) => setBeliefsValue(e.target.value)}
             >
@@ -238,29 +230,25 @@ const PanelComponent: React.FC = ({}) => {
             </Form.Select>
           </InputGroup>
           <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
-            <InputGroup.Checkbox
-              aria-label="Checkbox for selecting outcome filter"
-              onClick={() => {
-                if (!outcomeFilter === false) {
-                  setOutcomeValue("0");
-                }
-                toggleOutcomeFilter(!outcomeFilter);
-              }}
-            />
-            <InputGroup.Text>by outcome</InputGroup.Text>
-            <Form.Select
+            <InputGroup.Text>by dealing and outcome</InputGroup.Text>
+            <DropdownButton
+              title=""
+              variant="bg-clean"
               aria-label="select by outcome"
-              disabled={!outcomeFilter}
-              value={outcomeValue}
-              onChange={(e) => setOutcomeValue(e.target.value)}
+              autoClose="outside"
+              //onChange={(e) => setOutcomeValue(e.target.value)}
             >
-              <option value="0"></option>
-              <option value="1">exclusion/shaming</option>
-              <option value="2">ordeal</option>
-              <option value="3">violence</option>
-              <option value="4">persuation</option>
-              <option value="5">other</option>
-            </Form.Select>
+              <Form>
+                <Form.Check type="checkbox" id="1" label="exclusion/shaming" />
+                <Form.Check type="checkbox" id="2" label="ordeal" />
+                <Dropdown.Item value="1">exclusion/shaming</Dropdown.Item>
+                <Dropdown.Item value="2">ordeal</Dropdown.Item>
+                <Dropdown.Item value="3">violence</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item value="4">persuation</Dropdown.Item>
+                <Dropdown.Item value="5">other</Dropdown.Item>
+              </Form>
+            </DropdownButton>
           </InputGroup>
         </div>
         <div id="legend">
