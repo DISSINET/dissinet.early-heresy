@@ -8,6 +8,7 @@ import {
   Image,
   InputGroup,
   Form,
+  Offcanvas,
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
@@ -42,6 +43,11 @@ const PanelComponent: React.FC = ({}) => {
   const [beliefsValue, setBeliefsValue] = useState("0");
   const [outcomeFilter, toggleOutcomeFilter] = useState(false);
   const [outcomeValue, setOutcomeValue] = useState("0");
+
+  // filter panel controls
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function getMentionsAndLocations(case_id: string) {
     let matchingMentions: any = [];
@@ -81,6 +87,126 @@ const PanelComponent: React.FC = ({}) => {
 
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  function filterPanel() {
+    return (
+      <>
+        <InputGroup
+          size="sm"
+          className="mb-3"
+          style={{ marginTop: "10px", cursor:"pointer" }}
+          onClick={handleShow}
+        >
+          <InputGroup.Text>by dealing and outcome</InputGroup.Text>
+        </InputGroup>
+        <Offcanvas show={show} onHide={handleClose} placement="end">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Filter by dealing and outcome</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Form>
+              <Dropdown.Item value="1">exclusion/shaming</Dropdown.Item>
+              <Dropdown.Item value="11" className="ps-4">
+                degradation
+              </Dropdown.Item>
+              <Dropdown.Item value="12" className="ps-4">
+                excommunication
+              </Dropdown.Item>
+              <Dropdown.Item value="13" className="ps-4">
+                exhumation
+              </Dropdown.Item>
+              <Dropdown.Item value="14" className="ps-4">
+                banishment
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item value="2">ordeal</Dropdown.Item>
+              <Dropdown.Item value="21" className="ps-4">
+                trial by water
+              </Dropdown.Item>
+              <Dropdown.Item value="22" className="ps-4">
+                trial by Eucharist
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item value="3">violence</Dropdown.Item>
+              <Dropdown.Item value="31" className="ps-4">
+                extermination of heretics
+              </Dropdown.Item>
+              <Dropdown.Item value="31" className="ps-4">
+                burning
+              </Dropdown.Item>
+              <Dropdown.Item value="32" className="ps-4">
+                corporeal mutilation
+              </Dropdown.Item>
+              <Dropdown.Item value="33" className="ps-4">
+                death by fire
+              </Dropdown.Item>
+              <Dropdown.Item value="34" className="ps-4">
+                death by sword
+              </Dropdown.Item>
+              <Dropdown.Item value="35" className="ps-4">
+                apprehension
+              </Dropdown.Item>
+              <Dropdown.Item value="36" className="ps-4">
+                hanging
+              </Dropdown.Item>
+              <Dropdown.Item value="37" className="ps-4">
+                killing of a heretic
+              </Dropdown.Item>
+              <Dropdown.Item value="38" className="ps-4">
+                incarceration
+              </Dropdown.Item>
+              <Dropdown.Item value="39" className="ps-4">
+                military action
+              </Dropdown.Item>
+              <Dropdown.Item value="310" className="ps-4">
+                death by mob lynching
+              </Dropdown.Item>
+              <Dropdown.Item value="311" className="ps-4">
+                attempted mob lynching
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item value="4">persuation</Dropdown.Item>
+              <Dropdown.Item value="41" className="ps-4">
+                public debate
+              </Dropdown.Item>
+              <Dropdown.Item value="42" className="ps-4">
+                reconversion to Catholicism
+              </Dropdown.Item>
+              <Dropdown.Item value="43" className="ps-4">
+                hearing
+              </Dropdown.Item>
+              <Dropdown.Item value="44" className="ps-4">
+                abjuration of heretical errors
+              </Dropdown.Item>
+              <Dropdown.Item value="45" className="ps-4">
+                preaching mission
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item value="5">other</Dropdown.Item>
+              <Dropdown.Item value="51" className="ps-4">
+                death of a heretic
+              </Dropdown.Item>
+              <Dropdown.Item value="52" className="ps-4">
+                suicide
+              </Dropdown.Item>
+              <Dropdown.Item value="53" className="ps-4">
+                divine punishment
+              </Dropdown.Item>
+              <Dropdown.Item value="54" className="ps-4">
+                relapse into heresy
+              </Dropdown.Item>
+              <Dropdown.Item value="55" className="ps-4">
+                flight
+              </Dropdown.Item>
+              <Dropdown.Item value="56" className="ps-4">
+                attempted flight
+              </Dropdown.Item>
+            </Form>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </>
+    );
   }
 
   function caseList() {
@@ -210,46 +336,39 @@ const PanelComponent: React.FC = ({}) => {
           <b>Filter</b>
           <InputGroup size="sm" style={{ marginBottom: "-5px" }}>
             <InputGroup.Text>by beliefs and practices</InputGroup.Text>
-            <Form.Select
-              aria-label="select by beliefs"
-              value={beliefsValue}
-              onChange={(e) => setBeliefsValue(e.target.value)}
-            >
-              <option value={0}></option>
-              <option value={1}>against Church/society</option>
-              <option value={2}>asceticism/strictness</option>
-              <option value={3}>malpractices</option>
-              <option value={4}>deception</option>
-              <option value={5}>heterodox eschatology</option>
-              <option value={6}>heterodox opinion of God</option>
-              <option value={7}>alternative social structure</option>
-              <option value={8}>heretical practices described</option>
-              <option value={9}>heresiarch's self-deification</option>
-              <option value={10}>against Church's tradition</option>
-              <option value={11}>martyrdom</option>
-            </Form.Select>
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
-            <InputGroup.Text>by dealing and outcome</InputGroup.Text>
             <DropdownButton
               title=""
               variant="bg-clean"
-              aria-label="select by outcome"
+              aria-label="select by beliefs"
               autoClose="outside"
               //onChange={(e) => setOutcomeValue(e.target.value)}
             >
               <Form>
-                <Form.Check type="checkbox" id="1" label="exclusion/shaming" />
-                <Form.Check type="checkbox" id="2" label="ordeal" />
-                <Dropdown.Item value="1">exclusion/shaming</Dropdown.Item>
-                <Dropdown.Item value="2">ordeal</Dropdown.Item>
-                <Dropdown.Item value="3">violence</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item value="4">persuation</Dropdown.Item>
-                <Dropdown.Item value="5">other</Dropdown.Item>
+                <Dropdown.Item value={1}>against Church/society</Dropdown.Item>
+                <Dropdown.Item value={2}>asceticism/strictness</Dropdown.Item>
+                <Dropdown.Item value={3}>malpractices</Dropdown.Item>
+                <Dropdown.Item value={4}>deception</Dropdown.Item>
+                <Dropdown.Item value={5}>heterodox eschatology</Dropdown.Item>
+                <Dropdown.Item value={6}>
+                  heterodox opinion of God
+                </Dropdown.Item>
+                <Dropdown.Item value={7}>
+                  alternative social structure
+                </Dropdown.Item>
+                <Dropdown.Item value={8}>
+                  heretical practices described
+                </Dropdown.Item>
+                <Dropdown.Item value={9}>
+                  heresiarch's self-deification
+                </Dropdown.Item>
+                <Dropdown.Item value={10}>
+                  against Church's tradition
+                </Dropdown.Item>
+                <Dropdown.Item value={11}>martyrdom</Dropdown.Item>
               </Form>
             </DropdownButton>
           </InputGroup>
+          {filterPanel()}
         </div>
         <div id="legend">
           <b>Legend</b>
