@@ -854,54 +854,55 @@ const FilterTree: React.FC = ({}) => {
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="61" className="ps-4">
-              heterodox attitude to Trinity
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="611">
-              <small className="ps-4 text-secondary">antitrinitarism</small>
-            </Dropdown.Item>
-            <Dropdown.Item value="612">
-              <small className="ps-4 text-secondary">
-                heterodox attitude to Trinity
-              </small>
-            </Dropdown.Item>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+                  <Dropdown.Item value="61" className="ps-4">
+                    heterodox attitude to Trinity
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="611">
+                    <small className="ps-4 text-secondary">
+                      antitrinitarism
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="612">
+                    <small className="ps-4 text-secondary">
+                      heterodox attitude to Trinity
+                    </small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="62" className="ps-4">
-              heterodox christology
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="621">
-              <small className="ps-4 text-secondary">docetism</small>
-            </Dropdown.Item>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+                  <Dropdown.Item value="62" className="ps-4">
+                    heterodox christology
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="621">
+                    <small className="ps-4 text-secondary">docetism</small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="63" className="ps-4">
-              heterodox cosmogony
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="631">
-              <small className="ps-4 text-secondary">
-                God did not create this world
-              </small>
-            </Dropdown.Item>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+                  <Dropdown.Item value="63" className="ps-4">
+                    heterodox cosmogony
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="631">
+                    <small className="ps-4 text-secondary">
+                      God did not create this world
+                    </small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
             <Dropdown.Divider />
-
 
             <Dropdown.Item value={3}>
               <b>malpractices</b>
@@ -909,40 +910,42 @@ const FilterTree: React.FC = ({}) => {
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="31" className="ps-4">
-              debauchery
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="311">
-              <small className="ps-4 text-secondary">sodomy</small>
-            </Dropdown.Item>
-            <Dropdown.Item value="312">
-              <small className="ps-4 text-secondary">luxuria</small>
-            </Dropdown.Item>
-            <Dropdown.Item value="313">
-              <small className="ps-4 text-secondary">pandering</small>
-            </Dropdown.Item>
-            <Dropdown.Item value="314">
-              <small className="ps-4 text-secondary">hedonism</small>
-            </Dropdown.Item>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+                  <Dropdown.Item value="31" className="ps-4">
+                    debauchery
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="311">
+                    <small className="ps-4 text-secondary">sodomy</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="312">
+                    <small className="ps-4 text-secondary">luxuria</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="313">
+                    <small className="ps-4 text-secondary">pandering</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="314">
+                    <small className="ps-4 text-secondary">hedonism</small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="32" className="ps-4">
-              malpractices
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="321">
-              <small className="ps-4 text-secondary">adoratio diaboli</small>
-            </Dropdown.Item>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+                  <Dropdown.Item value="32" className="ps-4">
+                    malpractices
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="321">
+                    <small className="ps-4 text-secondary">
+                      adoratio diaboli
+                    </small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
             <Dropdown.Divider />
 
             <Dropdown.Item value={11}>
@@ -951,24 +954,24 @@ const FilterTree: React.FC = ({}) => {
             <Accordion flush>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
-            <Dropdown.Item value="111" className="ps-4">
-              martyrdom
-            </Dropdown.Item>
-            </Accordion.Header>
-            <Accordion.Body>
-            <Dropdown.Item value="1111">
-              <small className="ps-4 text-secondary">
-                preparedness for martyrdom
-              </small>
-            </Dropdown.Item>
-            <Dropdown.Item value="1112">
-              <small className="ps-4 text-secondary">
-                undergoing martyrdom
-              </small>
-            </Dropdown.Item>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+                  <Dropdown.Item value="111" className="ps-4">
+                    martyrdom
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="1111">
+                    <small className="ps-4 text-secondary">
+                      preparedness for martyrdom
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="1112">
+                    <small className="ps-4 text-secondary">
+                      undergoing martyrdom
+                    </small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </Form>
         </Offcanvas.Body>
       </Offcanvas>
