@@ -20,21 +20,22 @@ const MentionBox: React.FC = ({}) => {
   );
 
   function buildHeader() {
-    let header =
-      selectedMentionIds.length > 0 ? (
-          <b>Mentions</b>
-      ) : (
-        ""
-      );
+    let header = selectedMentionIds.length > 0 ? <b>Mentions</b> : "";
     return header;
   }
 
-  function replaceHashes(val: string) {
+  function replaceHashes(val: string | undefined) {
     if (val) {
       return val
         .replace(/ #/gi, "; ")
         .replace(/^#/gi, "")
         .replace(/\n#/gi, "; ");
+    }
+  }
+
+  function replaceTildas(val: string) {
+    if (val) {
+      return val.replace(/~V~/gi, "");
     }
   }
 
@@ -85,10 +86,12 @@ const MentionBox: React.FC = ({}) => {
                       <small>{replaceHashes(mention.heretic_label)}</small>
                     </div>
                     <div>
-                      <small className="text-muted">
-                        Number/Amount of heretics:
-                      </small>{" "}
-                      <small>{mention.heretics_amount_label}</small>
+                      <small className="text-muted">Number of heretics:</small>{" "}
+                      <small>
+                        {replaceHashes(
+                          replaceTildas(mention.heretics_amount_label)
+                        )}
+                      </small>
                     </div>
                     <div>
                       <small className="text-muted">
