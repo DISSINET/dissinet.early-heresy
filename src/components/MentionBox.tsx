@@ -29,7 +29,8 @@ const MentionBox: React.FC = ({}) => {
       val = val
         .replace(/ #/gi, "; ")
         .replace(/^#/gi, "")
-        .replace(/\n#/gi, "; ");
+        .replace(/\n#/gi, "; ")
+        .replace(/\.;/gi, ".");
       return checkNodata(val);
     }
   }
