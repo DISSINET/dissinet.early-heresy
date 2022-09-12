@@ -26,10 +26,11 @@ const MentionBox: React.FC = ({}) => {
 
   function replaceHashes(val: string | undefined) {
     if (val) {
-      return val
+      val = val
         .replace(/ #/gi, "; ")
         .replace(/^#/gi, "")
         .replace(/\n#/gi, "; ");
+      return checkNodata(val);
     }
   }
 
@@ -37,6 +38,15 @@ const MentionBox: React.FC = ({}) => {
     if (val) {
       return val.replace(/~V~/gi, "");
     }
+  }
+
+  function checkNodata(val: string | undefined) {
+    if (
+      ["VALUE!", "#VALUE!", "C1067", "NS", "", undefined].includes(String(val))
+    ) {
+      return "not stated by the source";
+    }
+    return val;
   }
 
   function buildMentionCards() {
@@ -56,7 +66,7 @@ const MentionBox: React.FC = ({}) => {
                 {mention.id}
               </Badge>
               &nbsp;&nbsp;&nbsp;
-              <strong> {mention.label}</strong>
+              <strong> {mention.label_and_source_concatenated}</strong>
             </Toast.Header>
             <Toast.Body>
               <small className="text-muted">
@@ -118,7 +128,7 @@ const MentionBox: React.FC = ({}) => {
                     <div>
                       <small className="text-muted">Other persons:</small>{" "}
                       <small>
-                        {replaceHashes(mention.persons_or_groups_other_label)}
+                        {replaceHashes(mention.person_or_groups_other_label)}
                       </small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
