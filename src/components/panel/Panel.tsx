@@ -36,9 +36,12 @@ const PanelComponent: React.FC = ({}) => {
       if (val.case_id === case_id) {
         matchingMentions.push(val.id);
         let locationsArray = val.location_primary_id
-          ? val.location_primary_id.split(", ")
+          ? val.location_primary_id.split(" ")
           : [];
-        matchingLocations.push(...locationsArray);
+        let cleanedLocationsArray = locationsArray.map((e: string) => {
+          return e.replace("#", "").replace("[", "").replace("]", "");
+        });
+        matchingLocations.push(...cleanedLocationsArray);
       }
     });
     return [matchingMentions, matchingLocations];

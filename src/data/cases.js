@@ -322,7 +322,7 @@ const cases = {
     case_id: "E1031",
     case_label: "manicheans at Agen",
     year_start_post_quem: "~1150",
-    year_start_ante_quem:"~1150",
+    year_start_ante_quem: "~1150",
     year_end_post_quem: "~1150",
     year_end_ante_quem: "~1150",
     year_approximate: "y",
