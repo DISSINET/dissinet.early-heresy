@@ -156,6 +156,9 @@ const MentionBox: React.FC = ({}) => {
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
 
                     <div>
+                      <small className="text-muted">Religion</small>{" "}
+                    </div>
+                    <div>
                       <small className="text-muted">Beliefs:</small>{" "}
                       <small>{replaceHashes(mention.beliefs_label)}</small>
                     </div>
@@ -164,6 +167,9 @@ const MentionBox: React.FC = ({}) => {
                       <small>{replaceHashes(mention.practice_label)}</small>
                     </div>
                     <Dropdown.Divider style={{ opacity: 0.1 }} />
+                    <div>
+                      <small className="text-muted">Intervention</small>{" "}
+                    </div>
                     <div>
                       <small className="text-muted">Dealing with heresy:</small>{" "}
                       <small>

@@ -30,11 +30,11 @@ const FilterTree: React.FC = ({}) => {
         style={{ marginBottom: "-5px", cursor: "pointer" }}
         onClick={handleShowBeliefs}
       >
-        <InputGroup.Text>by beliefs and practices</InputGroup.Text>
+        <InputGroup.Text>by religion</InputGroup.Text>
       </InputGroup>
       <Offcanvas show={showBeliefs} onHide={handleCloseBeliefs} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Filter by beliefs and practices</Offcanvas.Title>
+          <Offcanvas.Title>Filter by religion</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>
@@ -981,11 +981,11 @@ const FilterTree: React.FC = ({}) => {
         style={{ marginTop: "10px", cursor: "pointer" }}
         onClick={handleShowDealing}
       >
-        <InputGroup.Text>by dealing and outcome</InputGroup.Text>
+        <InputGroup.Text>by intervention</InputGroup.Text>
       </InputGroup>
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Filter by dealing and outcome</Offcanvas.Title>
+          <Offcanvas.Title>Filter by intervention</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>
