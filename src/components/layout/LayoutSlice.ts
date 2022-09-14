@@ -33,10 +33,12 @@ export const layoutSlice = createSlice({
       state.selectedCaseIds.push(...newSelectedCaseIds);
     },
     selectLocation: (state, action: PayloadAction<Array<string>>) => {
+      //select this set of locations -- used by case deselect
       let newSelectedLocations = action.payload;
       state.selectedLocations = newSelectedLocations;
     },
     addLocation: (state, action: PayloadAction<Array<string>>) => {
+      //append to existing locaiton set -- used by case select
       let newSelectedLocations = action.payload;
       state.selectedLocations.push(...newSelectedLocations);
     },

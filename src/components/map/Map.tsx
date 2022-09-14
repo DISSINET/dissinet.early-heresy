@@ -34,10 +34,7 @@ const MapComponent: React.FC = ({}) => {
     let matchingMentions: any = [];
     let matchingCases: any = new Set();
     Object.values(mentions).map((val: any) => {
-      if (
-        val.location_primary_id &&
-        val.location_primary_id.includes(location_id)
-      ) {
+      if (val.location_id && val.location_id.includes(location_id)) {
         matchingMentions.push(val.id);
         matchingCases.add(val.case_id);
       }
@@ -84,7 +81,7 @@ const MapComponent: React.FC = ({}) => {
   function getColor(feature: any) {
     if (
       selectedLocations.length < 1 ||
-      selectedLocations.includes(feature.properties.id)
+      selectedLocations.includes(String(feature.properties.id))
     ) {
       return "#0000dc";
     } else {
@@ -92,6 +89,7 @@ const MapComponent: React.FC = ({}) => {
     }
   }
 
+  //not working now
   function getHalo(feature: any) {
     let halo = [0, 1];
     if (selectedLocations.includes(feature.properties.id)) {

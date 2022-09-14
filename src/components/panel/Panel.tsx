@@ -35,13 +35,12 @@ const PanelComponent: React.FC = ({}) => {
     Object.values(mentions).map((val: any) => {
       if (val.case_id === case_id) {
         matchingMentions.push(val.id);
-        let locationsArray = val.location_primary_id
-          ? val.location_primary_id.split(" ")
-          : [];
+        let locationsArray = val.location_id ? val.location_id.split(" ") : [];
         let cleanedLocationsArray = locationsArray.map((e: string) => {
           return e.replace("#", "").replace("[", "").replace("]", "");
         });
-        matchingLocations.push(...cleanedLocationsArray);
+        let deduplicatedLocationsArray = new Set(cleanedLocationsArray);
+        matchingLocations = Array.from(deduplicatedLocationsArray);
       }
     });
     return [matchingMentions, matchingLocations];
