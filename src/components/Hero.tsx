@@ -18,7 +18,7 @@ const Hero: React.FC = ({}) => {
         Early Heresy{" "}
         <span style={{ fontSize: "13px" }}> v. {packageJson.version}</span>
       </h4>
-      <span>Early heresy in the west </span>
+      <span>Heresy cases in the West, c.1000-c.1150</span>
     </div>
   );
 };
