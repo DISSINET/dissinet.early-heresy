@@ -82,6 +82,10 @@ const MentionBox: React.FC = ({}) => {
                 <small className="text-muted">Locations:</small>{" "}
                 <small>{replaceHashes(mention.location_label)}</small>
               </div>
+              <div>
+                <small className="text-muted">Primary location:</small>{" "}
+                <small>{replaceHashes(mention.location_primary_label)}</small>
+              </div>
               <Dropdown.Divider style={{ opacity: 0.1 }} />
               <Accordion flush>
                 <Accordion.Item eventKey="0">

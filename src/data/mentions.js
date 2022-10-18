@@ -6864,4 +6864,5 @@ const mentions = {
     editor: "Lidia Hinz-Wieczorek",
   },
 };
-export default mentions
+export default mentions;
+

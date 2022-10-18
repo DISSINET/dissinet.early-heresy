@@ -29,18 +29,26 @@ const PanelComponent: React.FC = ({}) => {
   );
   const dispatch = useAppDispatch();
 
+  function treatLocationsEntry(locationsEntry: string) {
+    return locationsEntry
+      .replace(/#/gi, "")
+      .replace(/\[/gi, "")
+      .replace(/\]/gi, "")
+      .replace(/\n/gi, " ");
+  }
+
   function getMentionsAndLocations(case_id: string) {
     let matchingMentions: any = [];
     let matchingLocations: any = [];
     Object.values(mentions).map((val: any) => {
       if (val.case_id === case_id) {
         matchingMentions.push(val.id);
-        let locationsArray = val.location_id ? val.location_id.split(" ") : [];
-        let cleanedLocationsArray = locationsArray.map((e: string) => {
-          return e.replace("#", "").replace("[", "").replace("]", "");
-        });
-        let deduplicatedLocationsArray = new Set(cleanedLocationsArray);
-        matchingLocations = Array.from(deduplicatedLocationsArray);
+
+        let locationsArray = val.location_primary_id
+          ? treatLocationsEntry(val.location_primary_id).split(" ")
+          : [];
+        let deduplicatedLocationsArray = new Set(locationsArray);
+        matchingLocations.push(...Array.from(deduplicatedLocationsArray));
       }
     });
     return [matchingMentions, matchingLocations];

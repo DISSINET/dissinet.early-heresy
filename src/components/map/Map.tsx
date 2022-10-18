@@ -29,12 +29,60 @@ const MapComponent: React.FC = ({}) => {
     (state) => state.layout.selectedLocations
   );
   const dispatch = useAppDispatch();
+  const allowedLocations = [
+    "L0008",
+    "L0010",
+    "L0103",
+    "L0104",
+    "L0080",
+    "L0023",
+    "L0013",
+    "L0005",
+    "L0034",
+    "L0037",
+    "L0014",
+    "L0065",
+    "L0028",
+    "L0044",
+    "L0045",
+    "L0117",
+    "L0046",
+    "L0048",
+    "L0049",
+    "L0052",
+    "L0053",
+    "L0056",
+    "L0109",
+    "L0060",
+    "L0105",
+    "L0067",
+    "L0071",
+    "L0075",
+    "L0078",
+    "L0079",
+    "L0113",
+    "L0106",
+    "L0091",
+    "L0090",
+    "L0089",
+    "L0107",
+    "L0077",
+    "L0108",
+    "L0096",
+    "L0042",
+    "L0036",
+    "L0119",
+    "L0110",
+  ];
 
   function getMentions(location_id: string) {
     let matchingMentions: any = [];
     let matchingCases: any = new Set();
     Object.values(mentions).map((val: any) => {
-      if (val.location_primary_id && val.location_primary_id.includes(location_id)) {
+      if (
+        val.location_primary_id &&
+        val.location_primary_id.includes(location_id)
+      ) {
         matchingMentions.push(val.id);
         matchingCases.add(val.case_id);
       }
@@ -43,39 +91,43 @@ const MapComponent: React.FC = ({}) => {
   }
 
   function setCircles(feature: any, latlng: any) {
-    const Popup = () => {
-      return (
-        <div style={{ fontFamily: "Roboto" }}>
-          <p>
-            <b>{feature.properties.label}</b>{" "}
-            <i>{feature.properties.name_modern}</i>
-          </p>
-        </div>
+    if (allowedLocations.includes(feature.properties.id)) {
+      const Popup = () => {
+        return (
+          <div style={{ fontFamily: "Roboto" }}>
+            <p>
+              <b>{feature.properties.label}</b>{" "}
+              <i>{feature.properties.name_modern}</i>
+            </p>
+          </div>
+        );
+      };
+      const popupOptions = {
+        minWidth: 150,
+        maxWidth: 200,
+        className: "popup-classname",
+      };
+      let [locationMentions, locationCases] = getMentions(
+        feature.properties.id
       );
-    };
-    const popupOptions = {
-      minWidth: 150,
-      maxWidth: 200,
-      className: "popup-classname",
-    };
-    let [locationMentions, locationCases] = getMentions(feature.properties.id);
-    const popupContent = ReactDOMServer.renderToString(<Popup />);
-    var marker = L.circleMarker(latlng);
-    marker.bindPopup(popupContent, popupOptions);
-    marker.on({
-      click: () => {
-        dispatch(selectLocation([feature.properties.id]));
-        dispatch(selectMentions(locationMentions));
-        dispatch(selectCases(Array.from(locationCases)));
-      },
-      mouseover: () => {
-        marker.openPopup();
-      },
-      mouseout: () => {
-        marker.closePopup();
-      },
-    });
-    return marker;
+      const popupContent = ReactDOMServer.renderToString(<Popup />);
+      var marker = L.circleMarker(latlng);
+      marker.bindPopup(popupContent, popupOptions);
+      marker.on({
+        click: () => {
+          dispatch(selectLocation([feature.properties.id]));
+          dispatch(selectMentions(locationMentions));
+          dispatch(selectCases(Array.from(locationCases)));
+        },
+        mouseover: () => {
+          marker.openPopup();
+        },
+        mouseout: () => {
+          marker.closePopup();
+        },
+      });
+      return marker;
+    }
   }
 
   function getColor(feature: any) {
