@@ -235,7 +235,7 @@ const cases = {
     case_label: "eccentric heretic Eudo of Stella",
     year_start_post_quem: "~1145",
     year_start_ante_quem: "~1145",
-    year_end_post_quem: "1145",
+    year_end_post_quem: "1148",
     year_end_ante_quem: "1148",
     year_approximate: "y",
     dealing_with_them_id: "C1266, C1048, C1067, C1852",
