@@ -60,6 +60,11 @@ const FilterTree: React.FC = ({}) => {
                       rejection of writings of the doctors of the Church
                     </small>
                   </Dropdown.Item>
+                  <Dropdown.Item value="1011">
+                    <small className="ps-4 text-secondary">
+                      rejection of the Old Testament
+                    </small>
+                  </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -109,6 +114,11 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="112">
                     <small className="ps-4 text-secondary">
                       priests do not have the power to bind or loose
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="112">
+                    <small className="ps-4 text-secondary">
+                      bishops do not possess the Holy Spirit to ordain
                     </small>
                   </Dropdown.Item>
                 </Accordion.Body>
@@ -256,6 +266,15 @@ const FilterTree: React.FC = ({}) => {
                       rejection of pilgrimages
                     </small>
                   </Dropdown.Item>
+                  <Dropdown.Item value="1219">
+                    <small className="ps-4 text-secondary">
+                      preter apostolos et martyres
+                    </small>
+                    <br />
+                    <small className="ps-4 text-secondary">
+                      neminem debere venerari
+                    </small>
+                  </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -347,6 +366,11 @@ const FilterTree: React.FC = ({}) => {
                       rejection of church buildings as sacred
                     </small>
                   </Dropdown.Item>
+                  <Dropdown.Item value="1234">
+                    <small className="ps-4 text-secondary">
+                      rejection of cemeteries
+                    </small>
+                  </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -366,11 +390,6 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="1242">
                     <small className="ps-4 text-secondary">
                       disrespect for effigies of Christ
-                    </small>
-                  </Dropdown.Item>
-                  <Dropdown.Item value="1243">
-                    <small className="ps-4 text-secondary">
-                      disrespect for holy images
                     </small>
                   </Dropdown.Item>
                 </Accordion.Body>
@@ -402,6 +421,11 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="713">
                     <small className="ps-4 text-secondary">
                       heretical bishops
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="713">
+                    <small className="ps-4 text-secondary">
+                      self-proclamation as preacher
                     </small>
                   </Dropdown.Item>
                 </Accordion.Body>
@@ -559,6 +583,24 @@ const FilterTree: React.FC = ({}) => {
                       multiple genuflections
                     </small>
                   </Dropdown.Item>
+                  <Dropdown.Item value="261">
+                    <small className="ps-4 text-secondary">
+                      relinquishing the world
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="261">
+                    <small className="ps-4 text-secondary">
+                      non-offensive behaviour
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="261">
+                    <small className="ps-4 text-secondary">charity</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="261">
+                    <small className="ps-4 text-secondary">
+                      importance of manual labor
+                    </small>
+                  </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -666,8 +708,24 @@ const FilterTree: React.FC = ({}) => {
 
             <Dropdown.Divider />
             <Dropdown.Item value={9}>
-              <b>heresiarch's self-deification</b>
+              <b>cult of heresiarch</b>
             </Dropdown.Item>
+            <Accordion flush>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <Dropdown.Item value="81" className="ps-4">
+                    heresiarch's self-deification
+                  </Dropdown.Item>
+                </Accordion.Header>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>
+                  <Dropdown.Item value="81" className="ps-4">
+                    cult of hresiarch
+                  </Dropdown.Item>
+                </Accordion.Header>
+              </Accordion.Item>
+            </Accordion>
 
             <Dropdown.Divider />
             <Dropdown.Item value={8}>
@@ -694,6 +752,21 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="813">
                     <small className="ps-4 text-secondary">
                       imposition of hands
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="813">
+                    <small className="ps-4 text-secondary">
+                      heretical Mass celebration
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="813">
+                    <small className="ps-4 text-secondary">
+                      conventicula hereticorum
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="813">
+                    <small className="ps-4 text-secondary">
+                      heretical Eucharist consecration
                     </small>
                   </Dropdown.Item>
 
@@ -730,11 +803,6 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="514">
                     <small className="ps-4 text-secondary">
                       good deeds are superfluous for salvation of the dead
-                    </small>
-                  </Dropdown.Item>
-                  <Dropdown.Item value="515">
-                    <small className="ps-4 text-secondary">
-                      rejection of praying for the deceased
                     </small>
                   </Dropdown.Item>
                   <Dropdown.Item value="516">
@@ -792,14 +860,9 @@ const FilterTree: React.FC = ({}) => {
                   </Dropdown.Item>
                 </Accordion.Header>
                 <Accordion.Body>
-                  <Dropdown.Item value="541">
-                    <small className="ps-4 text-secondary">
-                      exclusivity of salvation
-                    </small>
-                  </Dropdown.Item>
                   <Dropdown.Item value="542">
                     <small className="ps-4 text-secondary">
-                      self-proclamation as elect
+                      exclusivistic ecclesiology
                     </small>
                   </Dropdown.Item>
                 </Accordion.Body>
@@ -848,6 +911,27 @@ const FilterTree: React.FC = ({}) => {
             </Accordion>
 
             <Dropdown.Divider />
+            <Dropdown.Item value={33}>
+              <b>heterodox mariology</b>
+            </Dropdown.Item>
+            <Accordion flush>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <Dropdown.Item value="331" className="ps-4">
+                    heterodox mariology
+                  </Dropdown.Item>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Dropdown.Item value="611">
+                    <small className="ps-4 text-secondary">
+                      heterodox mariological attitude
+                    </small>
+                  </Dropdown.Item>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+
+            <Dropdown.Divider />
             <Dropdown.Item value={6}>
               <b>heterodox opinion of God</b>
             </Dropdown.Item>
@@ -869,6 +953,11 @@ const FilterTree: React.FC = ({}) => {
                       heterodox attitude to Trinity
                     </small>
                   </Dropdown.Item>
+                  <Dropdown.Item value="612">
+                    <small className="ps-4 text-secondary">
+                      heterodox attitude to the Holy Spirit
+                    </small>
+                  </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -882,6 +971,11 @@ const FilterTree: React.FC = ({}) => {
                 <Accordion.Body>
                   <Dropdown.Item value="621">
                     <small className="ps-4 text-secondary">docetism</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="621">
+                    <small className="ps-4 text-secondary">
+                      rejection of Christ
+                    </small>
                   </Dropdown.Item>
                 </Accordion.Body>
               </Accordion.Item>
@@ -941,6 +1035,14 @@ const FilterTree: React.FC = ({}) => {
                   <Dropdown.Item value="321">
                     <small className="ps-4 text-secondary">
                       adoratio diaboli
+                    </small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="321">
+                    <small className="ps-4 text-secondary">idolatry</small>
+                  </Dropdown.Item>
+                  <Dropdown.Item value="321">
+                    <small className="ps-4 text-secondary">
+                      odious practices
                     </small>
                   </Dropdown.Item>
                 </Accordion.Body>
