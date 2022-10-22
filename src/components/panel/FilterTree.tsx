@@ -993,16 +993,16 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item value="1">
               <b>exclusion/shaming</b>
             </Dropdown.Item>
-            <Dropdown.Item value="11" className="ps-4">
+            <Dropdown.Item value="C1097" className="ps-4">
               degradation
             </Dropdown.Item>
-            <Dropdown.Item value="12" className="ps-4">
+            <Dropdown.Item value="C1106" className="ps-4">
               excommunication
             </Dropdown.Item>
-            <Dropdown.Item value="13" className="ps-4">
+            <Dropdown.Item value="C1228" className="ps-4">
               exhumation
             </Dropdown.Item>
-            <Dropdown.Item value="14" className="ps-4">
+            <Dropdown.Item value="C1862" className="ps-4">
               banishment
             </Dropdown.Item>
 
@@ -1010,10 +1010,10 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item value="2">
               <b>ordeal</b>
             </Dropdown.Item>
-            <Dropdown.Item value="21" className="ps-4">
+            <Dropdown.Item value="C1813" className="ps-4">
               trial by water
             </Dropdown.Item>
-            <Dropdown.Item value="22" className="ps-4">
+            <Dropdown.Item value="C2296" className="ps-4">
               trial by Eucharist
             </Dropdown.Item>
 
@@ -1021,40 +1021,40 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item value="3">
               <b>violence</b>
             </Dropdown.Item>
-            <Dropdown.Item value="31" className="ps-4">
+            <Dropdown.Item value="C1058" className="ps-4">
               extermination of heretics
             </Dropdown.Item>
-            <Dropdown.Item value="31" className="ps-4">
+            <Dropdown.Item value="C1063" className="ps-4">
               burning
             </Dropdown.Item>
-            <Dropdown.Item value="32" className="ps-4">
+            <Dropdown.Item value="C1098" className="ps-4">
               corporeal mutilation
             </Dropdown.Item>
-            <Dropdown.Item value="33" className="ps-4">
+            <Dropdown.Item value="C1147" className="ps-4">
               death by fire
             </Dropdown.Item>
-            <Dropdown.Item value="34" className="ps-4">
+            <Dropdown.Item value="C1048" className="ps-4">
               death by sword
             </Dropdown.Item>
-            <Dropdown.Item value="35" className="ps-4">
+            <Dropdown.Item value="C1266" className="ps-4">
               apprehension
             </Dropdown.Item>
-            <Dropdown.Item value="36" className="ps-4">
+            <Dropdown.Item value="C1282" className="ps-4">
               hanging
             </Dropdown.Item>
-            <Dropdown.Item value="37" className="ps-4">
+            <Dropdown.Item value="1737" className="ps-4">
               killing of a heretic
             </Dropdown.Item>
-            <Dropdown.Item value="38" className="ps-4">
+            <Dropdown.Item value="C1852" className="ps-4">
               incarceration
             </Dropdown.Item>
-            <Dropdown.Item value="39" className="ps-4">
+            <Dropdown.Item value="C1990" className="ps-4">
               military action
             </Dropdown.Item>
-            <Dropdown.Item value="310" className="ps-4">
+            <Dropdown.Item value="C2297" className="ps-4">
               death by mob lynching
             </Dropdown.Item>
-            <Dropdown.Item value="311" className="ps-4">
+            <Dropdown.Item value="C2298" className="ps-4">
               attempted mob lynching
             </Dropdown.Item>
             <Dropdown.Divider />
@@ -1062,19 +1062,19 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item value="4">
               <b>persuation</b>
             </Dropdown.Item>
-            <Dropdown.Item value="41" className="ps-4">
+            <Dropdown.Item value="C1048" className="ps-4">
               public debate
             </Dropdown.Item>
-            <Dropdown.Item value="42" className="ps-4">
+            <Dropdown.Item value="C1051" className="ps-4">
               reconversion to Catholicism
             </Dropdown.Item>
-            <Dropdown.Item value="43" className="ps-4">
+            <Dropdown.Item value="C1265" className="ps-4">
               hearing
             </Dropdown.Item>
-            <Dropdown.Item value="44" className="ps-4">
+            <Dropdown.Item value="C1323" className="ps-4">
               abjuration of heretical errors
             </Dropdown.Item>
-            <Dropdown.Item value="45" className="ps-4">
+            <Dropdown.Item value="C1638" className="ps-4">
               preaching mission
             </Dropdown.Item>
             <Dropdown.Divider />
@@ -1082,22 +1082,22 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item value="5">
               <b>other</b>
             </Dropdown.Item>
-            <Dropdown.Item value="51" className="ps-4">
+            <Dropdown.Item value="C1740" className="ps-4">
               death of a heretic
             </Dropdown.Item>
-            <Dropdown.Item value="52" className="ps-4">
+            <Dropdown.Item value="C1052" className="ps-4">
               suicide
             </Dropdown.Item>
-            <Dropdown.Item value="53" className="ps-4">
+            <Dropdown.Item value="C1367" className="ps-4">
               divine punishment
             </Dropdown.Item>
-            <Dropdown.Item value="54" className="ps-4">
+            <Dropdown.Item value="C1569" className="ps-4">
               relapse into heresy
             </Dropdown.Item>
-            <Dropdown.Item value="55" className="ps-4">
+            <Dropdown.Item value="C2272" className="ps-4">
               flight
             </Dropdown.Item>
-            <Dropdown.Item value="56" className="ps-4">
+            <Dropdown.Item value="C3237" className="ps-4">
               attempted flight
             </Dropdown.Item>
           </Form>
