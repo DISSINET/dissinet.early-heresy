@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Hero from "./../Hero";
 import FilterTree from "./FilterTree";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { ListGroup, Badge, Button, Image } from "react-bootstrap";
+import { ListGroup, Badge, Accordion, Button, Image } from "react-bootstrap";
 import {
   addCase,
   selectCases,
@@ -202,14 +202,36 @@ const PanelComponent: React.FC = ({}) => {
         >
           {caseList()}
         </div>
+
         <div id="filters">
-          <b>Filter</b>
-          <FilterTree />
+          <Accordion flush defaultActiveKey="0">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                <b>Filter</b>
+              </Accordion.Header>
+              <Accordion.Body>
+                <br />
+                <FilterTree />
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
         <div id="legend">
-          <b>Legend</b>
-          <br />
-          <Image src={legend} alt="map legend" style={{ maxHeight: "100px" }} />
+          <Accordion flush defaultActiveKey="0">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                <b>Legend</b>
+              </Accordion.Header>
+              <Accordion.Body>
+                <br />
+                <Image
+                  src={legend}
+                  alt="map legend"
+                  style={{ maxHeight: "100px" }}
+                />
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
         <div
           className="pt-12"
