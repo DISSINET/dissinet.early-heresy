@@ -210,7 +210,6 @@ const PanelComponent: React.FC = ({}) => {
                 <b>Filter</b>
               </Accordion.Header>
               <Accordion.Body>
-                <br />
                 <FilterTree />
               </Accordion.Body>
             </Accordion.Item>
@@ -223,11 +222,10 @@ const PanelComponent: React.FC = ({}) => {
                 <b>Legend</b>
               </Accordion.Header>
               <Accordion.Body>
-                <br />
                 <Image
                   src={legend}
                   alt="map legend"
-                  style={{ maxHeight: "100px" }}
+                  style={{ maxHeight: "100px", marginTop: "8px" }}
                 />
               </Accordion.Body>
             </Accordion.Item>

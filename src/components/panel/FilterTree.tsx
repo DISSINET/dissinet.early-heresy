@@ -27,7 +27,7 @@ const FilterTree: React.FC = ({}) => {
     <>
       <InputGroup
         size="sm"
-        style={{ marginBottom: "-5px", cursor: "pointer" }}
+        style={{ marginTop: "8px", marginBottom: "-5px", cursor: "pointer" }}
         onClick={handleShowBeliefs}
       >
         <InputGroup.Text>by religion</InputGroup.Text>
