@@ -6,6 +6,7 @@ import {
   Offcanvas,
   Dropdown,
 } from "react-bootstrap";
+import outcome from "../../data/outcome";
 
 const FilterTree: React.FC = ({}) => {
   //filter controls
@@ -23,6 +24,34 @@ const FilterTree: React.FC = ({}) => {
   const handleCloseDealing = () => setShowDealing(false);
   const handleShowDealing = () => setShowDealing(true);
 
+  function buildOutcomeTree() {
+    let outcome_ag1 = "";
+    const outcomeIds = Object.keys(outcome);
+    let outcomeTree = outcomeIds.map((e) => {
+      if (outcome[e].aggregation_level1 != outcome_ag1) {
+        outcome_ag1 = outcome[e].aggregation_level1;
+        return (
+          <>
+            <Dropdown.Divider />
+            <Dropdown.Item value={10}>
+              <b>{outcome[e].aggregation_level1}</b>
+            </Dropdown.Item>
+            <Dropdown.Item value={outcome[e].id} className="ps-4">
+              {outcome[e].label}
+            </Dropdown.Item>
+          </>
+        );
+      } else {
+        return (
+          <Dropdown.Item value={outcome[e].id} className="ps-4">
+            {outcome[e].label}
+          </Dropdown.Item>
+        );
+      }
+    });
+    return outcomeTree;
+  }
+
   return (
     <>
       <InputGroup
@@ -39,6 +68,7 @@ const FilterTree: React.FC = ({}) => {
         <Offcanvas.Body>
           <Form>
             <Dropdown.Divider />
+
             <Dropdown.Item value={10}>
               <b>against Church's tradition</b>
             </Dropdown.Item>
@@ -1077,6 +1107,7 @@ const FilterTree: React.FC = ({}) => {
           </Form>
         </Offcanvas.Body>
       </Offcanvas>
+
       <InputGroup
         size="sm"
         className="mb-3"
@@ -1090,119 +1121,7 @@ const FilterTree: React.FC = ({}) => {
           <Offcanvas.Title>Filter by intervention</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Form>
-            <Dropdown.Divider />
-            <Dropdown.Item value="1">
-              <b>exclusion/shaming</b>
-            </Dropdown.Item>
-            <Dropdown.Item value="C1097" className="ps-4">
-              degradation
-            </Dropdown.Item>
-            <Dropdown.Item value="C1106" className="ps-4">
-              excommunication
-            </Dropdown.Item>
-            <Dropdown.Item value="C1228" className="ps-4">
-              exhumation
-            </Dropdown.Item>
-            <Dropdown.Item value="C1862" className="ps-4">
-              banishment
-            </Dropdown.Item>
-
-            <Dropdown.Divider />
-            <Dropdown.Item value="2">
-              <b>ordeal</b>
-            </Dropdown.Item>
-            <Dropdown.Item value="C1813" className="ps-4">
-              trial by water
-            </Dropdown.Item>
-            <Dropdown.Item value="C2296" className="ps-4">
-              trial by Eucharist
-            </Dropdown.Item>
-
-            <Dropdown.Divider />
-            <Dropdown.Item value="3">
-              <b>violence</b>
-            </Dropdown.Item>
-            <Dropdown.Item value="C1058" className="ps-4">
-              extermination of heretics
-            </Dropdown.Item>
-            <Dropdown.Item value="C1063" className="ps-4">
-              burning
-            </Dropdown.Item>
-            <Dropdown.Item value="C1098" className="ps-4">
-              corporeal mutilation
-            </Dropdown.Item>
-            <Dropdown.Item value="C1147" className="ps-4">
-              death by fire
-            </Dropdown.Item>
-            <Dropdown.Item value="C1048" className="ps-4">
-              death by sword
-            </Dropdown.Item>
-            <Dropdown.Item value="C1266" className="ps-4">
-              apprehension
-            </Dropdown.Item>
-            <Dropdown.Item value="C1282" className="ps-4">
-              hanging
-            </Dropdown.Item>
-            <Dropdown.Item value="1737" className="ps-4">
-              killing of a heretic
-            </Dropdown.Item>
-            <Dropdown.Item value="C1852" className="ps-4">
-              incarceration
-            </Dropdown.Item>
-            <Dropdown.Item value="C1990" className="ps-4">
-              military action
-            </Dropdown.Item>
-            <Dropdown.Item value="C2297" className="ps-4">
-              death by mob lynching
-            </Dropdown.Item>
-            <Dropdown.Item value="C2298" className="ps-4">
-              attempted mob lynching
-            </Dropdown.Item>
-            <Dropdown.Divider />
-
-            <Dropdown.Item value="4">
-              <b>persuation</b>
-            </Dropdown.Item>
-            <Dropdown.Item value="C1048" className="ps-4">
-              public debate
-            </Dropdown.Item>
-            <Dropdown.Item value="C1051" className="ps-4">
-              reconversion to Catholicism
-            </Dropdown.Item>
-            <Dropdown.Item value="C1265" className="ps-4">
-              hearing
-            </Dropdown.Item>
-            <Dropdown.Item value="C1323" className="ps-4">
-              abjuration of heretical errors
-            </Dropdown.Item>
-            <Dropdown.Item value="C1638" className="ps-4">
-              preaching mission
-            </Dropdown.Item>
-            <Dropdown.Divider />
-
-            <Dropdown.Item value="5">
-              <b>other</b>
-            </Dropdown.Item>
-            <Dropdown.Item value="C1740" className="ps-4">
-              death of a heretic
-            </Dropdown.Item>
-            <Dropdown.Item value="C1052" className="ps-4">
-              suicide
-            </Dropdown.Item>
-            <Dropdown.Item value="C1367" className="ps-4">
-              divine punishment
-            </Dropdown.Item>
-            <Dropdown.Item value="C1569" className="ps-4">
-              relapse into heresy
-            </Dropdown.Item>
-            <Dropdown.Item value="C2272" className="ps-4">
-              flight
-            </Dropdown.Item>
-            <Dropdown.Item value="C3237" className="ps-4">
-              attempted flight
-            </Dropdown.Item>
-          </Form>
+          <Form>{buildOutcomeTree()}</Form>
         </Offcanvas.Body>
       </Offcanvas>
     </>
