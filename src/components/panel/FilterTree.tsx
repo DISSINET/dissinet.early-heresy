@@ -34,17 +34,17 @@ const FilterTree: React.FC = ({}) => {
           <>
             <Dropdown.Divider />
             <Dropdown.Item value={10}>
-              <b>{outcome[e].aggregation_level1}</b>
+              <b><Form.Check type="checkbox" label={outcome[e].aggregation_level1} /></b>
             </Dropdown.Item>
             <Dropdown.Item value={outcome[e].id} className="ps-4">
-              {outcome[e].label}
+              <Form.Check type="checkbox" label={outcome[e].label} />
             </Dropdown.Item>
           </>
         );
       } else {
         return (
           <Dropdown.Item value={outcome[e].id} className="ps-4">
-            {outcome[e].label}
+          <Form.Check type="checkbox" label={outcome[e].label} />
           </Dropdown.Item>
         );
       }
