@@ -7,6 +7,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import outcome from "../../data/outcome";
+import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
 
 const FilterTree: React.FC = ({}) => {
@@ -28,13 +29,17 @@ const FilterTree: React.FC = ({}) => {
   function buildOutcomeTree() {
     let outcome_ag1 = "";
     const outcomeIds = Object.keys(outcome);
+    const outcomeAggregations = Object.values(outcome_aggregation_level1);
     let outcomeTree = outcomeIds.map((e) => {
       if (outcome[e].aggregation_level1 != outcome_ag1) {
         outcome_ag1 = outcome[e].aggregation_level1;
+        let selected_aggregation = outcomeAggregations.find(
+          (ag) => ag.label === outcome_ag1
+        );
         return (
           <>
             <Dropdown.Divider />
-            <Dropdown.Item value={10}>
+            <Dropdown.Item value={selected_aggregation && selected_aggregation.id}>
               <b>
                 <Form.Check
                   type="checkbox"
