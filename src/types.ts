@@ -9,3 +9,12 @@ export interface Outcome {
     aggregation_level1: string;
   };
 }
+
+export interface Practice {
+  [key: string]: {
+    id: string;
+    label: string;
+    aggregation_level1: string;
+    aggregation_level2: string;
+  };
+}

@@ -7,6 +7,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import outcome from "../../data/outcome";
+import practices from "../../data/practices";
 
 const FilterTree: React.FC = ({}) => {
   //filter controls
@@ -34,7 +35,12 @@ const FilterTree: React.FC = ({}) => {
           <>
             <Dropdown.Divider />
             <Dropdown.Item value={10}>
-              <b><Form.Check type="checkbox" label={outcome[e].aggregation_level1} /></b>
+              <b>
+                <Form.Check
+                  type="checkbox"
+                  label={outcome[e].aggregation_level1}
+                />
+              </b>
             </Dropdown.Item>
             <Dropdown.Item value={outcome[e].id} className="ps-4">
               <Form.Check type="checkbox" label={outcome[e].label} />
@@ -44,12 +50,70 @@ const FilterTree: React.FC = ({}) => {
       } else {
         return (
           <Dropdown.Item value={outcome[e].id} className="ps-4">
-          <Form.Check type="checkbox" label={outcome[e].label} />
+            <Form.Check type="checkbox" label={outcome[e].label} />
           </Dropdown.Item>
         );
       }
     });
     return outcomeTree;
+  }
+
+  function buildPracticeTree() {
+    let practice_ag1 = "";
+    let practice_ag2 = "";
+    const practiceIds = Object.keys(practices);
+    let practiceTree = practiceIds.map((e) => {
+      if (practices[e].aggregation_level1 != practice_ag1) {
+        practice_ag1 = practices[e].aggregation_level1;
+        practice_ag2 = practices[e].aggregation_level2;
+        return (
+          <>
+            <Dropdown.Divider />
+            <Dropdown.Item value={10}>
+              <b>
+                <Form.Check
+                  type="checkbox"
+                  label={practices[e].aggregation_level1}
+                />
+              </b>
+            </Dropdown.Item>
+            <Accordion flush>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <Dropdown.Item value="101" className="ps-4">
+                    <Form.Check
+                      type="checkbox"
+                      label={practices[e].aggregation_level2}
+                    />
+                  </Dropdown.Item>
+                </Accordion.Header>
+              </Accordion.Item>
+            </Accordion>
+          </>
+        );
+      } else {
+        if (practices[e].aggregation_level2 != practice_ag2) {
+          practice_ag2 = practices[e].aggregation_level2;
+          return (
+            <>
+              <Accordion flush>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>
+                    <Dropdown.Item className="ps-4">
+                      <Form.Check
+                        type="checkbox"
+                        label={practices[e].aggregation_level2}
+                      />
+                    </Dropdown.Item>
+                  </Accordion.Header>
+                </Accordion.Item>
+              </Accordion>
+            </>
+          );
+        }
+      }
+    });
+    return practiceTree;
   }
 
   return (
@@ -67,6 +131,7 @@ const FilterTree: React.FC = ({}) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>
+            {buildPracticeTree()}
             <Dropdown.Divider />
 
             <Dropdown.Item value={10}>

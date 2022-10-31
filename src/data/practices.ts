@@ -1,4 +1,6 @@
-const practices = {
+import { Practice } from "../types";
+
+const practices: Practice = {
   C1056: {
     id: "C1056",
     label: "partial rejection of the Old Testament",
@@ -8,6 +10,12 @@ const practices = {
   C2093: {
     id: "C2093",
     label: "rejection of writings of the doctors of the Church",
+    aggregation_level2: "against Church's authoritative writings",
+    aggregation_level1: "against Church's tradition",
+  },
+  C2222: {
+    id: "C2222",
+    label: "rejection of the Old Testament",
     aggregation_level2: "against Church's authoritative writings",
     aggregation_level1: "against Church's tradition",
   },
@@ -21,12 +29,6 @@ const practices = {
     id: "C1167",
     label: "rejection of fasting",
     aggregation_level2: "against Church's practices",
-    aggregation_level1: "against Church's tradition",
-  },
-  C2222: {
-    id: "C2222",
-    label: "rejection of the Old Testament",
-    aggregation_level2: "against Church's authoritative writings",
     aggregation_level1: "against Church's tradition",
   },
   C2096: {
@@ -693,4 +695,3 @@ const practices = {
 };
 
 export default practices;
-
