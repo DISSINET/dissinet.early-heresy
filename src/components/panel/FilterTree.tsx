@@ -9,6 +9,8 @@ import {
 import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
+import { useAppSelector, useAppDispatch } from "./../../app/hooks";
+import { selectOutcomes } from "./../layout/LayoutSlice";
 
 const FilterTree: React.FC = ({}) => {
   //filter controls
@@ -25,6 +27,22 @@ const FilterTree: React.FC = ({}) => {
   const [showDealing, setShowDealing] = useState(false);
   const handleCloseDealing = () => setShowDealing(false);
   const handleShowDealing = () => setShowDealing(true);
+  const selectedOutcomes = useAppSelector(
+    (state) => state.layout.selectedOutcomes
+  );
+
+  const dispatch = useAppDispatch();
+
+  function selectOutcome(selectedId: string) {
+    let selectedOutcomeIds = new Set(selectedOutcomes);
+    if (selectedOutcomeIds.has(selectedId)) {
+      selectedOutcomeIds.delete(selectedId);
+    } else {
+      selectedOutcomeIds.add(selectedId);
+    }
+    console.log(selectedOutcomeIds);
+    dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
+  }
 
   function buildOutcomeTree() {
     let outcome_ag1 = "";
@@ -33,29 +51,56 @@ const FilterTree: React.FC = ({}) => {
     let outcomeTree = outcomeIds.map((e) => {
       if (outcome[e].aggregation_level1 != outcome_ag1) {
         outcome_ag1 = outcome[e].aggregation_level1;
-        let selected_aggregation = outcomeAggregations.find(
-          (ag) => ag.label === outcome_ag1
-        );
+        let selected_aggregation =
+          outcomeAggregations.find((ag) => ag.label === outcome_ag1) ||
+          outcomeAggregations[0];
         return (
           <>
             <Dropdown.Divider />
-            <Dropdown.Item value={selected_aggregation && selected_aggregation.id}>
+            <Dropdown.Item
+              id={selected_aggregation.id}
+              onClick={() => selectOutcome(selected_aggregation.id)}
+            >
               <b>
                 <Form.Check
                   type="checkbox"
                   label={outcome[e].aggregation_level1}
+                  checked={
+                    true
+                      ? selectedOutcomes.includes(selected_aggregation.id)
+                      : false
+                  }
                 />
               </b>
             </Dropdown.Item>
-            <Dropdown.Item value={outcome[e].id} className="ps-4">
-              <Form.Check type="checkbox" label={outcome[e].label} />
+            <Dropdown.Item
+              id={outcome[e].id}
+              onClick={() => selectOutcome(outcome[e].id)}
+              className="ps-4"
+            >
+              <Form.Check
+                type="checkbox"
+                label={outcome[e].label}
+                checked={
+                  true ? selectedOutcomes.includes(outcome[e].id) : false
+                }
+              />
             </Dropdown.Item>
           </>
         );
       } else {
         return (
-          <Dropdown.Item value={outcome[e].id} className="ps-4">
-            <Form.Check type="checkbox" label={outcome[e].label} />
+          <Dropdown.Item
+            id={outcome[e].id}
+            onClick={() => selectOutcome(outcome[e].id)}
+            className="ps-4"
+          >
+            <Form.Check type="checkbox" label={outcome[e].label}
+
+checked={
+  true ? selectedOutcomes.includes(outcome[e].id) : false
+}
+            />
           </Dropdown.Item>
         );
       }
