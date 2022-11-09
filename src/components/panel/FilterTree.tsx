@@ -11,6 +11,7 @@ import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { selectOutcomes } from "./../layout/LayoutSlice";
+import { BsCheckLg } from "react-icons/bs";
 
 const FilterTree: React.FC = ({}) => {
   //filter controls
@@ -40,9 +41,10 @@ const FilterTree: React.FC = ({}) => {
     } else {
       selectedOutcomeIds.add(selectedId);
     }
-    console.log(selectedOutcomeIds);
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
   }
+
+  function addCheck() {}
 
   function buildOutcomeTree() {
     let outcome_ag1 = "";
@@ -61,30 +63,28 @@ const FilterTree: React.FC = ({}) => {
               id={selected_aggregation.id}
               onClick={() => selectOutcome(selected_aggregation.id)}
             >
-              <b>
-                <Form.Check
-                  type="checkbox"
-                  label={outcome[e].aggregation_level1}
-                  checked={
-                    true
-                      ? selectedOutcomes.includes(selected_aggregation.id)
-                      : false
-                  }
-                />
-              </b>
+              <BsCheckLg
+                style={{
+                  color: "blue",
+                  opacity: selectedOutcomes.includes(selected_aggregation.id)
+                    ? 1
+                    : 0,
+                }}
+              />{" "}
+              <b>{outcome[e].aggregation_level1}</b>
             </Dropdown.Item>
             <Dropdown.Item
               id={outcome[e].id}
               onClick={() => selectOutcome(outcome[e].id)}
               className="ps-4"
             >
-              <Form.Check
-                type="checkbox"
-                label={outcome[e].label}
-                checked={
-                  true ? selectedOutcomes.includes(outcome[e].id) : false
-                }
-              />
+              <BsCheckLg
+                style={{
+                  color: "blue",
+                  opacity: selectedOutcomes.includes(outcome[e].id) ? 1 : 0,
+                }}
+              />{" "}
+              {outcome[e].label}
             </Dropdown.Item>
           </>
         );
@@ -95,12 +95,13 @@ const FilterTree: React.FC = ({}) => {
             onClick={() => selectOutcome(outcome[e].id)}
             className="ps-4"
           >
-            <Form.Check type="checkbox" label={outcome[e].label}
-
-checked={
-  true ? selectedOutcomes.includes(outcome[e].id) : false
-}
-            />
+            <BsCheckLg
+              style={{
+                color: "blue",
+                opacity: selectedOutcomes.includes(outcome[e].id) ? 1 : 0,
+              }}
+            />{" "}
+            {outcome[e].label}
           </Dropdown.Item>
         );
       }
