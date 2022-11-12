@@ -18,7 +18,6 @@ export interface OutcomeAgg {
   };
 }
 
-
 export interface Practice {
   [key: string]: {
     id: string;
