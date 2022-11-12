@@ -1,4 +1,6 @@
-const outcome_aggregation_level1 = {
+import { OutcomeAgg } from "./../types";
+
+const outcome_aggregation_level1: OutcomeAgg = {
   OAG1: {
     id: "OAG1",
     label: "exclusion/shaming",

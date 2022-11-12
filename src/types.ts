@@ -10,6 +10,15 @@ export interface Outcome {
   };
 }
 
+export interface OutcomeAgg {
+  [key: string]: {
+    id: string;
+    label: string;
+    members: Array<string>;
+  };
+}
+
+
 export interface Practice {
   [key: string]: {
     id: string;

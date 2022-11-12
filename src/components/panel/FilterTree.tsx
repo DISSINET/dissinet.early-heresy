@@ -5,7 +5,9 @@ import {
   Form,
   Offcanvas,
   Dropdown,
+  Row,
 } from "react-bootstrap";
+import FilterView from "./FilterView";
 import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
@@ -1232,9 +1234,15 @@ const FilterTree: React.FC = ({}) => {
       >
         <InputGroup.Text>by intervention</InputGroup.Text>
       </InputGroup>
+      <FilterView />
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Filter by intervention</Offcanvas.Title>
+          <div>
+            <Row>
+              <FilterView />
+            </Row>
+          </div>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>{buildOutcomeTree()}</Form>
