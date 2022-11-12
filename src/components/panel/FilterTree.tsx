@@ -3,8 +3,11 @@ import {
   Accordion,
   InputGroup,
   Form,
+  Button,
+  Container,
   Offcanvas,
   Dropdown,
+  DropdownButton,
   Row,
 } from "react-bootstrap";
 import FilterView from "./FilterView";
@@ -13,7 +16,7 @@ import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { selectOutcomes } from "./../layout/LayoutSlice";
-import { BsCheckLg } from "react-icons/bs";
+import { BsCheckLg, BsListUl } from "react-icons/bs";
 
 const FilterTree: React.FC = ({}) => {
   //filter controls
@@ -46,7 +49,39 @@ const FilterTree: React.FC = ({}) => {
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
   }
 
-  function addCheck() {}
+  function clearOucomes() {
+    dispatch(selectOutcomes([]));
+  }
+
+  function filterControl(label: string, action: any = null) {
+    const control = (
+      <>
+        <InputGroup.Text
+          onClick={action}
+          style={{ cursor: "pointer", flexGrow: 1 }}
+        >
+          <BsListUl style={{ marginRight: "6px" }} />
+          {label}
+        </InputGroup.Text>
+        {selectedOutcomes.length > 1 ? (
+          <DropdownButton variant="outline-secondary" title="logic">
+            <Dropdown.Item href="#">AND</Dropdown.Item>
+            <Dropdown.Item href="#">OR</Dropdown.Item>
+          </DropdownButton>
+        ) : (
+          ""
+        )}
+        {selectedOutcomes.length > 0 ? (
+          <Button variant="outline-primary" size="sm" onClick={clearOucomes}>
+            clear
+          </Button>
+        ) : (
+          ""
+        )}
+      </>
+    );
+    return control;
+  }
 
   function buildOutcomeTree() {
     let outcome_ag1 = "";
@@ -174,13 +209,12 @@ const FilterTree: React.FC = ({}) => {
       <InputGroup
         size="sm"
         style={{ marginTop: "8px", marginBottom: "-5px", cursor: "pointer" }}
-        onClick={handleShowBeliefs}
       >
-        <InputGroup.Text>by religion</InputGroup.Text>
+        {filterControl("by religion", handleShowBeliefs)}
       </InputGroup>
       <Offcanvas show={showBeliefs} onHide={handleCloseBeliefs} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Filter by religion</Offcanvas.Title>
+          {filterControl("Filter by religion")}
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>
@@ -1226,23 +1260,26 @@ const FilterTree: React.FC = ({}) => {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <InputGroup
-        size="sm"
-        className="mb-3"
-        style={{ marginTop: "10px", cursor: "pointer" }}
-        onClick={handleShowDealing}
-      >
-        <InputGroup.Text>by intervention</InputGroup.Text>
+      <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
+        {filterControl("by intervention", handleShowDealing)}
       </InputGroup>
       <FilterView />
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Filter by intervention</Offcanvas.Title>
-          <div>
+          <Container>
+            <Row>
+              <InputGroup
+                size="sm"
+                className="mb-3"
+                style={{ marginTop: "10px" }}
+              >
+                {filterControl("Filter by intervention")}
+              </InputGroup>
+            </Row>
             <Row>
               <FilterView />
             </Row>
-          </div>
+          </Container>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>{buildOutcomeTree()}</Form>
