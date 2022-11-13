@@ -7,7 +7,6 @@ import {
   Container,
   Offcanvas,
   Dropdown,
-  DropdownButton,
   Row,
 } from "react-bootstrap";
 import FilterView from "./FilterView";
@@ -15,7 +14,7 @@ import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { selectOutcomes } from "./../layout/LayoutSlice";
+import { selectOutcomes, setOutcomeLogic } from "./../layout/LayoutSlice";
 import { BsCheckLg, BsListUl } from "react-icons/bs";
 
 const FilterTree: React.FC = ({}) => {
@@ -36,7 +35,9 @@ const FilterTree: React.FC = ({}) => {
   const selectedOutcomes = useAppSelector(
     (state) => state.layout.selectedOutcomes
   );
-
+  const selectedOutcomeLogic = useAppSelector(
+    (state) => state.layout.outcomeLogic
+  );
   const dispatch = useAppDispatch();
 
   function selectOutcome(selectedId: string) {
@@ -53,6 +54,10 @@ const FilterTree: React.FC = ({}) => {
     dispatch(selectOutcomes([]));
   }
 
+  function changeOutcomeLogic(e: any) {
+    dispatch(setOutcomeLogic(e.target.value));
+  }
+
   function filterControl(label: string, action: any = null) {
     const control = (
       <>
@@ -64,10 +69,16 @@ const FilterTree: React.FC = ({}) => {
           {label}
         </InputGroup.Text>
         {selectedOutcomes.length > 1 ? (
-          <DropdownButton variant="outline-secondary" title="logic">
-            <Dropdown.Item href="#">AND</Dropdown.Item>
-            <Dropdown.Item href="#">OR</Dropdown.Item>
-          </DropdownButton>
+          <Form.Select
+            style={{ maxWidth: "100px" }}
+            aria-label="boolean logic"
+            title="filter combination logic"
+            value={selectedOutcomeLogic}
+            onChange={(e) => changeOutcomeLogic(e)}
+          >
+            <option value="and">and</option>
+            <option value="or">or</option>
+          </Form.Select>
         ) : (
           ""
         )}

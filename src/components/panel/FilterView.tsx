@@ -9,8 +9,10 @@ const FilterView: React.FC = ({}) => {
   const selectedOutcomes = useAppSelector(
     (state) => state.layout.selectedOutcomes
   );
+  const selectedOutcomeLogic = useAppSelector(
+    (state) => state.layout.outcomeLogic
+  );
 
-  console.log(selectedOutcomes);
 
   function buildFilterView() {
     const filterV =
@@ -23,12 +25,13 @@ const FilterView: React.FC = ({}) => {
                 : outcome[e].label}{" "}
               <small>
                 {" "}
-                <BsXLg style={{cursor:"pointer"}} />
+                <BsXLg style={{ cursor: "pointer" }} />
               </small>
             </Badge>
             {i != selectedOutcomes.length - 1 ? (
               <i style={{ color: "#2CB1BC" }}>
-                <small> and </small>
+                <small> {selectedOutcomeLogic
+                } </small>
               </i>
             ) : (
               ""
