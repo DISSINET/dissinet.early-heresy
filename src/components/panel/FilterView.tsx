@@ -1,8 +1,9 @@
 import React from "react";
 import { Badge, CloseButton } from "react-bootstrap";
-import { useAppSelector } from "./../../app/hooks";
 import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
+import { selectOutcomes } from "./../layout/LayoutSlice";
+import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { BsXLg } from "react-icons/bs";
 
 const FilterView: React.FC = ({}) => {
@@ -12,7 +13,13 @@ const FilterView: React.FC = ({}) => {
   const selectedOutcomeLogic = useAppSelector(
     (state) => state.layout.outcomeLogic
   );
+  const dispatch = useAppDispatch();
 
+  function removeOutcome(e: any) {
+    let selectedOutcomeIds = new Set(selectedOutcomes);
+    selectedOutcomeIds.delete(e.target.id);
+    dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
+  }
 
   function buildFilterView() {
     const filterV =
@@ -25,13 +32,16 @@ const FilterView: React.FC = ({}) => {
                 : outcome[e].label}{" "}
               <small>
                 {" "}
-                <BsXLg style={{ cursor: "pointer" }} />
+                <BsXLg
+                  id={e}
+                  style={{ cursor: "pointer" }}
+                  onClick={(event) => removeOutcome(event)}
+                />
               </small>
             </Badge>
             {i != selectedOutcomes.length - 1 ? (
               <i style={{ color: "#2CB1BC" }}>
-                <small> {selectedOutcomeLogic
-                } </small>
+                <small> {selectedOutcomeLogic} </small>
               </i>
             ) : (
               ""
@@ -39,7 +49,6 @@ const FilterView: React.FC = ({}) => {
           </>
         );
       }) || "";
-    console.log(filterV);
     return filterV;
   }
 
