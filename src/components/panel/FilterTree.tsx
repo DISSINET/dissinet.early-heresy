@@ -14,7 +14,11 @@ import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import practices from "../../data/practices";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { selectOutcomes, setOutcomeLogic } from "./../layout/LayoutSlice";
+import {
+  selectOutcomes,
+  setOutcomeLogic,
+  selectOutcomeAggregations,
+} from "./../layout/LayoutSlice";
 import { BsCheckLg, BsListUl } from "react-icons/bs";
 
 const FilterTree: React.FC = ({}) => {
@@ -35,6 +39,9 @@ const FilterTree: React.FC = ({}) => {
   const selectedOutcomes = useAppSelector(
     (state) => state.layout.selectedOutcomes
   );
+  const selectedOutcomeAggregations = useAppSelector(
+    (state) => state.layout.selectedOutcomeAggregations
+  );
   const selectedOutcomeLogic = useAppSelector(
     (state) => state.layout.outcomeLogic
   );
@@ -50,8 +57,28 @@ const FilterTree: React.FC = ({}) => {
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
   }
 
+  function selectOutcomeAgg(selectedId: string) {
+    let selectedOutcomeAggIds = new Set(selectedOutcomeAggregations);
+    let selectedOutcomeIds = new Set(selectedOutcomes);
+    if (selectedOutcomeAggIds.has(selectedId)) {
+      selectedOutcomeAggIds.delete(selectedId);
+      outcome_aggregation_level1[selectedId].members.forEach((member) => {
+        selectedOutcomeIds.delete(member);
+      });
+    } else {
+      selectedOutcomeAggIds.add(selectedId);
+      outcome_aggregation_level1[selectedId].members.forEach((member) => {
+        selectedOutcomeIds.add(member);
+      });
+    }
+    dispatch(selectOutcomeAggregations(Array.from(selectedOutcomeAggIds)));
+    //add or remove outcomes for the aggregation
+    dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
+  }
+
   function clearOucomes() {
     dispatch(selectOutcomes([]));
+    dispatch(selectOutcomeAggregations([]));
   }
 
   function changeOutcomeLogic(e: any) {
@@ -109,12 +136,14 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Divider />
             <Dropdown.Item
               id={selected_aggregation.id}
-              onClick={() => selectOutcome(selected_aggregation.id)}
+              onClick={() => selectOutcomeAgg(selected_aggregation.id)}
             >
               <BsCheckLg
                 style={{
                   color: "blue",
-                  opacity: selectedOutcomes.includes(selected_aggregation.id)
+                  opacity: selectedOutcomeAggregations.includes(
+                    selected_aggregation.id
+                  )
                     ? 1
                     : 0,
                 }}

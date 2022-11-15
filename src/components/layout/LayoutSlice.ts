@@ -60,6 +60,12 @@ export const layoutSlice = createSlice({
       let newSelectedOutcomes = action.payload;
       state.selectedOutcomes = newSelectedOutcomes;
     },
+    selectOutcomeAggregations: (
+      state,
+      action: PayloadAction<Array<string>>
+    ) => {
+      let newSelectedOutcomeAggs = action.payload; state.selectedOutcomeAggregations = newSelectedOutcomeAggs;
+    },
     setOutcomeLogic: (state, action: PayloadAction<string>) => {
       let newOutcomeLogic = action.payload;
       state.outcomeLogic = newOutcomeLogic;
@@ -77,6 +83,7 @@ export const {
   addMentions,
   addLocation,
   selectOutcomes,
+  selectOutcomeAggregations,
   setOutcomeLogic,
   selectCases,
   selectLocation,
