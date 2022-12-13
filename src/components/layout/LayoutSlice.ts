@@ -64,7 +64,8 @@ export const layoutSlice = createSlice({
       state,
       action: PayloadAction<Array<string>>
     ) => {
-      let newSelectedOutcomeAggs = action.payload; state.selectedOutcomeAggregations = newSelectedOutcomeAggs;
+      let newSelectedOutcomeAggs = action.payload;
+      state.selectedOutcomeAggregations = newSelectedOutcomeAggs;
     },
     setOutcomeLogic: (state, action: PayloadAction<string>) => {
       let newOutcomeLogic = action.payload;
