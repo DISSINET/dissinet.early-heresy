@@ -351,13 +351,27 @@ const FilterTree: React.FC = ({}) => {
     <>
       <InputGroup
         size="sm"
-        style={{ marginTop: "8px", marginBottom: "-5px", cursor: "pointer" }}
+        style={{ marginTop: "8px", marginBottom: "6px", cursor: "pointer" }}
       >
         {filterControl("by religion", 1, handleShowBeliefs)}
       </InputGroup>
+      <FilterView type={1} />
       <Offcanvas show={showBeliefs} onHide={handleCloseBeliefs} placement="end">
         <Offcanvas.Header closeButton>
-          {filterControl("Filter by religion", 1)}
+          <Container>
+            <Row>
+              <InputGroup
+                size="sm"
+                className="mb-3"
+                style={{ marginTop: "10px" }}
+              >
+                {filterControl("Filter by religion", 1)}
+              </InputGroup>
+            </Row>
+            <Row>
+              <FilterView type={1} />
+            </Row>
+          </Container>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>{buildPracticeTree()}</Form>
@@ -367,7 +381,7 @@ const FilterTree: React.FC = ({}) => {
       <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
         {filterControl("by intervention", 2, handleShowDealing)}
       </InputGroup>
-      <FilterView />
+      <FilterView type={2} />
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
         <Offcanvas.Header closeButton>
           <Container>
@@ -381,7 +395,7 @@ const FilterTree: React.FC = ({}) => {
               </InputGroup>
             </Row>
             <Row>
-              <FilterView />
+              <FilterView type={2} />
             </Row>
           </Container>
         </Offcanvas.Header>
