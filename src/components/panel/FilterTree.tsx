@@ -93,6 +93,16 @@ const FilterTree: React.FC = ({}) => {
     dispatch(setOutcomeLogic(e.target.value));
   }
 
+  function selectPractice(selectedId: string) {
+    let selectedPracticeIds = new Set(selectedPractices);
+    if (selectedPracticeIds.has(selectedId)) {
+      selectedPracticeIds.delete(selectedId);
+    } else {
+      selectedPracticeIds.add(selectedId);
+    }
+    dispatch(selectPractices(Array.from(selectedPracticeIds)));
+  }
+
   function clearPractices() {
     dispatch(selectPractices([]));
   }
@@ -262,14 +272,25 @@ const FilterTree: React.FC = ({}) => {
         return (
           <>
             <Dropdown.Divider />
-            <Dropdown.Item value={10}>
+            <Dropdown.Item>
               <b>{practices[e].aggregation_level1}</b>
             </Dropdown.Item>
-            <Dropdown.Item value="101" className="ps-4">
+            <Dropdown.Item className="ps-4">
               {practices[e].aggregation_level2}
             </Dropdown.Item>
-            <Dropdown.Item value="1011">
-              <small className="ps-4 text-secondary">
+            <Dropdown.Item
+              id={practices[e].id}
+              onClick={() => selectPractice(practices[e].id)}
+            >
+              <small className="ps-2 text-secondary">
+                <BsCheckLg
+                  style={{
+                    color: "blue",
+                    opacity: selectedPractices.includes(practices[e].id)
+                      ? 1
+                      : 0,
+                  }}
+                />{" "}
                 {practices[e].label}
               </small>
             </Dropdown.Item>
@@ -283,8 +304,19 @@ const FilterTree: React.FC = ({}) => {
               <Dropdown.Item className="ps-4">
                 {practices[e].aggregation_level2}
               </Dropdown.Item>
-              <Dropdown.Item value="1011">
-                <small className="ps-4 text-secondary">
+              <Dropdown.Item
+                id={practices[e].id}
+                onClick={() => selectPractice(practices[e].id)}
+              >
+                <small className="ps-2 text-secondary">
+                  <BsCheckLg
+                    style={{
+                      color: "blue",
+                      opacity: selectedPractices.includes(practices[e].id)
+                        ? 1
+                        : 0,
+                    }}
+                  />{" "}
                   {practices[e].label}
                 </small>
               </Dropdown.Item>
@@ -292,8 +324,19 @@ const FilterTree: React.FC = ({}) => {
           );
         } else {
           return (
-            <Dropdown.Item value="1011">
-              <small className="ps-4 text-secondary">
+            <Dropdown.Item
+              id={practices[e].id}
+              onClick={() => selectPractice(practices[e].id)}
+            >
+              <small className="ps-2 text-secondary">
+                <BsCheckLg
+                  style={{
+                    color: "blue",
+                    opacity: selectedPractices.includes(practices[e].id)
+                      ? 1
+                      : 0,
+                  }}
+                />{" "}
                 {practices[e].label}
               </small>
             </Dropdown.Item>
