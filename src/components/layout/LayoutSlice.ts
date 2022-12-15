@@ -10,6 +10,8 @@ export interface LayoutState {
   selectedLocations: Array<string>;
   selectedOutcomes: Array<string>;
   outcomeLogic: string;
+  selectedPractices: Array<string>;
+  practiceLogic: string;
   selectedOutcomeAggregations: Array<string>;
   caseLocations: Array<string>;
 }
@@ -22,6 +24,8 @@ const initialState: LayoutState = {
   selectedLocations: [],
   selectedOutcomes: [],
   outcomeLogic: "and",
+  selectedPractices: [],
+  practiceLogic: "and",
   selectedOutcomeAggregations: [],
   caseLocations: [],
 };
@@ -71,6 +75,14 @@ export const layoutSlice = createSlice({
       let newOutcomeLogic = action.payload;
       state.outcomeLogic = newOutcomeLogic;
     },
+    selectPractices: (state, action: PayloadAction<Array<string>>) => {
+      let newSelectedPractices = action.payload;
+      state.selectedPractices = newSelectedPractices;
+    },
+    setPracticeLogic: (state, action: PayloadAction<string>) => {
+      let newPracticeLogic = action.payload;
+      state.practiceLogic = newPracticeLogic;
+    },
     clearAllSelections: (state) => {
       state.selectedMentionIds = initialState.selectedMentionIds;
       state.selectedLocations = initialState.selectedLocations;
@@ -86,6 +98,8 @@ export const {
   selectOutcomes,
   selectOutcomeAggregations,
   setOutcomeLogic,
+  selectPractices,
+  setPracticeLogic,
   selectCases,
   selectLocation,
   selectMentions,

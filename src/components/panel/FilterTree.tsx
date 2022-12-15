@@ -18,6 +18,8 @@ import {
   selectOutcomes,
   setOutcomeLogic,
   selectOutcomeAggregations,
+  selectPractices,
+  setPracticeLogic,
 } from "./../layout/LayoutSlice";
 import { BsCheckLg, BsListUl } from "react-icons/bs";
 
@@ -42,8 +44,14 @@ const FilterTree: React.FC = ({}) => {
   const selectedOutcomeAggregations = useAppSelector(
     (state) => state.layout.selectedOutcomeAggregations
   );
+  const selectedPractices = useAppSelector(
+    (state) => state.layout.selectedPractices
+  );
   const selectedOutcomeLogic = useAppSelector(
     (state) => state.layout.outcomeLogic
+  );
+  const selectedPracticeLogic = useAppSelector(
+    (state) => state.layout.practiceLogic
   );
   const dispatch = useAppDispatch();
 
@@ -85,39 +93,96 @@ const FilterTree: React.FC = ({}) => {
     dispatch(setOutcomeLogic(e.target.value));
   }
 
-  function filterControl(label: string, action: any = null) {
-    const control = (
-      <>
-        <InputGroup.Text
-          onClick={action}
-          style={{ cursor: "pointer", flexGrow: 1 }}
-        >
-          <BsListUl style={{ marginRight: "6px" }} />
-          {label}
-        </InputGroup.Text>
-        {selectedOutcomes.length > 1 ? (
-          <Form.Select
-            style={{ maxWidth: "100px" }}
-            aria-label="boolean logic"
-            title="filter combination logic"
-            value={selectedOutcomeLogic}
-            onChange={(e) => changeOutcomeLogic(e)}
-          >
-            <option value="and">and</option>
-            <option value="or">or</option>
-          </Form.Select>
-        ) : (
-          ""
-        )}
-        {selectedOutcomes.length > 0 ? (
-          <Button variant="outline-primary" size="sm" onClick={clearOucomes}>
-            clear
-          </Button>
-        ) : (
-          ""
-        )}
-      </>
-    );
+  function clearPractices() {
+    dispatch(selectPractices([]));
+  }
+
+  function changePracticeLogic(e: any) {
+    dispatch(setPracticeLogic(e.target.value));
+  }
+
+  function filterControl(label: string, type: number, action: any = null) {
+    //types: 1 -- beleifs, 1 -- practices
+
+    let control;
+    switch (type) {
+      case 1:
+        control = (
+          <>
+            <InputGroup.Text
+              onClick={action}
+              style={{ cursor: "pointer", flexGrow: 1 }}
+            >
+              <BsListUl style={{ marginRight: "6px" }} />
+              {label}
+            </InputGroup.Text>
+            {selectedPractices.length > 1 ? (
+              <Form.Select
+                style={{ maxWidth: "100px" }}
+                aria-label="boolean logic"
+                title="filter combination logic"
+                value={selectedPracticeLogic}
+                onChange={(e) => changePracticeLogic(e)}
+              >
+                <option value="and">and</option>
+                <option value="or">or</option>
+              </Form.Select>
+            ) : (
+              ""
+            )}
+            {selectedPractices.length > 0 ? (
+              <Button
+                variant="outline-primary"
+                size="sm"
+                onClick={clearPractices}
+              >
+                clear
+              </Button>
+            ) : (
+              ""
+            )}
+          </>
+        );
+        break;
+      case 2:
+        control = (
+          <>
+            <InputGroup.Text
+              onClick={action}
+              style={{ cursor: "pointer", flexGrow: 1 }}
+            >
+              <BsListUl style={{ marginRight: "6px" }} />
+              {label}
+            </InputGroup.Text>
+            {selectedOutcomes.length > 1 ? (
+              <Form.Select
+                style={{ maxWidth: "100px" }}
+                aria-label="boolean logic"
+                title="filter combination logic"
+                value={selectedOutcomeLogic}
+                onChange={(e) => changeOutcomeLogic(e)}
+              >
+                <option value="and">and</option>
+                <option value="or">or</option>
+              </Form.Select>
+            ) : (
+              ""
+            )}
+            {selectedOutcomes.length > 0 ? (
+              <Button
+                variant="outline-primary"
+                size="sm"
+                onClick={clearOucomes}
+              >
+                clear
+              </Button>
+            ) : (
+              ""
+            )}
+          </>
+        );
+        break;
+    }
     return control;
   }
 
@@ -245,21 +310,19 @@ const FilterTree: React.FC = ({}) => {
         size="sm"
         style={{ marginTop: "8px", marginBottom: "-5px", cursor: "pointer" }}
       >
-        {filterControl("by religion", handleShowBeliefs)}
+        {filterControl("by religion", 1, handleShowBeliefs)}
       </InputGroup>
       <Offcanvas show={showBeliefs} onHide={handleCloseBeliefs} placement="end">
         <Offcanvas.Header closeButton>
-          {filterControl("Filter by religion")}
+          {filterControl("Filter by religion", 1)}
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Form>
-            {buildPracticeTree()}
-          </Form>
+          <Form>{buildPracticeTree()}</Form>
         </Offcanvas.Body>
       </Offcanvas>
 
       <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
-        {filterControl("by intervention", handleShowDealing)}
+        {filterControl("by intervention", 2, handleShowDealing)}
       </InputGroup>
       <FilterView />
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
@@ -271,7 +334,7 @@ const FilterTree: React.FC = ({}) => {
                 className="mb-3"
                 style={{ marginTop: "10px" }}
               >
-                {filterControl("Filter by intervention")}
+                {filterControl("Filter by intervention", 2)}
               </InputGroup>
             </Row>
             <Row>
