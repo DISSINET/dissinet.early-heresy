@@ -213,16 +213,6 @@ const FilterTree: React.FC = ({}) => {
               id={selected_aggregation.id}
               onClick={() => selectOutcomeAgg(selected_aggregation.id)}
             >
-              <BsCheckLg
-                style={{
-                  color: "blue",
-                  opacity: selectedOutcomeAggregations.includes(
-                    selected_aggregation.id
-                  )
-                    ? 1
-                    : 0,
-                }}
-              />{" "}
               <b>{outcome[e].aggregation_level1}</b>
             </Dropdown.Item>
             <Dropdown.Item
