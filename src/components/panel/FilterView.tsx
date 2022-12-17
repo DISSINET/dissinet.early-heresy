@@ -43,10 +43,14 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
       selectedOutcomes.map((e: string, i) => {
         return (
           <>
-            <Badge id={e} bg="filter" pill>
-              {e.startsWith("OA")
-                ? outcome_aggregation_level1[e].label
-                : outcome[e].label}{" "}
+            <Badge
+              id={e}
+              bg="filter"
+              title={`category: ${outcome[e].aggregation_level1}`}
+              pill
+              style={{ cursor: "default" }}
+            >
+              {outcome[e].label}
               <small>
                 {" "}
                 <BsXLg
@@ -74,7 +78,13 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
       selectedPractices.map((e: string, i) => {
         return (
           <>
-            <Badge id={e} bg="filter" pill>
+            <Badge
+              id={e}
+              bg="filter"
+              pill
+              style={{ cursor: "default" }}
+              title={`categories: ${practices[e].aggregation_level1} > ${practices[e].aggregation_level2}`}
+            >
               {practices[e].label}
               <small>
                 {" "}
