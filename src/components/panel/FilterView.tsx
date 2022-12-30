@@ -48,7 +48,12 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
               bg="filter"
               title={`category: ${outcome[e].aggregation_level1}`}
               pill
-              style={{ cursor: "default" }}
+              style={{
+                cursor: "default",
+                maxWidth: "300px",
+                whiteSpace: "initial",
+                textAlign: "left",
+              }}
             >
               {outcome[e].label}
               <small>
@@ -82,7 +87,12 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
               id={e}
               bg="filter"
               pill
-              style={{ cursor: "default" }}
+              style={{
+                cursor: "default",
+                maxWidth: "300px",
+                whiteSpace: "initial",
+                textAlign: "left",
+              }}
               title={`categories: ${practices[e].aggregation_level1} > ${practices[e].aggregation_level2}`}
             >
               {practices[e].label}
@@ -111,10 +121,18 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
   let output;
   switch (type) {
     case 1:
-      output = <div>{buildPracticeFilterView()}</div>;
+      output = (
+        <div style={{ maxHeight: "9em", overflowY: "scroll" }}>
+          {buildPracticeFilterView()}
+        </div>
+      );
       break;
     case 2:
-      output = <div>{buildOutcomeFilterView()}</div>;
+      output = (
+        <div style={{ maxHeight: "9em", overflowY: "scroll" }}>
+          {buildOutcomeFilterView()}
+        </div>
+      );
       break;
   }
   return output as JSX.Element;

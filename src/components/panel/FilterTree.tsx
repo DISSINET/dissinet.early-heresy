@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Accordion,
   InputGroup,
   Form,
   Button,
@@ -116,6 +115,8 @@ const FilterTree: React.FC = ({}) => {
   function selectPracticeAgg1(selectedId: string) {
     let selectedPracticeAggIds = new Set(selectedPracticeAggregations1);
     let selectedPracticeIds = new Set(selectedPractices);
+    console.log(selectedPracticeIds);
+    console.log(selectedId);
     if (selectedPracticeAggIds.has(selectedId)) {
       selectedPracticeAggIds.delete(selectedId);
       practice_aggregation_level1[selectedId].members.forEach((member) => {
@@ -127,6 +128,7 @@ const FilterTree: React.FC = ({}) => {
         selectedPracticeIds.add(member);
       });
     }
+    console.log(selectedPracticeIds);
     dispatch(selectPracticeAggregations1(Array.from(selectedPracticeAggIds)));
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
   }
@@ -332,8 +334,16 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item
               id={practices[e].id}
               onClick={() => selectPractice(practices[e].id)}
+              style={{ paddingLeft: "2.8em" }}
             >
-              <small className="ps-2 text-secondary">
+              <small className="ps-2 text-secondary"
+              style={{
+                maxWidth: "300px",
+                whiteSpace: "initial",
+                textIndent: "4em",
+                marginLeft: "-2em",
+              }}
+            >
                 <BsCheckLg
                   style={{
                     color: "blue",
@@ -365,8 +375,17 @@ const FilterTree: React.FC = ({}) => {
               <Dropdown.Item
                 id={practices[e].id}
                 onClick={() => selectPractice(practices[e].id)}
+                style={{ paddingLeft: "2.8em" }}
               >
-                <small className="ps-2 text-secondary">
+                <small
+                  className="ps-2 text-secondary"
+                  style={{
+                    maxWidth: "300px",
+                    whiteSpace: "initial",
+                    textIndent: "4em",
+                    marginLeft: "-2em",
+                  }}
+                >
                   <BsCheckLg
                     style={{
                       color: "blue",
@@ -377,7 +396,7 @@ const FilterTree: React.FC = ({}) => {
                   />{" "}
                   {practices[e].label}
                 </small>
-              </Dropdown.Item>
+              </Dropdown.Item>{" "}
             </>
           );
         } else {
@@ -385,8 +404,17 @@ const FilterTree: React.FC = ({}) => {
             <Dropdown.Item
               id={practices[e].id}
               onClick={() => selectPractice(practices[e].id)}
+              style={{ paddingLeft: "2.8em" }}
             >
-              <small className="ps-2 text-secondary">
+              <small
+                className="ps-2 text-secondary"
+                style={{
+                  maxWidth: "300px",
+                  whiteSpace: "initial",
+                  textIndent: "4em",
+                  marginLeft: "-2em",
+                }}
+              >
                 <BsCheckLg
                   style={{
                     color: "blue",
