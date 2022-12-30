@@ -12,6 +12,8 @@ import {
 import FilterView from "./FilterView";
 import outcome from "../../data/outcome";
 import outcome_aggregation_level1 from "../../data/outcome_agg1";
+import practice_aggregation_level1 from "../../data/practice_agg1";
+import practice_aggregation_level2 from "../../data/practice_agg2";
 import practices from "../../data/practices";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import {
@@ -19,6 +21,8 @@ import {
   setOutcomeLogic,
   selectOutcomeAggregations,
   selectPractices,
+  selectPracticeAggregations1,
+  selectPracticeAggregations2,
   setPracticeLogic,
 } from "./../layout/LayoutSlice";
 import { BsCheckLg, BsListUl } from "react-icons/bs";
@@ -52,6 +56,12 @@ const FilterTree: React.FC = ({}) => {
   );
   const selectedPracticeLogic = useAppSelector(
     (state) => state.layout.practiceLogic
+  );
+  const selectedPracticeAggregations1 = useAppSelector(
+    (state) => state.layout.selectedPracticeAggregations1
+  );
+  const selectedPracticeAggregations2 = useAppSelector(
+    (state) => state.layout.selectedPracticeAggregations2
   );
   const dispatch = useAppDispatch();
 
@@ -100,6 +110,42 @@ const FilterTree: React.FC = ({}) => {
     } else {
       selectedPracticeIds.add(selectedId);
     }
+    dispatch(selectPractices(Array.from(selectedPracticeIds)));
+  }
+
+  function selectPracticeAgg1(selectedId: string) {
+    let selectedPracticeAggIds = new Set(selectedPracticeAggregations1);
+    let selectedPracticeIds = new Set(selectedPractices);
+    if (selectedPracticeAggIds.has(selectedId)) {
+      selectedPracticeAggIds.delete(selectedId);
+      practice_aggregation_level1[selectedId].members.forEach((member) => {
+        selectedPracticeIds.delete(member);
+      });
+    } else {
+      selectedPracticeAggIds.add(selectedId);
+      practice_aggregation_level1[selectedId].members.forEach((member) => {
+        selectedPracticeIds.add(member);
+      });
+    }
+    dispatch(selectPracticeAggregations1(Array.from(selectedPracticeAggIds)));
+    dispatch(selectPractices(Array.from(selectedPracticeIds)));
+  }
+
+  function selectPracticeAgg2(selectedId: string) {
+    let selectedPracticeAggIds = new Set(selectedPracticeAggregations2);
+    let selectedPracticeIds = new Set(selectedPractices);
+    if (selectedPracticeAggIds.has(selectedId)) {
+      selectedPracticeAggIds.delete(selectedId);
+      practice_aggregation_level2[selectedId].members.forEach((member) => {
+        selectedPracticeIds.delete(member);
+      });
+    } else {
+      selectedPracticeAggIds.add(selectedId);
+      practice_aggregation_level2[selectedId].members.forEach((member) => {
+        selectedPracticeIds.add(member);
+      });
+    }
+    dispatch(selectPracticeAggregations2(Array.from(selectedPracticeAggIds)));
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
   }
 
@@ -254,18 +300,33 @@ const FilterTree: React.FC = ({}) => {
   function buildPracticeTree() {
     let practice_ag1 = "";
     let practice_ag2 = "";
+    const practiceAggregations1 = Object.values(practice_aggregation_level1);
+    const practiceAggregations2 = Object.values(practice_aggregation_level2);
     const practiceIds = Object.keys(practices);
     let practiceTree = practiceIds.map((e) => {
       if (practices[e].aggregation_level1 != practice_ag1) {
         practice_ag1 = practices[e].aggregation_level1;
         practice_ag2 = practices[e].aggregation_level2;
+        let selected_aggregation1 =
+          practiceAggregations1.find((ag) => ag.label === practice_ag1) ||
+          practiceAggregations1[0];
+        let selected_aggregation2 =
+          practiceAggregations2.find((ag) => ag.label === practice_ag2) ||
+          practiceAggregations2[0];
         return (
           <>
             <Dropdown.Divider />
-            <Dropdown.Item>
+            <Dropdown.Item
+              id={selected_aggregation1.id}
+              onClick={() => selectPracticeAgg1(selected_aggregation1.id)}
+            >
               <b>{practices[e].aggregation_level1}</b>
             </Dropdown.Item>
-            <Dropdown.Item className="ps-4">
+            <Dropdown.Item
+              className="ps-4"
+              id={selected_aggregation2.id}
+              onClick={() => selectPracticeAgg2(selected_aggregation2.id)}
+            >
               {practices[e].aggregation_level2}
             </Dropdown.Item>
             <Dropdown.Item
@@ -289,9 +350,16 @@ const FilterTree: React.FC = ({}) => {
       } else {
         if (practices[e].aggregation_level2 != practice_ag2) {
           practice_ag2 = practices[e].aggregation_level2;
+          let selected_aggregation2 =
+            practiceAggregations2.find((ag) => ag.label === practice_ag2) ||
+            practiceAggregations2[0];
           return (
             <>
-              <Dropdown.Item className="ps-4">
+              <Dropdown.Item
+                className="ps-4"
+                id={selected_aggregation2.id}
+                onClick={() => selectPracticeAgg2(selected_aggregation2.id)}
+              >
                 {practices[e].aggregation_level2}
               </Dropdown.Item>
               <Dropdown.Item
