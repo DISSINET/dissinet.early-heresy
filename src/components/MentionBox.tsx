@@ -71,7 +71,7 @@ const MentionBox: React.FC = ({}) => {
             </Toast.Header>
             <Toast.Body>
               <small className="text-muted">
-                {mention.detail_case_summary}
+                {mention.detail_case_summary.split(" ", 15).join(" ") + "..."}
               </small>
               <Dropdown.Divider style={{ opacity: 0.1 }} />
               <div>
@@ -93,6 +93,11 @@ const MentionBox: React.FC = ({}) => {
                     <small className="text-muted">more</small>
                   </Accordion.Header>
                   <Accordion.Body>
+                    <br />
+                    <div>
+                      <small className="text-muted">Summary: </small>
+                      <small>{mention.detail_case_summary}</small>
+                    </div>
                     <br />
                     <div>
                       <small className="text-muted">
