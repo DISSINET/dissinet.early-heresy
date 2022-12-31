@@ -336,14 +336,15 @@ const FilterTree: React.FC = ({}) => {
               onClick={() => selectPractice(practices[e].id)}
               style={{ paddingLeft: "2.8em" }}
             >
-              <small className="ps-2 text-secondary"
-              style={{
-                maxWidth: "300px",
-                whiteSpace: "initial",
-                textIndent: "4em",
-                marginLeft: "-2em",
-              }}
-            >
+              <small
+                className="ps-2 text-secondary"
+                style={{
+                  maxWidth: "300px",
+                  whiteSpace: "initial",
+                  textIndent: "4em",
+                  marginLeft: "-2em",
+                }}
+              >
                 <BsCheckLg
                   style={{
                     color: "blue",

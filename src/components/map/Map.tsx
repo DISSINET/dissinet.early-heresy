@@ -11,6 +11,7 @@ import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import locations from "../../data/locations.json";
+import locationsHalo from "../../data/locationsHalo.json";
 import {
   selectCases,
   selectLocation,
@@ -73,6 +74,20 @@ const MapComponent: React.FC = ({}) => {
     "L0036",
     "L0119",
     "L0110",
+    "L0023H",
+    "L0065H",
+  ];
+
+  const impreciseLocations = [
+    "L0005",
+    "L0023H",
+    "L0028",
+    "L0044",
+    "L0048",
+    "L0065H",
+    "L0080",
+    "L0103",
+    "L0104",
   ];
 
   function getMentions(location_id: string) {
@@ -141,26 +156,27 @@ const MapComponent: React.FC = ({}) => {
     }
   }
 
-  //not working now
-  function getHalo(feature: any) {
-    let halo = [0, 1];
-    if (selectedLocations.includes(feature.properties.id)) {
-      halo = feature.properties.halo == "1" ? [12, 0.3] : [0, 1];
-    }
-    return halo;
-  }
-
   function styleCircles(feature: any) {
     let color = getColor(feature);
-    let halo = getHalo(feature);
-    return {
-      fillColor: color,
-      radius: 6,
-      weight: halo[0],
-      opacity: halo[1],
-      color: color,
-      fillOpacity: 1,
-    };
+    if (impreciseLocations.includes(feature.properties.id)) {
+      return {
+        fillColor: color,
+        radius: 12,
+        weight: 0.5,
+        opacity: 1,
+        color: color,
+        fillOpacity: 0.4,
+      };
+    } else {
+      return {
+        fillColor: color,
+        radius: 6,
+        weight: 0,
+        opacity: 1,
+        color: color,
+        fillOpacity: 0.8,
+      };
+    }
   }
 
   function ZoomToLayer() {
@@ -219,6 +235,11 @@ const MapComponent: React.FC = ({}) => {
       >
         <ZoomToLayer />
         <ScaleControl imperial={false} position={"bottomleft"} />
+        <GeoJSON
+          data={locationsHalo as GeoJSON.FeatureCollection}
+          pointToLayer={setCircles as any}
+          style={styleCircles}
+        />
         <GeoJSON
           data={locations as GeoJSON.FeatureCollection}
           pointToLayer={setCircles as any}
