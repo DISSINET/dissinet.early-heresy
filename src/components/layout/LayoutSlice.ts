@@ -16,6 +16,7 @@ export interface LayoutState {
   selectedPracticeAggregations1: Array<string>;
   selectedPracticeAggregations2: Array<string>;
   caseLocations: Array<string>;
+  timeFilter: Array<number>;
 }
 
 const initialState: LayoutState = {
@@ -32,6 +33,7 @@ const initialState: LayoutState = {
   selectedPracticeAggregations1: [],
   selectedPracticeAggregations2: [],
   caseLocations: [],
+  timeFilter: [1000, 1155],
 };
 
 export const layoutSlice = createSlice({
@@ -106,6 +108,10 @@ export const layoutSlice = createSlice({
       state.selectedLocations = initialState.selectedLocations;
       state.selectedCaseIds = initialState.selectedCaseIds;
     },
+    setTimeFilter: (state, action: PayloadAction<Array<number>>) => {
+      let newTimeFilter = action.payload;
+      state.timeFilter = newTimeFilter;
+    },
   },
 });
 
@@ -124,5 +130,6 @@ export const {
   selectLocation,
   selectMentions,
   clearAllSelections,
+  setTimeFilter,
 } = layoutSlice.actions;
 export default layoutSlice.reducer;

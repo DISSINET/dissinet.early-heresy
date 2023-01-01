@@ -45,3 +45,63 @@
   border-color: none !important;
   box-shadow: none !important;
 }
+
+:root {
+  --main-color: darkturquoise;
+  --main-color-hover: rgb(104, 117, 217, 0.2);
+  --track-color: #ddd;
+  /* Default mark color*/
+  --mark-color: #aaaaaa;
+}
+
+//slider styling
+.customSlider {
+  max-width: 300px;
+  margin: auto;
+}
+
+.customSlider-track {
+  top: 6px;
+  height: 4px;
+  background: var(--main-color);
+}
+
+.customSlider-track.customSlider-track-0 {
+  background: var(--track-color);
+}
+
+.customSlider-track.customSlider-track-2 {
+  background: var(--track-color);
+}
+
+.customSlider-thumb {
+  cursor: pointer;
+  background: var(--main-color);
+  width: 8px;
+  height: 18px;
+  outline: none;
+}
+
+.customSlider-thumb:hover {
+  box-shadow: 0 0 0 8px var(--main-color-hover);
+}
+
+.customSlider-mark {
+  cursor: pointer;
+  top: 6px;
+  width: 1.5px;
+  height: 8px;
+  background-color: var(--mark-color);
+}
+
+.customSlider-mark.customSlider-mark-before {
+  background-color: var(--main-color);
+}
+
+.customSlider-mark.customSlider-mark-active {
+  display: none;
+}
+
+.year {
+  font-weight: bold;
+}

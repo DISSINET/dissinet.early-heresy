@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Hero from "./../Hero";
 import FilterTree from "./FilterTree";
+import TimeSlider from "./TimeSlider";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { ListGroup, Badge, Accordion, Button, Image } from "react-bootstrap";
 import {
@@ -211,6 +212,7 @@ const PanelComponent: React.FC = ({}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <FilterTree />
+                <TimeSlider />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
