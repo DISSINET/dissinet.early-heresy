@@ -1,22 +1,44 @@
 import React from "react";
 import ReactSlider from "react-slider";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { setTimeFilter } from "./../layout/LayoutSlice";
-import { Button } from "react-bootstrap";
+import { setTimeFilter, switchTimeFilter } from "./../layout/LayoutSlice";
+import Form from "react-bootstrap/Form";
 
-const TimeSlider: React.FC = ({}) => {
+type TimeSliderProps = {
+  applyFilter: Function;
+};
+
+const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
+  const timeFilterEnabled = useAppSelector(
+    (state) => state.layout.timeFilterEnabled
+  );
   const dispatch = useAppDispatch();
 
   function selectTimeFilter(value: Array<number>) {
     dispatch(setTimeFilter(value));
+    applyFilter();
+  }
+
+  function dispSwitchTimeFilter(value: boolean) {
+    dispatch(switchTimeFilter(value));
+    if (!value) {
+      selectTimeFilter([1000, 1155]);
+    }
   }
 
   return (
     <>
       <div style={{ marginBottom: "12px", marginTop: "8px" }}>
+        <Form.Check
+          inline
+          aria-label="enable time filter"
+          checked={timeFilterEnabled}
+          onChange={() => dispSwitchTimeFilter(!timeFilterEnabled)}
+        />
         <small>
-          From <span className="year">{timeFilter[0]}</span> to{" "}
+          <b>time filter</b> – from{" "}
+          <span className="year">{timeFilter[0]}</span> to{" "}
           <span className="year">{timeFilter[1]}</span>
         </small>
         {timeFilter.includes(1000) && timeFilter.includes(1155) ? (
@@ -39,6 +61,7 @@ const TimeSlider: React.FC = ({}) => {
         )}
       </div>
       <ReactSlider
+        disabled={!timeFilterEnabled}
         className="customSlider"
         thumbClassName="customSlider-thumb"
         trackClassName="customSlider-track"

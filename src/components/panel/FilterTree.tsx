@@ -62,6 +62,7 @@ const FilterTree: React.FC = ({}) => {
   const selectedPracticeAggregations2 = useAppSelector(
     (state) => state.layout.selectedPracticeAggregations2
   );
+
   const dispatch = useAppDispatch();
 
   function selectOutcome(selectedId: string) {

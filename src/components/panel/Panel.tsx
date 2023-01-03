@@ -15,6 +15,8 @@ import {
 } from "./../layout/LayoutSlice";
 import calculateDatation from "./../../utils/calculateDatation";
 import legend from "./../../assets/legend.png";
+import treatYearEntry from "../../utils/treatYearEntry";
+import treatLocationsEntry from "../../utils/treatLocationsEntry";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -29,13 +31,34 @@ const PanelComponent: React.FC = ({}) => {
     (state) => state.layout.selectedLocations
   );
   const dispatch = useAppDispatch();
+  const timeFilter = useAppSelector((state) => state.layout.timeFilter);
 
-  function treatLocationsEntry(locationsEntry: string) {
-    return locationsEntry
-      .replace(/#/gi, "")
-      .replace(/\[/gi, "")
-      .replace(/\]/gi, "")
-      .replace(/\n/gi, " ");
+  function applyFilter() {
+    // selectedPractices, selectedPracticeLogic,
+    // selectedOutcomes, selectedOutcomeLogic
+    // TimeSlider
+    let matchingMentions: any = [];
+    let matchingLocations: any = [];
+    let matchingCases: any = new Set();
+    Object.values(mentions).map((val: any) => {
+      //apply time filter
+      if (
+        treatYearEntry(val.year_start_post_quem) >= timeFilter[0] &&
+        treatYearEntry(val.year_end_ante_quem) <= timeFilter[1]
+      ) {
+        matchingMentions.push(val.id);
+
+        let locationsArray = val.location_primary_id
+          ? treatLocationsEntry(val.location_primary_id).split(" ")
+          : [];
+        let deduplicatedLocationsArray = new Set(locationsArray);
+        matchingLocations.push(...Array.from(deduplicatedLocationsArray));
+        matchingCases.add(val.case_id);
+      }
+    });
+    dispatch(selectLocation(matchingLocations));
+    dispatch(selectMentions(matchingMentions));
+    dispatch(selectCases(Array.from(matchingCases)));
   }
 
   function getMentionsAndLocations(case_id: string) {
@@ -212,7 +235,7 @@ const PanelComponent: React.FC = ({}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <FilterTree />
-                <TimeSlider />
+                <TimeSlider applyFilter={applyFilter} />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

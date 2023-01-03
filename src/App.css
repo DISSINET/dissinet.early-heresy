@@ -63,7 +63,14 @@
 .customSlider-track {
   top: 6px;
   height: 4px;
+  cursor: pointer;
   background: var(--main-color);
+}
+
+.disabled > .customSlider-track {
+  top: 6px;
+  height: 4px;
+  background: var(--track-color);
 }
 
 .customSlider-track.customSlider-track-0 {
@@ -82,8 +89,19 @@
   outline: none;
 }
 
+.disabled > .customSlider-thumb {
+  background: var(--track-color);
+  width: 8px;
+  height: 18px;
+  outline: none;
+}
+
 .customSlider-thumb:hover {
   box-shadow: 0 0 0 8px var(--main-color-hover);
+}
+
+.disabled > .customSlider-thumb:hover {
+  box-shadow: none;
 }
 
 .customSlider-mark {
