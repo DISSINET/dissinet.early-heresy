@@ -110,6 +110,7 @@ export const layoutSlice = createSlice({
       state.selectedLocations = initialState.selectedLocations;
       state.selectedCaseIds = initialState.selectedCaseIds;
       state.timeFilter = initialState.timeFilter;
+      state.timeFilterEnabled = initialState.timeFilterEnabled;
     },
     setTimeFilter: (state, action: PayloadAction<Array<number>>) => {
       let newTimeFilter = action.payload;

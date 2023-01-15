@@ -37,6 +37,8 @@ const PanelComponent: React.FC = ({}) => {
     // selectedPractices, selectedPracticeLogic,
     // selectedOutcomes, selectedOutcomeLogic
     // TimeSlider
+    console.log(timeFilter[0]);
+    console.log(timeFilter[1]);
     let matchingMentions: any = [];
     let matchingLocations: any = [];
     let matchingCases: any = new Set();

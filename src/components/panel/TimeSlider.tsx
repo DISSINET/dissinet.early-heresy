@@ -1,7 +1,11 @@
 import React from "react";
 import ReactSlider from "react-slider";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
-import { setTimeFilter, switchTimeFilter } from "./../layout/LayoutSlice";
+import {
+  setTimeFilter,
+  switchTimeFilter,
+  clearAllSelections,
+} from "./../layout/LayoutSlice";
 import Form from "react-bootstrap/Form";
 
 type TimeSliderProps = {
@@ -23,6 +27,10 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
   function dispSwitchTimeFilter(value: boolean) {
     dispatch(switchTimeFilter(value));
     if (!value) {
+      dispatch(clearAllSelections());
+      dispatch(setTimeFilter([1000, 1155]));
+      // here be applyFilter() not to wipe other filters
+    } else {
       selectTimeFilter([1000, 1155]);
     }
   }
@@ -51,9 +59,7 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
                 color: "#0d6efd",
                 marginLeft: "10px",
               }}
-              onClick={() => {
-                dispatch(setTimeFilter([1000, 1155]));
-              }}
+              onClick={() =>   selectTimeFilter([1000, 1155])}
             >
               <small>(reset)</small>
             </span>
