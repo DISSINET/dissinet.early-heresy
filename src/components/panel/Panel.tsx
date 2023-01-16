@@ -30,6 +30,14 @@ const PanelComponent: React.FC = ({}) => {
   const selectedLocations = useAppSelector(
     (state) => state.layout.selectedLocations
   );
+  const selectedOutcomes = useAppSelector(
+    (state) => state.layout.selectedOutcomes
+  );
+  const practiceLogic = useAppSelector((state) => state.layout.practiceLogic);
+  const selectedPractices = useAppSelector(
+    (state) => state.layout.selectedPractices
+  );
+  const outcomeLogic = useAppSelector((state) => state.layout.outcomeLogic);
   const dispatch = useAppDispatch();
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
 
@@ -37,6 +45,9 @@ const PanelComponent: React.FC = ({}) => {
   const isInTimeRange = (val: any) =>
     treatYearEntry(val.year_start_post_quem) >= timeFilter[0] &&
     treatYearEntry(val.year_end_ante_quem) <= timeFilter[1];
+
+  // const hasOutcomes = (val: any) => val.practice_id in selectedOutcomes;
+  // const hasPractices = (val: any) => val.outcome_id in selectedPractices;
 
   function applyFilter() {
     // selectedPractices, selectedPracticeLogic,

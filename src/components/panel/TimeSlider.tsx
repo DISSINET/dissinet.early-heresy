@@ -21,7 +21,7 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
 
   function selectTimeFilter(value: Array<number>) {
     dispatch(setTimeFilter(value));
-    applyFilter(); //TODO this should wait on dispatch to complete
+    applyFilter(); // this should wait on dispatch to complete
   }
 
   function dispSwitchTimeFilter(value: boolean) {
@@ -29,7 +29,7 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
     if (!value) {
       dispatch(clearAllSelections());
       dispatch(setTimeFilter([1000, 1155]));
-      //TODO here be applyFilter() not to wipe other filters
+      // here be applyFilter() not to wipe other filters
     } else {
       selectTimeFilter([1000, 1155]);
     }
