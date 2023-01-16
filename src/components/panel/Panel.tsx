@@ -33,31 +33,33 @@ const PanelComponent: React.FC = ({}) => {
   const dispatch = useAppDispatch();
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
 
+  // filters to be used in applyFilter()
+  const isInTimeRange = (val: any) =>
+    treatYearEntry(val.year_start_post_quem) >= timeFilter[0] &&
+    treatYearEntry(val.year_end_ante_quem) <= timeFilter[1];
+
   function applyFilter() {
     // selectedPractices, selectedPracticeLogic,
     // selectedOutcomes, selectedOutcomeLogic
     // TimeSlider
-    console.log(timeFilter[0]);
-    console.log(timeFilter[1]);
+    // console.log(timeFilter[0]);
+    // console.log(timeFilter[1]);
     let matchingMentions: any = [];
     let matchingLocations: any = [];
     let matchingCases: any = new Set();
-    Object.values(mentions).map((val: any) => {
-      //apply time filter
-      if (
-        treatYearEntry(val.year_start_post_quem) >= timeFilter[0] &&
-        treatYearEntry(val.year_end_ante_quem) <= timeFilter[1]
-      ) {
-        matchingMentions.push(val.id);
 
-        let locationsArray = val.location_primary_id
-          ? treatLocationsEntry(val.location_primary_id).split(" ")
-          : [];
-        let deduplicatedLocationsArray = new Set(locationsArray);
-        matchingLocations.push(...Array.from(deduplicatedLocationsArray));
-        matchingCases.add(val.case_id);
-      }
+    //TODO here do some caching?
+    const filteredMentions = Object.values(mentions).filter(isInTimeRange);
+
+    filteredMentions.map((val: any) => {
+      let locationsArray = val.location_primary_id
+        ? treatLocationsEntry(val.location_primary_id).split(" ")
+        : [];
+      let deduplicatedLocationsArray = new Set(locationsArray);
+      matchingLocations.push(...Array.from(deduplicatedLocationsArray));
+      matchingCases.add(val.case_id);
     });
+
     dispatch(selectLocation(matchingLocations));
     dispatch(selectMentions(matchingMentions));
     dispatch(selectCases(Array.from(matchingCases)));
