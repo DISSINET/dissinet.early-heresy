@@ -49,9 +49,9 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
           <span className="year">{timeFilter[0]}</span> to{" "}
           <span className="year">{timeFilter[1]}</span>
         </small>
-        {timeFilter.includes(1000) && timeFilter.includes(1155) ? (
-          ""
-        ) : (
+        {
+          timeFilter.includes(1000) && timeFilter.includes(1155) ? "" : ""
+          /** TODO time filter reset on hold due to state update issues
           <>
             <span
               style={{
@@ -64,7 +64,8 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
               <small>(reset)</small>
             </span>
           </>
-        )}
+          **/
+        }
       </div>
       <ReactSlider
         disabled={!timeFilterEnabled}
