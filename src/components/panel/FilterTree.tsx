@@ -26,7 +26,11 @@ import {
 } from "./../layout/LayoutSlice";
 import { BsCheckLg, BsListUl } from "react-icons/bs";
 
-const FilterTree: React.FC = ({}) => {
+type FilterTreeProps = {
+  applyFilter: Function;
+};
+
+const FilterTree = ({ applyFilter }: FilterTreeProps): JSX.Element => {
   //filter controls
   const [beliefsFilter, toggleBeliefsFilter] = useState(false);
   const [beliefsValue, setBeliefsValue] = useState("0");
@@ -73,6 +77,7 @@ const FilterTree: React.FC = ({}) => {
       selectedOutcomeIds.add(selectedId);
     }
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
+    applyFilter();
   }
 
   function selectOutcomeAgg(selectedId: string) {
@@ -92,15 +97,18 @@ const FilterTree: React.FC = ({}) => {
     dispatch(selectOutcomeAggregations(Array.from(selectedOutcomeAggIds)));
     //add or remove outcomes for the aggregation
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
+    applyFilter();
   }
 
   function clearOucomes() {
     dispatch(selectOutcomes([]));
     dispatch(selectOutcomeAggregations([]));
+    applyFilter();
   }
 
   function changeOutcomeLogic(e: any) {
     dispatch(setOutcomeLogic(e.target.value));
+    applyFilter();
   }
 
   function selectPractice(selectedId: string) {
@@ -111,13 +119,14 @@ const FilterTree: React.FC = ({}) => {
       selectedPracticeIds.add(selectedId);
     }
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
+    applyFilter();
   }
 
   function selectPracticeAgg1(selectedId: string) {
     let selectedPracticeAggIds = new Set(selectedPracticeAggregations1);
     let selectedPracticeIds = new Set(selectedPractices);
-    console.log(selectedPracticeIds);
-    console.log(selectedId);
+    //console.log(selectedPracticeIds);
+    //console.log(selectedId);
     if (selectedPracticeAggIds.has(selectedId)) {
       selectedPracticeAggIds.delete(selectedId);
       practice_aggregation_level1[selectedId].members.forEach((member) => {
@@ -129,9 +138,10 @@ const FilterTree: React.FC = ({}) => {
         selectedPracticeIds.add(member);
       });
     }
-    console.log(selectedPracticeIds);
+    //console.log(selectedPracticeIds);
     dispatch(selectPracticeAggregations1(Array.from(selectedPracticeAggIds)));
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
+    applyFilter();
   }
 
   function selectPracticeAgg2(selectedId: string) {
@@ -150,14 +160,17 @@ const FilterTree: React.FC = ({}) => {
     }
     dispatch(selectPracticeAggregations2(Array.from(selectedPracticeAggIds)));
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
+    applyFilter();
   }
 
   function clearPractices() {
     dispatch(selectPractices([]));
+    applyFilter();
   }
 
   function changePracticeLogic(e: any) {
     dispatch(setPracticeLogic(e.target.value));
+    applyFilter();
   }
 
   function filterControl(label: string, type: number, action: any = null) {
@@ -443,7 +456,7 @@ const FilterTree: React.FC = ({}) => {
       >
         {filterControl("by religion", 1, handleShowBeliefs)}
       </InputGroup>
-      <FilterView type={1} />
+      <FilterView type={1} applyFilter={applyFilter} />
       <Offcanvas show={showBeliefs} onHide={handleCloseBeliefs} placement="end">
         <Offcanvas.Header closeButton>
           <Container>
@@ -457,7 +470,7 @@ const FilterTree: React.FC = ({}) => {
               </InputGroup>
             </Row>
             <Row>
-              <FilterView type={1} />
+              <FilterView type={1} applyFilter={applyFilter} />
             </Row>
           </Container>
         </Offcanvas.Header>
@@ -469,7 +482,7 @@ const FilterTree: React.FC = ({}) => {
       <InputGroup size="sm" className="mb-3" style={{ marginTop: "10px" }}>
         {filterControl("by intervention", 2, handleShowDealing)}
       </InputGroup>
-      <FilterView type={2} />
+      <FilterView type={2} applyFilter={applyFilter} />
       <Offcanvas show={showDealing} onHide={handleCloseDealing} placement="end">
         <Offcanvas.Header closeButton>
           <Container>
@@ -483,7 +496,7 @@ const FilterTree: React.FC = ({}) => {
               </InputGroup>
             </Row>
             <Row>
-              <FilterView type={2} />
+              <FilterView type={2} applyFilter={applyFilter} />
             </Row>
           </Container>
         </Offcanvas.Header>

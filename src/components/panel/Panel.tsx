@@ -17,6 +17,7 @@ import calculateDatation from "./../../utils/calculateDatation";
 import legend from "./../../assets/legend.png";
 import treatYearEntry from "../../utils/treatYearEntry";
 import treatLocationsEntry from "../../utils/treatLocationsEntry";
+import { preProcessFile } from "typescript";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -46,12 +47,60 @@ const PanelComponent: React.FC = ({}) => {
     treatYearEntry(val.year_start_post_quem) >= timeFilter[0] &&
     treatYearEntry(val.year_end_ante_quem) <= timeFilter[1];
 
-  // const hasOutcomes = (val: any) => val.practice_id in selectedOutcomes;
-  // const hasPractices = (val: any) => val.outcome_id in selectedPractices;
+  const hasReligion = (val: any) => {
+    console.log(selectedPractices.length);
+    if (selectedPractices.length == 0) {
+      return val;
+    } else {
+      const beliefsArray = treatLocationsEntry(val.practice_id).split(" ");
+      const practicesArray = treatLocationsEntry(val.practice_id).split(" ");
+      const religionArray = beliefsArray.concat(practicesArray);
+      if (practiceLogic == "and") {
+        const isSubset = selectedPractices.every((item) =>
+          religionArray.includes(item)
+        );
+        if (isSubset) {
+          return val;
+        }
+      } else {
+        const isMember = selectedPractices.some((item) =>
+          religionArray.includes(item)
+        );
+        if (isMember) {
+          return val;
+        }
+      }
+    }
+  };
+
+  const hasIntervention = (val: any) => {
+    if (selectedOutcomes.length == 0) {
+      return val;
+    } else {
+      let dealingArray = treatLocationsEntry(val.dealing_with_them_id).split(
+        " "
+      );
+      let outcomeArray = treatLocationsEntry(val.outcome_id).split(" ");
+      let interventionArray = dealingArray.concat(outcomeArray);
+      if (outcomeLogic == "and") {
+        const isSubset = selectedOutcomes.every((item) =>
+          interventionArray.includes(item)
+        );
+        if (isSubset) {
+          return val;
+        }
+      } else {
+        const isMember = selectedOutcomes.some((item) =>
+          interventionArray.includes(item)
+        );
+        if (isMember) {
+          return val;
+        }
+      }
+    }
+  };
 
   function applyFilter() {
-    // selectedPractices, selectedPracticeLogic,
-    // selectedOutcomes, selectedOutcomeLogic
     // TimeSlider
     // console.log(timeFilter[0]);
     // console.log(timeFilter[1]);
@@ -60,7 +109,10 @@ const PanelComponent: React.FC = ({}) => {
     let matchingCases: any = new Set();
 
     //TODO here do some caching?
-    const filteredMentions = Object.values(mentions).filter(isInTimeRange);
+    const filteredMentions = Object.values(mentions)
+      .filter(isInTimeRange)
+      .filter(hasReligion)
+      .filter(hasIntervention);
 
     filteredMentions.map((val: any) => {
       let locationsArray = val.location_primary_id
@@ -69,6 +121,7 @@ const PanelComponent: React.FC = ({}) => {
       let deduplicatedLocationsArray = new Set(locationsArray);
       matchingLocations.push(...Array.from(deduplicatedLocationsArray));
       matchingCases.add(val.case_id);
+      matchingMentions.push(val.id);
     });
 
     dispatch(selectLocation(matchingLocations));
@@ -249,7 +302,7 @@ const PanelComponent: React.FC = ({}) => {
                 <b>Filter</b>
               </Accordion.Header>
               <Accordion.Body>
-                <FilterTree />
+                <FilterTree applyFilter={applyFilter} />
                 <TimeSlider applyFilter={applyFilter} />
               </Accordion.Body>
             </Accordion.Item>

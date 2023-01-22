@@ -1,7 +1,11 @@
 export default function treatLocationsEntry(locationsEntry: string) {
-  return locationsEntry
-    .replace(/#/gi, "")
-    .replace(/\[/gi, "")
-    .replace(/\]/gi, "")
-    .replace(/\n/gi, " ");
+  if (locationsEntry) {
+    return locationsEntry
+      .replace(/#/gi, "")
+      .replace(/\[/gi, "")
+      .replace(/\]/gi, "")
+      .replace(/\n/gi, " ");
+  } else {
+    return "";
+  }
 }
