@@ -9,10 +9,9 @@ import {
 import Form from "react-bootstrap/Form";
 
 type TimeSliderProps = {
-  applyFilter: Function;
 };
 
-const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
+const TimeSlider = ({ }: TimeSliderProps): JSX.Element => {
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
   const timeFilterEnabled = useAppSelector(
     (state) => state.layout.timeFilterEnabled
@@ -21,7 +20,6 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
 
   function selectTimeFilter(value: Array<number>) {
     dispatch(setTimeFilter(value));
-    applyFilter(); // this should wait on dispatch to complete
   }
 
   function dispSwitchTimeFilter(value: boolean) {
@@ -29,7 +27,6 @@ const TimeSlider = ({ applyFilter }: TimeSliderProps): JSX.Element => {
     if (!value) {
       dispatch(clearAllSelections());
       dispatch(setTimeFilter([1000, 1155]));
-      // here be applyFilter() not to wipe other filters
     } else {
       selectTimeFilter([1000, 1155]);
     }

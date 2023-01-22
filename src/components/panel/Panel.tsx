@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Hero from "./../Hero";
 import FilterTree from "./FilterTree";
 import TimeSlider from "./TimeSlider";
@@ -17,7 +17,6 @@ import calculateDatation from "./../../utils/calculateDatation";
 import legend from "./../../assets/legend.png";
 import treatYearEntry from "../../utils/treatYearEntry";
 import treatLocationsEntry from "../../utils/treatLocationsEntry";
-import { preProcessFile } from "typescript";
 
 const PanelComponent: React.FC = ({}) => {
   const cases = useAppSelector((state) => state.layout.cases);
@@ -38,9 +37,30 @@ const PanelComponent: React.FC = ({}) => {
   const selectedPractices = useAppSelector(
     (state) => state.layout.selectedPractices
   );
+  const timeFilterEnabled = useAppSelector(
+    (state) => state.layout.timeFilterEnabled
+  );
   const outcomeLogic = useAppSelector((state) => state.layout.outcomeLogic);
   const dispatch = useAppDispatch();
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
+
+
+  useEffect(() => {
+    applyFilter();
+  }, [
+
+cases,
+mentions,
+selectedCaseIds,
+selectedMentionIds,
+selectedLocations,
+selectedOutcomes,
+practiceLogic,
+timeFilterEnabled,
+outcomeLogic,
+dispatch,
+timeFilter
+]);
 
   // filters to be used in applyFilter()
   const isInTimeRange = (val: any) =>
@@ -48,7 +68,6 @@ const PanelComponent: React.FC = ({}) => {
     treatYearEntry(val.year_end_ante_quem) <= timeFilter[1];
 
   const hasReligion = (val: any) => {
-    console.log(selectedPractices.length);
     if (selectedPractices.length == 0) {
       return val;
     } else {
@@ -108,21 +127,27 @@ const PanelComponent: React.FC = ({}) => {
     let matchingLocations: any = [];
     let matchingCases: any = new Set();
 
-    //TODO here do some caching?
-    const filteredMentions = Object.values(mentions)
-      .filter(isInTimeRange)
-      .filter(hasReligion)
-      .filter(hasIntervention);
+    if (
+      selectedPractices.length !== 0 ||
+      selectedOutcomes.length !== 0 ||
+      timeFilterEnabled
+    ) {
+      //TODO here do some caching?
+      const filteredMentions = Object.values(mentions)
+        .filter(isInTimeRange)
+        .filter(hasReligion)
+        .filter(hasIntervention);
 
-    filteredMentions.map((val: any) => {
-      let locationsArray = val.location_primary_id
-        ? treatLocationsEntry(val.location_primary_id).split(" ")
-        : [];
-      let deduplicatedLocationsArray = new Set(locationsArray);
-      matchingLocations.push(...Array.from(deduplicatedLocationsArray));
-      matchingCases.add(val.case_id);
-      matchingMentions.push(val.id);
-    });
+      filteredMentions.map((val: any) => {
+        let locationsArray = val.location_primary_id
+          ? treatLocationsEntry(val.location_primary_id).split(" ")
+          : [];
+        let deduplicatedLocationsArray = new Set(locationsArray);
+        matchingLocations.push(...Array.from(deduplicatedLocationsArray));
+        matchingCases.add(val.case_id);
+        matchingMentions.push(val.id);
+      });
+    }
 
     dispatch(selectLocation(matchingLocations));
     dispatch(selectMentions(matchingMentions));
@@ -302,8 +327,8 @@ const PanelComponent: React.FC = ({}) => {
                 <b>Filter</b>
               </Accordion.Header>
               <Accordion.Body>
-                <FilterTree applyFilter={applyFilter} />
-                <TimeSlider applyFilter={applyFilter} />
+                <FilterTree />
+                <TimeSlider />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

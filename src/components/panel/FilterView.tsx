@@ -9,10 +9,9 @@ import { BsXLg } from "react-icons/bs";
 
 type FilterViewProps = {
   type: number;
-  applyFilter: Function;
 };
 
-const FilterView = ({ type, applyFilter }: FilterViewProps): JSX.Element => {
+const FilterView = ({ type }: FilterViewProps): JSX.Element => {
   const selectedOutcomes = useAppSelector(
     (state) => state.layout.selectedOutcomes
   );
@@ -31,14 +30,12 @@ const FilterView = ({ type, applyFilter }: FilterViewProps): JSX.Element => {
     let selectedOutcomeIds = new Set(selectedOutcomes);
     selectedOutcomeIds.delete(e.target.id);
     dispatch(selectOutcomes(Array.from(selectedOutcomeIds)));
-    applyFilter();
   }
 
   function removePractice(e: any) {
     let selectedPracticeIds = new Set(selectedPractices);
     selectedPracticeIds.delete(e.target.id);
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
-    applyFilter();
   }
 
   function buildOutcomeFilterView() {
