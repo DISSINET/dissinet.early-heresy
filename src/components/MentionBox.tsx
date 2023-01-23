@@ -73,6 +73,14 @@ const MentionBox: React.FC = ({}) => {
               <small className="text-muted">
                 {mention.detail_case_summary.split(" ", 15).join(" ") + "..."}
               </small>
+              <div>
+                <small className="text-muted">Case:</small>{" "}
+                <small className="text-muted">
+                  <b>
+                    {mention.case_id} {mention.case_label}
+                  </b>
+                </small>
+              </div>
               <Dropdown.Divider style={{ opacity: 0.1 }} />
               <div>
                 <small className="text-muted">Year:</small>{" "}
