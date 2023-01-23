@@ -156,6 +156,8 @@ const FilterTree = ({}: FilterTreeProps): JSX.Element => {
 
   function clearPractices() {
     dispatch(selectPractices([]));
+    dispatch(selectPracticeAggregations1([]));
+    dispatch(selectPracticeAggregations2([]));
   }
 
   function changePracticeLogic(e: any) {
