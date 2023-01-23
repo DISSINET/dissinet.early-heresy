@@ -49,7 +49,7 @@ const practice_aggregation_level2: OutcomeAgg = {
   },
   PAG6: {
     id: "PAG6",
-    label: "gainst priestly posessions",
+    label: "against priestly posessions",
     members: ["C2086", "C1618"],
   },
   PAG7: {

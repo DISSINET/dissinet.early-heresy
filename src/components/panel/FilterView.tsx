@@ -2,7 +2,6 @@ import React from "react";
 import { Badge, CloseButton } from "react-bootstrap";
 import outcome from "../../data/outcome";
 import practices from "../../data/practices";
-import outcome_aggregation_level1 from "../../data/outcome_agg1";
 import { selectOutcomes, selectPractices } from "./../layout/LayoutSlice";
 import { useAppSelector, useAppDispatch } from "./../../app/hooks";
 import { BsXLg } from "react-icons/bs";

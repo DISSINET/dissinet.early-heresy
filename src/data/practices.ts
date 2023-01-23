@@ -70,13 +70,13 @@ const practices: Practice = {
   C2091: {
     id: "C2091",
     label: "only God ought to be obeyed and not other men",
-    aggregation_level2: "agaist social order",
+    aggregation_level2: "against social order",
     aggregation_level1: "against Church/society",
   },
   C2270: {
     id: "C2270",
     label: "rejection of oath",
-    aggregation_level2: "agaist social order",
+    aggregation_level2: "against social order",
     aggregation_level1: "against Church/society",
   },
   C1994: {
