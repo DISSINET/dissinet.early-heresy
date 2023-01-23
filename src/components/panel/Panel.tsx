@@ -44,23 +44,17 @@ const PanelComponent: React.FC = ({}) => {
   const dispatch = useAppDispatch();
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
 
-
   useEffect(() => {
     applyFilter();
   }, [
-
-cases,
-mentions,
-selectedCaseIds,
-selectedMentionIds,
-selectedLocations,
-selectedOutcomes,
-practiceLogic,
-timeFilterEnabled,
-outcomeLogic,
-dispatch,
-timeFilter
-]);
+    selectedOutcomes,
+    selectedPractices,
+    practiceLogic,
+    timeFilterEnabled,
+    outcomeLogic,
+    dispatch,
+    timeFilter,
+  ]);
 
   // filters to be used in applyFilter()
   const isInTimeRange = (val: any) =>
