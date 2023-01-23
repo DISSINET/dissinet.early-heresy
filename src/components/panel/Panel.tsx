@@ -220,7 +220,12 @@ const PanelComponent: React.FC = ({}) => {
                     {mentionsLocations[0].length > 1 ? "s " : " "}
                   </i>
                   <i style={{ color: "#0d6efd" }}>
-                    {selectedMentionIds.filter((e) => mentionsLocations[0].includes(e)).length} displayed
+                    {
+                      selectedMentionIds.filter((e) =>
+                        mentionsLocations[0].includes(e)
+                      ).length
+                    }{" "}
+                    displayed
                   </i>
                 </span>
               </ListGroup.Item>
