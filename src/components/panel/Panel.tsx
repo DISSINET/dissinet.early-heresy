@@ -217,7 +217,10 @@ const PanelComponent: React.FC = ({}) => {
                   ({date})&nbsp;
                   <i>
                     {mentionsLocations[0].length}&nbsp;mention
-                    {mentionsLocations[0].length > 1 ? "s" : ""}
+                    {mentionsLocations[0].length > 1 ? "s " : " "}
+                  </i>
+                  <i style={{ color: "#0d6efd" }}>
+                    {selectedMentionIds.filter((e) => mentionsLocations[0].includes(e)).length} displayed
                   </i>
                 </span>
               </ListGroup.Item>
