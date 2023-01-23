@@ -65,7 +65,7 @@ const PanelComponent: React.FC = ({}) => {
     if (selectedPractices.length == 0) {
       return val;
     } else {
-      const beliefsArray = treatLocationsEntry(val.practice_id).split(" ");
+      const beliefsArray = treatLocationsEntry(val.beliefs_id).split(" ");
       const practicesArray = treatLocationsEntry(val.practice_id).split(" ");
       const religionArray = beliefsArray.concat(practicesArray);
       if (practiceLogic == "and") {
@@ -114,9 +114,6 @@ const PanelComponent: React.FC = ({}) => {
   };
 
   function applyFilter() {
-    // TimeSlider
-    // console.log(timeFilter[0]);
-    // console.log(timeFilter[1]);
     let matchingMentions: any = [];
     let matchingLocations: any = [];
     let matchingCases: any = new Set();
