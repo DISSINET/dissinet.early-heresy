@@ -2,6 +2,7 @@ import React from "react";
 import {
   Accordion,
   Col,
+  Row,
   ToastContainer,
   Toast,
   Badge,
@@ -219,8 +220,6 @@ const MentionBox: React.FC = ({}) => {
 
   return (
     <Col
-      sm="3"
-      s="12"
       style={{
         position: "absolute",
         zIndex: 1000,
@@ -230,8 +229,8 @@ const MentionBox: React.FC = ({}) => {
         overflowY: "scroll",
       }}
     >
-      {buildHeader()}
-      {buildMentionCards()}
+      <Row>{buildHeader()}</Row>
+      <Row>{buildMentionCards()}</Row>
     </Col>
   );
 };
