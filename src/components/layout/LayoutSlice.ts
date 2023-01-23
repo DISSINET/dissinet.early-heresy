@@ -111,6 +111,12 @@ export const layoutSlice = createSlice({
       state.selectedCaseIds = initialState.selectedCaseIds;
       state.timeFilter = initialState.timeFilter;
       state.timeFilterEnabled = initialState.timeFilterEnabled;
+      state.selectedOutcomes = initialState.selectedOutcomes;
+      state.selectedOutcomeAggregations =
+        initialState.selectedOutcomeAggregations;
+      state.selectedPractices = initialState.selectedPractices;
+      state.selectedPracticeAggregations1 = state.selectedPracticeAggregations1;
+      state.selectedPracticeAggregations2 = state.selectedPracticeAggregations2;
     },
     setTimeFilter: (state, action: PayloadAction<Array<number>>) => {
       let newTimeFilter = action.payload;
