@@ -49,7 +49,6 @@ const practice_aggregation_level1: OutcomeAgg = {
       "C2097",
       "C1995",
       "C1152",
-      "C2024",
       "C3427",
       "C1054",
       "C1310",

@@ -229,12 +229,6 @@ const practices: Practice = {
     aggregation_level2: "against sacred spaces",
     aggregation_level1: "against cult",
   },
-  C2024: {
-    id: "C2024",
-    label: "rejection of church buildings as sacred",
-    aggregation_level2: "against sacred spaces",
-    aggregation_level1: "against cult",
-  },
   C3427: {
     id: "C3427",
     label: "rejection of cemeteries",

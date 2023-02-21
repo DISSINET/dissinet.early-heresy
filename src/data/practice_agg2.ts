@@ -85,7 +85,7 @@ const practice_aggregation_level2: OutcomeAgg = {
   PAG11: {
     id: "PAG11",
     label: "against sacred spaces",
-    members: ["C2097", "C1995", "C1152", "C2024", "C3427"],
+    members: ["C2097", "C1995", "C1152", "C3427"],
   },
   PAG12: {
     id: "PAG12",
