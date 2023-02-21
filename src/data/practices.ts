@@ -686,6 +686,12 @@ const practices: Practice = {
     aggregation_level2: "martyrdom",
     aggregation_level1: "martyrdom",
   },
+  C2489: {
+    id: "C2489",
+    label: "Donatist attitude to the efficacy of sacraments",
+    aggregation_level2: "heterodox sacramental theology",
+    aggregation_level1: "heterodox sacramental theology",
+  },
 };
 
 export default practices;

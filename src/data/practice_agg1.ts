@@ -151,6 +151,11 @@ const practice_aggregation_level1: OutcomeAgg = {
     label: "martyrdom",
     members: ["C2329", "C2330"],
   },
+  PPAG15: {
+    id: "PPAG15",
+    label: "heterodox sacramental theology",
+    members: ["C2489"],
+  },
 };
 
 export default practice_aggregation_level1;

@@ -232,6 +232,12 @@ const practice_aggregation_level2: OutcomeAgg = {
     label: "sex/marriage restrictions",
     members: ["C1253", "C1254", "C1053", "C1816", "C2258", "C2089", "C1258"],
   },
+  PAG42: {
+    id: "PAG42",
+    label: "heterodox sacramental theology",
+    members: ["C2489"],
+  },
+
 };
 
 export default practice_aggregation_level2;
