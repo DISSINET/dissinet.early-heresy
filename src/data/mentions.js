@@ -300,7 +300,7 @@ const mentions = {
     event_class_label: "#VALUE!",
     location_id: "L0007",
     location_label: "Aquitania",
-    location_primary_id: "[L0080]",
+    location_primary_id: "[L0080H]",
     location_primary_label: "Bordeaux",
     geometry: "point with halo",
     name_of_heresy_id: null,
@@ -2309,7 +2309,7 @@ const mentions = {
     event_class_label: "action against heresy by a secular leader",
     location_id: "[L0044]",
     location_label: "Pictavis",
-    location_primary_id: "L0044",
+    location_primary_id: "L0044H",
     location_primary_label: "Poitiers",
     geometry: "point with halo",
     name_of_heresy_id: "C1047",
@@ -6865,4 +6865,3 @@ const mentions = {
   },
 };
 export default mentions;
-

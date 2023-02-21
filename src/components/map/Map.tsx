@@ -76,16 +76,18 @@ const MapComponent: React.FC = ({}) => {
     "L0110",
     "L0023H",
     "L0065H",
+    "L0080H",
+    "L0044H",
   ];
 
   const impreciseLocations = [
     "L0005",
     "L0023H",
     "L0028",
-    "L0044",
+    "L0044H",
     "L0048",
     "L0065H",
-    "L0080",
+    "L0080H",
     "L0103",
     "L0104",
   ];
@@ -96,7 +98,8 @@ const MapComponent: React.FC = ({}) => {
     Object.values(mentions).map((val: any) => {
       if (
         val.location_primary_id &&
-        val.location_primary_id.includes(location_id)
+        val.location_primary_id.includes(location_id) &&
+        !val.location_primary_id.includes(`${location_id}H`)
       ) {
         matchingMentions.push(val.id);
         matchingCases.add(val.case_id);
