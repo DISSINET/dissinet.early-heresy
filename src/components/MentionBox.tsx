@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Accordion,
   Col,
@@ -9,8 +9,7 @@ import {
   Button,
   Dropdown,
 } from "react-bootstrap";
-import { useAppSelector, useAppDispatch } from "./../app/hooks";
-import { clearAllSelections } from "./layout/LayoutSlice";
+import { useAppSelector } from "./../app/hooks";
 import calculateDatation from "./../utils/calculateDatation";
 import { IIndexable } from "../types";
 
@@ -19,6 +18,7 @@ const MentionBox: React.FC = ({}) => {
   const selectedMentionIds = useAppSelector(
     (state) => state.layout.selectedMentionIds
   );
+  const [fullSummary, toggleFullSummary] = useState(false);
 
   function buildHeader() {
     let header = selectedMentionIds.length > 0 ? <b>Mentions</b> : "";
@@ -72,7 +72,17 @@ const MentionBox: React.FC = ({}) => {
             </Toast.Header>
             <Toast.Body>
               <small className="text-muted">
-                {mention.detail_case_summary.split(" ", 15).join(" ") + "..."}
+                {fullSummary
+                  ? mention.detail_case_summary + " "
+                  : mention.detail_case_summary.split(" ", 15).join(" ") +
+                    "..."}
+              </small>
+              <small
+className="text-muted"
+                style={{ cursor: "pointer" }}
+                onClick={() => toggleFullSummary(!fullSummary)}
+              >
+                {fullSummary ? "[less]" : "[more]"}
               </small>
               <div>
                 <small className="text-muted">Case:</small>{" "}
@@ -102,11 +112,6 @@ const MentionBox: React.FC = ({}) => {
                     <small className="text-muted">more</small>
                   </Accordion.Header>
                   <Accordion.Body>
-                    <br />
-                    <div>
-                      <small className="text-muted">Summary: </small>
-                      <small>{mention.detail_case_summary}</small>
-                    </div>
                     <br />
                     <div>
                       <small className="text-muted">

@@ -237,7 +237,6 @@ const practice_aggregation_level2: OutcomeAgg = {
     label: "heterodox sacramental theology",
     members: ["C2489"],
   },
-
 };
 
 export default practice_aggregation_level2;

@@ -29,12 +29,6 @@ import { BsCheckLg, BsListUl } from "react-icons/bs";
 type FilterTreeProps = {};
 
 const FilterTree = ({}: FilterTreeProps): JSX.Element => {
-  //filter controls
-  const [beliefsFilter, toggleBeliefsFilter] = useState(false);
-  const [beliefsValue, setBeliefsValue] = useState("0");
-  const [outcomeFilter, toggleOutcomeFilter] = useState(false);
-  const [outcomeValue, setOutcomeValue] = useState("0");
-
   // filter panel controls
   const [showBeliefs, setShowBeliefs] = useState(false);
   const handleCloseBeliefs = () => setShowBeliefs(false);
