@@ -12,6 +12,6 @@ export default function calculateDatation(
     if (ys === ye) {
       return `${yspq}/${ysaq}`;
     }
-    return `${ys}/${ye}`;
+    return `${ys.replace("–", "/")}–${ye.replace("–", "/")}`;
   }
 }
