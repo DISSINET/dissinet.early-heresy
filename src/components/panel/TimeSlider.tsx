@@ -8,10 +8,9 @@ import {
 } from "./../layout/LayoutSlice";
 import Form from "react-bootstrap/Form";
 
-type TimeSliderProps = {
-};
+type TimeSliderProps = {};
 
-const TimeSlider = ({ }: TimeSliderProps): JSX.Element => {
+const TimeSlider = ({}: TimeSliderProps): JSX.Element => {
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
   const timeFilterEnabled = useAppSelector(
     (state) => state.layout.timeFilterEnabled
@@ -46,23 +45,7 @@ const TimeSlider = ({ }: TimeSliderProps): JSX.Element => {
           <span className="year">{timeFilter[0]}</span> to{" "}
           <span className="year">{timeFilter[1]}</span>
         </small>
-        {
-          timeFilter.includes(1000) && timeFilter.includes(1155) ? "" : ""
-          /** TODO time filter reset on hold due to state update issues
-          <>
-            <span
-              style={{
-                cursor: "pointer",
-                color: "#0d6efd",
-                marginLeft: "10px",
-              }}
-              onClick={() => selectTimeFilter([1000, 1155])}
-            >
-              <small>(reset)</small>
-            </span>
-          </>
-          **/
-        }
+        {timeFilter.includes(1000) && timeFilter.includes(1155) ? "" : ""}
       </div>
       <ReactSlider
         disabled={!timeFilterEnabled}
