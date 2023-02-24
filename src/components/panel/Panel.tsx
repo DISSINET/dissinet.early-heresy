@@ -377,6 +377,13 @@ const PanelComponent: React.FC = ({}) => {
               <desc>Dissident Networks Project</desc>
             </svg>
           </a>
+          <Button
+            size="sm"
+            variant="outline-dark"
+            style={{ position: "absolute", right: "1rem", bottom: "1rem" }}
+          >
+            info
+          </Button>
         </div>
       </div>
     </div>
