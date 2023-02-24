@@ -61,8 +61,8 @@ const PanelComponent: React.FC = ({}) => {
   // for intervals [a,b], [c,d]:
   // b > c && a < d
   const isInTimeRange = (val: any) =>
-    treatYearEntry(val.year_start_post_quem) < timeFilter[1] &&
-    treatYearEntry(val.year_end_ante_quem) > timeFilter[0];
+    treatYearEntry(val.year_start_post_quem) <= timeFilter[1] &&
+    treatYearEntry(val.year_end_ante_quem) >= timeFilter[0];
 
   const hasReligion = (val: any) => {
     if (selectedPractices.length == 0) {
