@@ -6,7 +6,6 @@ import {
   ToastContainer,
   Toast,
   Badge,
-  Button,
   Dropdown,
 } from "react-bootstrap";
 import { useAppSelector } from "./../app/hooks";
@@ -78,7 +77,7 @@ const MentionBox: React.FC = ({}) => {
                     "..."}
               </small>
               <small
-className="text-muted"
+                className="text-muted"
                 style={{ cursor: "pointer" }}
                 onClick={() => toggleFullSummary(!fullSummary)}
               >
