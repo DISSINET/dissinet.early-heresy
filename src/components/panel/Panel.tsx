@@ -54,7 +54,7 @@ const PanelComponent: React.FC = ({}) => {
   const dispatch = useAppDispatch();
   const timeFilter = useAppSelector((state) => state.layout.timeFilter);
 
-  const [infoModal, toggleInfoModal] = useState(false);
+  const [infoModal, toggleInfoModal] = useState(true);
   const handleInfoModalClose = () => toggleInfoModal(false);
   const handleInfoModalShow = () => toggleInfoModal(true);
 
