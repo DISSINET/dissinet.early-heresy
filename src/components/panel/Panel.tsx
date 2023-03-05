@@ -11,6 +11,8 @@ import {
   Button,
   CloseButton,
   Image,
+  Row,
+  Col,
 } from "react-bootstrap";
 import {
   addCase,
@@ -406,7 +408,7 @@ const PanelComponent: React.FC = ({}) => {
           <Modal
             show={infoModal}
             onHide={handleInfoModalClose}
-            size="lg"
+            size="xl"
             centered
           >
             <Hero />
@@ -415,9 +417,72 @@ const PanelComponent: React.FC = ({}) => {
               onClick={handleInfoModalClose}
               style={{ position: "absolute", right: "1rem", top: "1rem" }}
             />{" "}
-            <Modal.Body>Project annotation TBA</Modal.Body>
+            <Modal.Body>
+              <p>
+                This interactive map application presents{" "}
+                <b>
+                  the most complete dataset of early cases of heresy in the
+                  West, ca. 1000–1150
+                </b>
+                , compiled from original Latin sources. It shows locations,
+                heresy cases linked to those locations, and mentions in the
+                sources, on which the description is based. The application
+                allows <b>filtering by time, religious aspects</b> (beliefs and
+                practices), <b>and the intervention</b> (type of action against
+                heresy, outcome of the case).
+              </p>
+              <p>
+                Each case is accompanied by a <b>list of mentions</b> in the
+                sources. Each mention constitutes an <b>independent record</b>,
+                which allows to appreciate{" "}
+                <b>differences in the descriptions of the same case</b>, as well
+                as filtering down only to cases (and, through them, locations)
+                where at least one mention meets the query condition. For each
+                mention, a <b>detailed info box</b> can be displayed, which
+                contains the{" "}
+                <b>name of the source, time information, location(s), names</b>{" "}
+                used to describe the heretics and the heresy, their{" "}
+                <b>social characterization</b>, a list of{" "}
+                <b>beliefs and practices</b> stated in that source, and the
+                characterization of the <b>intervention</b>.
+              </p>
+              <p>
+                Data source: reading of original sources
+                <br />
+                Type of primary source: chronicles, letters
+                <br />
+                Data: Lidia Hinz-Wieczorek
+                <br />
+                Map: <a href="https://pondrejk.eu/">Peter Ondrejka</a>
+                <br />
+                Dataset design and supervision: David Zbíral
+              </p>
+              <p>
+                <b>Recommended citation</b>: Hinz-Wieczorek, Lidia; Ondrejka,
+                Peter; Zbíral, David (2023). Early heresy: heresy cases in the
+                West, c.1000–c.1150 (v. 0.5.0).{" "}
+                <i>Dissident Networks Project (DISSINET).</i> Retrieved March 1,
+                2023, from
+                <a href="https://dissinet.cz/maps/early-heresy">
+                  https://dissinet.cz/maps/early-heresy
+                </a>
+                .
+              </p>
+            </Modal.Body>
             <Modal.Footer style={{ background: "#b8c2cc" }}>
-              {dissinetLogo()}
+              <Row>
+                <Col sm="9">
+                  <small>
+                    The research presented in this map application is a part of
+                    the “Dissident Networks Project” (DISSINET,
+                    https://dissinet.cz) and has received funding from the
+                    European Research Council (ERC) under the European Union’s
+                    Horizon 2020 research and innovation programme (grant
+                    agreement No. 101000442).
+                  </small>
+                </Col>
+                <Col>{dissinetLogo()}</Col>
+              </Row>
             </Modal.Footer>
           </Modal>
         </div>
