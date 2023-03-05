@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+Early Heresy
+=============
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Heresy cases in the West, c.1000-c.1150
 
-## Available Scripts
+### https://dissinet.cz/maps/early-heresy
 
-In the project directory, you can run:
+### [dissinet project](http://dissinet.cz)
 
-### `npm start`
+This interactive map application presents the most complete dataset of early cases of heresy in the West, ca. 1000–1150, compiled from original Latin sources. It shows locations, heresy cases linked to those locations, and mentions in the sources, on which the description is based. The application allows filtering by time, religious aspects (beliefs and practices), and the intervention (type of action against heresy, outcome of the case).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each case is accompanied by a list of mentions in the sources. Each mention constitutes an independent record, which allows to appreciate differences in the descriptions of the same case, as well as filtering down only to cases (and, through them, locations) where at least one mention meets the query condition. For each mention, a detailed info box can be displayed, which contains the name of the source, time information, location(s), names used to describe the heretics and the heresy, their social characterization, a list of beliefs and practices stated in that source, and the characterization of the intervention.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Data source: reading of original sources 
+Type of primary source: chronicles, letters
+Data: Lidia Hinz-Wieczorek
+Map: [Peter Ondrejka]('https://pondrejk.eu')
+Dataset design and supervision: David Zbíral
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Recommended citation: `Hinz-Wieczorek, Lidia; Ondrejka, Peter; Zbíral, David (2023). Early heresy: heresy cases in the West, c.1000–c.1150 (v. 0.5.0). Dissident Networks Project (DISSINET). Retrieved March 1, 2023, from https://dissinet.cz/maps/early-heresy.` 
