@@ -65,7 +65,7 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
               </small>
             </Badge>
             {i != selectedOutcomes.length - 1 ? (
-              <i style={{ color: "#2CB1BC" }}>
+              <i style={{ color: "#2680c2" }}>
                 <small> {selectedOutcomeLogic} </small>
               </i>
             ) : (
@@ -105,7 +105,7 @@ const FilterView = ({ type }: FilterViewProps): JSX.Element => {
               </small>
             </Badge>
             {i != selectedPractices.length - 1 ? (
-              <i style={{ color: "#2CB1BC" }}>
+              <i style={{ color: "#2680c2" }}>
                 <small> {selectedPracticeLogic} </small>
               </i>
             ) : (

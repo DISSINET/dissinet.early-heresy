@@ -23,8 +23,8 @@
 
 .bg-filter {
   background-color: white !important;
-  border: 1px solid #54d1db !important;
-  color: #2cb1bc !important;
+  border: 1px solid #62b0e8 !important;
+  color: #2680c2 !important;
 }
 
 .accordion-button,
@@ -47,7 +47,7 @@
 }
 
 :root {
-  --main-color: darkturquoise;
+  --main-color: #62b0e8;
   --main-color-hover: rgb(104, 117, 217, 0.2);
   --track-color: #ddd;
   /* Default mark color*/
