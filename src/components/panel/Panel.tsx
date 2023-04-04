@@ -58,6 +58,8 @@ const PanelComponent: React.FC = ({}) => {
   const handleInfoModalClose = () => toggleInfoModal(false);
   const handleInfoModalShow = () => toggleInfoModal(true);
 
+  const now = new Date();
+
   useEffect(() => {
     applyFilter();
   }, [
@@ -287,7 +289,7 @@ const PanelComponent: React.FC = ({}) => {
         height="68"
         viewBox="0 0 178 68"
         fill="black"
-        transform="scale(0.5 0.5)"
+        transform="scale(0.6 0.6)"
       >
         <path d="M-0.06,3l0,26.6l4.14,0l0,-26.6zm4.29,0l2.59,26.6l1.4,0l-2.58,-26.6zm6.73,0l-2.58,26.6l1.4,0l2.59,-26.6zm1.56,0l0,26.6l4.18,0l0,-26.6zm15.69,0l0,20.48c0,3.57,3.23,6.35,6.69,6.35c3.46,0,6.69,-2.78,6.69,-6.35l0,-20.48l-4.18,0l0,20.33c0,1.44,-1.29,2.47,-2.51,2.47c-1.22,0,-2.51,-1.03,-2.51,-2.47l0,-20.33zm26.26,0l0,26.6l4.18,0l0,-26.6zm4.33,0l3.95,26.6l1.45,0l-3.95,-26.6zm5.55,0l0,26.6l4.18,0l0,-26.6zm18.05,25.12l0,1.48l11.36,0l0,-1.48l-3.61,0l0,-23.64l3.61,0l0,-1.48l-11.36,0l0,1.48l3.57,0l0,23.64z" />
         <path d="M6.21,41.5l-5.74,26.6l2.13,0l1.79,-8.4l7.75,0l1.82,8.4l2.13,0l-5.66,-26.6l-2.05,0l3.42,16.3l-7.07,0l3.49,-16.3zm22.72,0l0,26.6l2.06,0l0,-11.25l3.45,0l6.31,11.25l2.36,0l-6.5,-11.48c3.12,-0.26,5.59,-2.88,5.59,-6.11l0,-2.66c0,-3.46,-2.89,-6.35,-6.35,-6.35zm6.73,13.41l-4.67,0l0,-11.51l4.67,0c2.43,0,4.52,1.98,4.52,4.48l0,2.4c0,2.73,-1.97,4.63,-4.52,4.63zm24.81,-11.51l0,24.7l2.06,0l0,-24.7l7.1,0l0,-1.9l-16.26,0l0,1.9zm27.63,24.93c3.65,0,6.57,-2.59,6.57,-6.35l0,-1.63c0,-4.33,-3.64,-5.82,-6.15,-6.39c-2.32,-0.53,-4.94,-1.4,-4.94,-4.52l0,-1.78c0,-2.47,2.13,-4.41,4.52,-4.41c2.36,0,4.52,1.94,4.52,4.41l0,0.95l2.05,0l0,-0.99c0,-3.65,-2.92,-6.35,-6.57,-6.35c-3.65,0,-6.57,2.7,-6.57,6.35l0,1.82c0,4.45,3.76,5.85,6.08,6.39c2.43,0.53,5.01,1.4,5.01,4.56l0,1.55c0,2.47,-2.13,4.41,-4.48,4.41c-2.4,0,-4.56,-1.94,-4.56,-4.41l0,-0.87l-2.05,0l0,0.91c0,3.76,2.92,6.35,6.57,6.35z" />
@@ -394,7 +396,7 @@ const PanelComponent: React.FC = ({}) => {
             marginRight: "-1em",
           }}
         >
-          <a target="_blank" href="https://dissinet.cz">
+          <a target="_blank" rel="noreferrer" href="https://dissinet.cz">
             {dissinetLogo()}
           </a>
           <Button
@@ -418,70 +420,206 @@ const PanelComponent: React.FC = ({}) => {
               style={{ position: "absolute", right: "1rem", top: "1rem" }}
             />{" "}
             <Modal.Body>
-              <p>
-                This interactive map application presents{" "}
-                <b>
-                  the most complete dataset of early cases of heresy in the
-                  West, ca. 1000–1150
-                </b>
-                , compiled from original Latin sources. It shows locations,
-                heresy cases linked to those locations, and mentions in the
-                sources, on which the description is based. The application
-                allows <b>filtering by time, religious aspects</b> (beliefs and
-                practices), <b>and the intervention</b> (type of action against
-                heresy, outcome of the case).
-              </p>
-              <p>
-                Each case is accompanied by a <b>list of mentions</b> in the
-                sources. Each mention constitutes an <b>independent record</b>,
-                which allows to appreciate{" "}
-                <b>differences in the descriptions of the same case</b>, as well
-                as filtering down only to cases (and, through them, locations)
-                where at least one mention meets the query condition. For each
-                mention, a <b>detailed info box</b> can be displayed, which
-                contains the{" "}
-                <b>name of the source, time information, location(s), names</b>{" "}
-                used to describe the heretics and the heresy, their{" "}
-                <b>social characterization</b>, a list of{" "}
-                <b>beliefs and practices</b> stated in that source, and the
-                characterization of the <b>intervention</b>.
-              </p>
-              <p>
-                Data source: reading of original sources
-                <br />
-                Type of primary source: chronicles, letters
-                <br />
-                Data: Lidia Hinz-Wieczorek
-                <br />
-                Map: <a href="https://pondrejk.eu/">Peter Ondrejka</a>
-                <br />
-                Dataset design and supervision: David Zbíral
-              </p>
-              <p>
-                <b>Recommended citation</b>: Hinz-Wieczorek, Lidia; Ondrejka,
-                Peter; Zbíral, David (2023). Early heresy: heresy cases in the
-                West, c.1000–c.1150 (v. 0.5.0).{" "}
-                <i>Dissident Networks Project (DISSINET).</i> Retrieved March 1,
-                2023, from
-                <a href="https://dissinet.cz/maps/early-heresy">
-                  https://dissinet.cz/maps/early-heresy
-                </a>
-                .
-              </p>
+              <Modal.Body>
+                <p>
+                  This interactive map application presents{" "}
+                  <b>
+                    the most complete dataset of early cases of heresy in the
+                    West, ca. 1000–1150
+                  </b>
+                  , compiled from original Latin sources. It shows locations,
+                  heresy cases linked to those locations, and mentions in the
+                  sources, on which the description is based. The application
+                  allows <b>filtering by time, religious aspects</b> (beliefs
+                  and practices), <b>and intervention</b> (type of action
+                  against heresy, outcome of the case).
+                </p>
+                <p>
+                  Each case is accompanied by a <b>list of mentions</b> in the
+                  sources. Each mention constitutes an <b>independent record</b>
+                  , which allows{" "}
+                  <b>
+                    differences in the descriptions of the same case to be
+                    assessed
+                  </b>
+                  , as well as filtering down only to cases (and, through them,
+                  locations) where at least one mention meets the query
+                  condition. For each mention, a detailed <b>info box</b> can be
+                  displayed, which contains the <b>name of the source</b>, a{" "}
+                  <b>summary</b> of the content, <b>dates, location(s)</b>, the{" "}
+                  <b>names</b> used to describe the heretics and the heresy and
+                  those names’ broader
+                  <b>connotations</b>, the <b>social characterization</b> of
+                  people involved in the heresy, a list of{" "}
+                  <b>beliefs and practices</b> stated in that source, the
+                  characterization of the <b>intervention</b>, the{" "}
+                  <b>outcome</b>, and notes. Under each category,{" "}
+                  <b>information is given in the order of appearance</b> in the
+                  mention.
+                </p>
+                <p>
+                  <b>Year</b> follows the consensus in historiography. If a date
+                  in a mention differs from it, this difference is specified in
+                  the mention summary or notes.
+                </p>
+                <p>
+                  <b>Names</b> gives a full list of the names used to describe
+                  the heresy and its followers in a given mention.{" "}
+                  <b>Connotations</b> are all the words used to create a
+                  negative image of a given heresy and its followers.
+                </p>
+                <p>
+                  <b>Persons</b> lists all persons or groups mentioned in the
+                  source. Names in square brackets do not appear directly but
+                  are derived from the broader context. If a person is known
+                  from multiple sources under different orthographic variants,
+                  we use a standardized version.
+                </p>
+                <p>
+                  <b>Religion</b> lists all beliefs and practices ascribed to
+                  heretics by a given mention. They are presented either in
+                  English or in the original Latin version.
+                </p>
+                <p>
+                  <b>Intervention</b> provides an English typology of action
+                  against heresy and the outcome of the case.
+                </p>
+                <p>
+                  The <b>choice of cases</b> was based on literature, especially
+                  J. B. Russell’s{" "}
+                  <i>Dissent and Reform in the Early Middle Ages</i> (1965) with
+                  some additions from C. Taylor’s{" "}
+                  <i>Heresy in Medieval France</i> (2005), M. Zerner’s{" "}
+                  <i>
+                    L’hérétique Henri dans les sources de son temps (1135-1145)
+                  </i>{" "}
+                  (2014) and A. Krawiec’s{" "}
+                  <i>
+                    Eudo de Stella, heretyk bretoński z XII w. i jego zwolennicy
+                  </i>{" "}
+                  (2003). Cases with a political or defamatory use of the word
+                  “heresis” with no specific doctrinal grounds were not
+                  included, just as cases openly dealing with Symoniac and
+                  Nicolaite heresy or over-zealous followers of Gregorian
+                  Reforms (which is why the Pataria movement and the case of
+                  Ramihrdus of Cambrai are missing). Concerning the Berengarian
+                  heresy, the dataset only presents the summaries of synods
+                  where the case was discussed. Sermons of Adhemar of Chabannes
+                  were not included, in spite of precious information about
+                  possible heresies in Aquitaine, as there is no critical
+                  edition of all of them available.
+                </p>
+                <ul style={{ listStyle: "none" }}>
+                  <li>
+                    <span>
+                      <i className="mx-2 icon icon-book" />
+                    </span>
+                    <span>Data source: reading of original sources</span>
+                  </li>
+                  <li>
+                    <span>
+                      <i className="mx-2 icon icon-scroll" />
+                    </span>
+                    <span>
+                      Type of primary source: chronicles, letters, charters,
+                      theological treatises, synodal acts, annals, vitae, books
+                      of miracles, <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      exegetical commentaries, etc.
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i className="mx-2 icon icon-layer-group" />
+                    </span>
+                    <span>Data: Lidia Hinz-Wieczorek</span>
+                  </li>
+                  <li>
+                    <span>
+                      <i className="mx-2 icon icon-drafting-compass" />
+                    </span>
+                    <span>
+                      Map:{" "}
+                      <a
+                        href="https://pondrejk.eu/"
+                        title="personal portfolio page"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Peter Ondrejka
+                      </a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i className="mx-2 icon icon-binoculars" />
+                    </span>
+                    <span>Dataset design and supervision: David Zbíral</span>
+                  </li>
+                </ul>
+                <p>
+                  Recommended citation: Hinz-Wieczorek, Lidia; Ondrejka, Peter;
+                  Zbíral, David (2023). Early heresy: heresy cases in the West,
+                  c.1000–c.1150 (v. 0.5.0).{" "}
+                  <i>Dissident Networks Project (DISSINET).</i> Retrieved{" "}
+                  {now.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                  , from{" "}
+                  <a href="https://dissinet.cz/maps/early-heresy">
+                    https://dissinet.cz/maps/early-heresy
+                  </a>
+                  .
+                </p>
+              </Modal.Body>
             </Modal.Body>
             <Modal.Footer style={{ background: "#b8c2cc" }}>
               <Row>
-                <Col sm="9">
+                <Col sm="8">
                   <small>
                     The research presented in this map application is a part of
                     the “Dissident Networks Project” (DISSINET,
                     https://dissinet.cz) and has received funding from the
                     European Research Council (ERC) under the European Union’s
                     Horizon 2020 research and innovation programme (grant
-                    agreement No. 101000442).
+                    agreement No. 101000442). The main part of the dataset was
+                    compiled during the research stay of Lidia Hinz-Wieczorek
+                    with DISSINET in autumn 2021, which was funded by the Polish
+                    National Agency for Academic Exchange (NAWA) under the
+                    program of the personal exchange of students and scientists
+                    as part of bilateral cooperation (grant agreement No.
+                    PPN/BIL/2020/1/00178/U/01).
                   </small>
                 </Col>
-                <Col>{dissinetLogo()}</Col>
+                <Col>
+                  <Row>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href="https://dissinet.cz"
+                      style={{ paddingLeft: "60px" }}
+                    >
+                      {dissinetLogo()}
+                    </a>
+                    <a
+                      href="https://erc.europa.eu/"
+                      title="European Research Council"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ paddingLeft: "60px" }}
+                    >
+                      <img
+                        src="https://cdn.muni.cz/media/3299268/logo_erc-flag_eum.png?mode=crop&amp;center=0.5,0.5&amp;rnd=132594368580000000&amp;width=278"
+                        srcSet="https://cdn.muni.cz/media/3299268/logo_erc-flag_eum.png?mode=crop&amp;center=0.5,0.5&amp;rnd=132594368580000000&amp;width=278 278w,https://cdn.muni.cz/media/3299268/logo_erc-flag_eum.png?mode=crop&amp;center=0.5,0.5&amp;rnd=132594368580000000&amp;width=477 477w"
+                        sizes="(min-width:1240px) 278px,(min-width:1024px) calc((100vw - 30px) * 0.5 - 20px),(min-width:768px) calc((100vw - 10px) * 0.5 - 20px),calc((100vw - 10px) * 1 - 20px)"
+                        alt="European Research Council"
+                        title="European Research Council"
+                      />
+                    </a>
+                  </Row>
+                </Col>
               </Row>
             </Modal.Footer>
           </Modal>

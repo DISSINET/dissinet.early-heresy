@@ -121,3 +121,19 @@
 .year {
   font-weight: bold;
 }
+
+.icon-book:before {
+  content: "";
+}
+.icon-drafting-compass:before {
+  content: "";
+}
+.icon-layer-group:before {
+  content: "";
+}
+.icon-scroll:before {
+  content: "";
+}
+.icon-binoculars:before {
+  content: "";
+}
