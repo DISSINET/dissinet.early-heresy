@@ -252,6 +252,17 @@ const cases = {
     dealing_with_them_id: "C1990, C1265, C1266, C1048, C1638, C1067",
     outcome_id: "C1067, C1051, C1106",
   },
+  E1032: {
+    case_id: "E1032",
+    case_label: "heretics in Aquitaine",
+    year_start_post_quem: "1119",
+    year_start_ante_quem: "1119",
+    year_end_post_quem: "1119",
+    year_end_ante_quem: "1119",
+    year_approximate: "n",
+    dealing_with_them_id: "C1106",
+    outcome_id: "C1067",
+  },
   E1024: {
     case_id: "E1024",
     case_label: "Petrobrusians",
@@ -293,8 +304,8 @@ const cases = {
     year_end_post_quem: 1143,
     year_end_ante_quem: 1144,
     year_approximate: "y",
-    dealing_with_them_id: "C1048",
-    outcome_id: "C1051, C2297, C1063",
+    dealing_with_them_id: "C1266, C1813",
+    outcome_id: "C2297, C1063",
   },
   E1027: {
     case_id: "E1027",
@@ -304,8 +315,8 @@ const cases = {
     year_end_post_quem: 1143,
     year_end_ante_quem: 1144,
     year_approximate: "y",
-    dealing_with_them_id: "C1048",
-    outcome_id: "C1051, C1063",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
   E1022: {
     case_id: "E1022",
@@ -318,6 +329,17 @@ const cases = {
     dealing_with_them_id: "C1266, C1048, C1067, C1852",
     outcome_id: "C1852, C1862, C1106, C1323, C1067, C1740, C1106",
   },
+  E1033: {
+    case_id: "E1033",
+    case_label: "weavers at Toulouse",
+    year_start_post_quem: "1145",
+    year_start_ante_quem: "1145",
+    year_end_post_quem: "1145",
+    year_end_ante_quem: "1145",
+    year_approximate: "y",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C2272",
+  },
   E1031: {
     case_id: "E1031",
     case_label: "manicheans at Agen",
@@ -326,8 +348,8 @@ const cases = {
     year_end_post_quem: "~1150",
     year_end_ante_quem: "~1150",
     year_approximate: "y",
-    dealing_with_them_id: "",
-    outcome_id: "",
+    dealing_with_them_id: "C1067",
+    outcome_id: "C1067",
   },
 };
 
