@@ -417,7 +417,12 @@ const PanelComponent: React.FC = ({}) => {
             <CloseButton
               aria-label="Hide"
               onClick={handleInfoModalClose}
-              style={{ position: "absolute", right: "1rem", top: "1rem" }}
+              style={{
+                position: "absolute",
+                right: "1rem",
+                top: "1rem",
+                backgroundColor: "white",
+              }}
             />{" "}
             <Modal.Body>
               <Modal.Body>
