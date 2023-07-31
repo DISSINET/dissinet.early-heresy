@@ -1,7 +1,7 @@
 {
   "name": "early-heresy-map",
   "homepage": "/maps/early-heresy",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
