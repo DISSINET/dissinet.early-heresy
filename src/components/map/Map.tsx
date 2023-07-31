@@ -29,6 +29,12 @@ const MapComponent: React.FC = ({}) => {
   const selectedLocations = useAppSelector(
     (state) => state.layout.selectedLocations
   );
+  const selectedOutcomes = useAppSelector(
+    (state) => state.layout.selectedOutcomes
+  );
+  const selectedPractices = useAppSelector(
+    (state) => state.layout.selectedPractices
+  );
   const dispatch = useAppDispatch();
   const allowedLocations = [
     "L0008",
@@ -149,13 +155,18 @@ const MapComponent: React.FC = ({}) => {
   }
 
   function getColor(feature: any) {
-    if (
-      selectedLocations.length < 1 ||
-      selectedLocations.includes(String(feature.properties.id))
-    ) {
-      return "#0000dc";
+    if (selectedLocations.length < 1) {
+      if (selectedOutcomes.length !== 0 || selectedPractices.length !== 0) {
+        return "gray";
+      } else {
+        return "#0000dc";
+      }
     } else {
-      return "gray";
+      if (selectedLocations.includes(String(feature.properties.id))) {
+        return "#0000dc";
+      } else {
+        return "gray";
+      }
     }
   }
 

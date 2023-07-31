@@ -158,7 +158,6 @@ const PanelComponent: React.FC = ({}) => {
         matchingMentions.push(val.id);
       });
     }
-
     dispatch(selectLocation(matchingLocations));
     dispatch(selectMentions(matchingMentions));
     dispatch(selectCases(Array.from(matchingCases)));

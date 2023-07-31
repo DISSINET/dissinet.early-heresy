@@ -112,8 +112,6 @@ const FilterTree = ({}: FilterTreeProps): JSX.Element => {
   function selectPracticeAgg1(selectedId: string) {
     let selectedPracticeAggIds = new Set(selectedPracticeAggregations1);
     let selectedPracticeIds = new Set(selectedPractices);
-    //console.log(selectedPracticeIds);
-    //console.log(selectedId);
     if (selectedPracticeAggIds.has(selectedId)) {
       selectedPracticeAggIds.delete(selectedId);
       practice_aggregation_level1[selectedId].members.forEach((member) => {
@@ -125,7 +123,6 @@ const FilterTree = ({}: FilterTreeProps): JSX.Element => {
         selectedPracticeIds.add(member);
       });
     }
-    //console.log(selectedPracticeIds);
     dispatch(selectPracticeAggregations1(Array.from(selectedPracticeAggIds)));
     dispatch(selectPractices(Array.from(selectedPracticeIds)));
   }
