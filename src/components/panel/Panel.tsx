@@ -564,7 +564,7 @@ const PanelComponent: React.FC = ({}) => {
                 <p>
                   Recommended citation: Hinz-Wieczorek, Lidia; Ondrejka, Peter;
                   Zbíral, David (2023). Early heresy: heresy cases in the West,
-                  c.1000–c.1150 (v. 0.5.0).{" "}
+                  c.1000–c.1150 (v. 0.5.1).{" "}
                   <i>Dissident Networks Project (DISSINET).</i> Retrieved{" "}
                   {now.toLocaleDateString("en-US", {
                     year: "numeric",
